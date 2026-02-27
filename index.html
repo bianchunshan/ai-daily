@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前沿科技日报 - 首页</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            border-radius: 16px;
+            margin-bottom: 30px;
+        }
+        header h1 { font-size: 2.5em; margin-bottom: 15px; }
+        .date-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .nav-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .nav-icon { font-size: 2.5em; margin-bottom: 15px; }
+        .nav-title { font-size: 1.3em; font-weight: bold; color: #333; margin-bottom: 10px; }
+        .nav-desc { color: #666; font-size: 0.9em; }
+        .hot-news {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+        }
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: rgba(255,255,255,0.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 前沿科技日报</h1>
+            <p>每日精选七大前沿科技领域最新资讯</p>
+            <div class="date-badge">2026年2月28日</div>
+        </header>
+
+        <div class="hot-news">
+            <h3>🔥 今日头条</h3>
+            <p><strong>中国AI调用量首超美国</strong> — 据 OpenRouter 数据，中国AI模型调用量三周大涨 127%，全球前五中占据四席。</p>
+        </div>
+
+        <div class="nav-grid">
+            <a href="ai.html" class="nav-card">
+                <div class="nav-icon">🤖</div>
+                <div class="nav-title">AI 人工智能</div>
+                <div class="nav-desc">大模型、AI Agent、Gemini、Claude 最新动态</div>
+            </a>
+            <a href="biotech.html" class="nav-card">
+                <div class="nav-icon">🧬</div>
+                <div class="nav-title">生物技术</div>
+                <div class="nav-desc">基因编辑、CRISPR、合成生物学、mRNA 进展</div>
+            </a>
+            <a href="quantum.html" class="nav-card">
+                <div class="nav-icon">⚛️</div>
+                <div class="nav-title">量子计算</div>
+                <div class="nav-desc">量子芯片、量子通信、精密测量突破</div>
+            </a>
+            <a href="fusion.html" class="nav-card">
+                <div class="nav-icon">☀️</div>
+                <div class="nav-title">可控核聚变</div>
+                <div class="nav-desc">ITER、EAST、商业化进程最新进展</div>
+            </a>
+            <a href="bci.html" class="nav-card">
+                <div class="nav-icon">🧠</div>
+                <div class="nav-title">脑机接口</div>
+                <div class="nav-desc">Neuralink、中文 BCI、临床试验突破</div>
+            </a>
+            <a href="robotics.html" class="nav-card">
+                <div class="nav-icon">🤖</div>
+                <div class="nav-title">具身智能/机器人</div>
+                <div class="nav-desc">人形机器人、自动驾驶、具身智能元年</div>
+            </a>
+            <a href="spatial.html" class="nav-card">
+                <div class="nav-icon">🥽</div>
+                <div class="nav-title">空间计算</div>
+                <div class="nav-desc">Vision Pro、XR/VR/AR、多模态交互</div>
+            </a>
+        </div>
+
+        <footer>
+            <p>前沿科技日报 | 每日更新 | 早上9:00</p>
+        </footer>
+    </div>
+</body>
+</html>
