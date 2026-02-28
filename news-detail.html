@@ -96,14 +96,10 @@
         // 从 JSON 文件加载资讯数据
         async function loadNewsData() {
             try {
-                const response = await fetch('realtime-news.json');
+                const response = await fetch('news-data.json');
                 const data = await response.json();
-                // 合并所有分类的新闻
-                let allNews = [];
-                for (let cat in data) {
-                    allNews = allNews.concat(data[cat]);
-                }
-                return allNews;
+                // news-data.json 格式: { "news": [...] }
+                return data.news || [];
             } catch (error) {
                 console.error('加载资讯数据失败:', error);
                 return [];
