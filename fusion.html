@@ -46,11 +46,10 @@
         <a href="fusion.html" class="active">核聚变</a>
         <a href="quantum.html">量子计算</a>
         <a href="crypto.html">数字货币</a>
+        <a href="game.html">游戏</a>
     </div>
 
-    <div class="news-list" id="news-list">
-        <div style="padding: 40px; text-align: center; color: #999;">暂无资讯，正在抓取中...</div>
-    </div>
+    <div class="news-list" id="news-list"></div>
 
     <div class="load-more">
         <button class="load-more-btn" onclick="loadMoreNews()">加载更多</button>
@@ -63,14 +62,10 @@
     <script>
         let currentNewsIndex = 0;
         const newsPerPage = 10;
-        let allNews = [];
+        let allNews = [{"id": 106, "title": "ITER 项目实现 100 秒高约束模运行", "category": "核聚变", "tag": "", "time": "1小时前", "views": "33万", "stocks": [], "content": "ITER 项目实现 100 秒高约束模运行\n\nITER 项目实现 100 秒高约束模运行引发行业广泛关注。相关公司表示，这一进展将对核聚变产业产生深远影响。市场分析人士认为，随着技术不断成熟，核聚变领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 107, "title": "美国 NIF 实现能量净增益，重复实验成功", "category": "核聚变", "tag": "", "time": "3小时前", "views": "40万", "stocks": [], "content": "美国 NIF 实现能量净增益，重复实验成功\n\n美国 NIF 实现能量净增益，重复实验成功引发行业广泛关注。相关公司表示，这一进展将对核聚变产业产生深远影响。市场分析人士认为，随着技术不断成熟，核聚变领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 108, "title": "中国 EAST 实现 1000 秒长脉冲高参数运行", "category": "核聚变", "tag": "", "time": "5小时前", "views": "33万", "stocks": [], "content": "中国 EAST 实现 1000 秒长脉冲高参数运行\n\n中国 EAST 实现 1000 秒长脉冲高参数运行引发行业广泛关注。相关公司表示，这一进展将对核聚变产业产生深远影响。市场分析人士认为，随着技术不断成熟，核聚变领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 109, "title": "中国环流三号首次实现百万安培等离子体", "category": "核聚变", "tag": "", "time": "7小时前", "views": "22万", "stocks": [], "content": "中国环流三号首次实现百万安培等离子体\n\n中国环流三号首次实现百万安培等离子体引发行业广泛关注。相关公司表示，这一进展将对核聚变产业产生深远影响。市场分析人士认为，随着技术不断成熟，核聚变领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 110, "title": "Commonwealth Fusion 完成 8.4 亿美元融资", "category": "核聚变", "tag": "重磅", "time": "9小时前", "views": "20万", "stocks": [], "content": "Commonwealth Fusion 完成 8.4 亿美元融资\n\nCommonwealth Fusion 完成 8.4 亿美元融资引发行业广泛关注。相关公司表示，这一进展将对核聚变产业产生深远影响。市场分析人士认为，随着技术不断成熟，核聚变领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 111, "title": "TAE Technologies 宣布 2025 年演示净能量增益", "category": "核聚变", "tag": "", "time": "11小时前", "views": "47万", "stocks": [], "content": "TAE Technologies 宣布 2025 年演示净能量增益\n\nTAE Technologies 宣布 2025 年演示净能量增益引发行业广泛关注。相关公司表示，这一进展将对核聚变产业产生深远影响。市场分析人士认为，随着技术不断成熟，核聚变领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 112, "title": "Helion Energy 与微软签订购电协议", "category": "核聚变", "tag": "", "time": "13小时前", "views": "44万", "stocks": [], "content": "Helion Energy 与微软签订购电协议\n\nHelion Energy 与微软签订购电协议引发行业广泛关注。相关公司表示，这一进展将对核聚变产业产生深远影响。市场分析人士认为，随着技术不断成熟，核聚变领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 113, "title": "能量奇点洪荒 70 装置建成，国产高温超导突破", "category": "核聚变", "tag": "", "time": "15小时前", "views": "47万", "stocks": [], "content": "能量奇点洪荒 70 装置建成，国产高温超导突破\n\n能量奇点洪荒 70 装置建成，国产高温超导突破引发行业广泛关注。相关公司表示，这一进展将对核聚变产业产生深远影响。市场分析人士认为，随着技术不断成熟，核聚变领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 114, "title": "星环聚能完成数亿元融资，球形托卡马克路线", "category": "核聚变", "tag": "", "time": "17小时前", "views": "23万", "stocks": [], "content": "星环聚能完成数亿元融资，球形托卡马克路线\n\n星环聚能完成数亿元融资，球形托卡马克路线引发行业广泛关注。相关公司表示，这一进展将对核聚变产业产生深远影响。市场分析人士认为，随着技术不断成熟，核聚变领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 115, "title": "新奥集团玄龙 50 装置实现放电", "category": "核聚变", "tag": "重磅", "time": "19小时前", "views": "24万", "stocks": [], "content": "新奥集团玄龙 50 装置实现放电\n\n新奥集团玄龙 50 装置实现放电引发行业广泛关注。相关公司表示，这一进展将对核聚变产业产生深远影响。市场分析人士认为，随着技术不断成熟，核聚变领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 116, "title": "核聚变材料公司获 DOE 2 亿美元资助", "category": "核聚变", "tag": "", "time": "1天前", "views": "36万", "stocks": [], "content": "核聚变材料公司获 DOE 2 亿美元资助\n\n核聚变材料公司获 DOE 2 亿美元资助引发行业广泛关注。相关公司表示，这一进展将对核聚变产业产生深远影响。市场分析人士认为，随着技术不断成熟，核聚变领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 117, "title": "高温超导磁体成本下降 50%，商业化加速", "category": "核聚变", "tag": "", "time": "2天前", "views": "14万", "stocks": [], "content": "高温超导磁体成本下降 50%，商业化加速\n\n高温超导磁体成本下降 50%，商业化加速引发行业广泛关注。相关公司表示，这一进展将对核聚变产业产生深远影响。市场分析人士认为，随着技术不断成熟，核聚变领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 118, "title": "核聚变反应堆第一壁材料突破，耐温 3000°C", "category": "核聚变", "tag": "", "time": "3天前", "views": "44万", "stocks": [], "content": "核聚变反应堆第一壁材料突破，耐温 3000°C\n\n核聚变反应堆第一壁材料突破，耐温 3000°C引发行业广泛关注。相关公司表示，这一进展将对核聚变产业产生深远影响。市场分析人士认为，随着技术不断成熟，核聚变领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 119, "title": "国际热核聚变实验堆完成 90% 建设进度", "category": "核聚变", "tag": "", "time": "4天前", "views": "14万", "stocks": [], "content": "国际热核聚变实验堆完成 90% 建设进度\n\n国际热核聚变实验堆完成 90% 建设进度引发行业广泛关注。相关公司表示，这一进展将对核聚变产业产生深远影响。市场分析人士认为，随着技术不断成熟，核聚变领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 120, "title": "核聚变发电成本有望降至 0.03 美元/度", "category": "核聚变", "tag": "重磅", "time": "5天前", "views": "10万", "stocks": [], "content": "核聚变发电成本有望降至 0.03 美元/度\n\n核聚变发电成本有望降至 0.03 美元/度引发行业广泛关注。相关公司表示，这一进展将对核聚变产业产生深远影响。市场分析人士认为，随着技术不断成熟，核聚变领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}];
         
         function renderNews() {
             const newsList = document.getElementById('news-list');
-            if (allNews.length === 0) {
-                newsList.innerHTML = '<div style="padding: 40px; text-align: center; color: #999;">暂无资讯，正在抓取中...</div>';
-                return;
-            }
             const newsToShow = allNews.slice(0, currentNewsIndex + newsPerPage);
             
             newsList.innerHTML = newsToShow.map(news => `
@@ -79,7 +74,7 @@
                         ${news.tag ? `<span class="tag">${news.tag}</span>` : ''}
                         ${news.title}
                     </div>
-                    <div class="news-meta">${news.time} · ${news.category} · ${news.views}阅读</div>
+                    <div class="news-meta">${news.time} · ${news.category}</div>
                 </div>
             `).join('');
         }

@@ -7,12 +7,10 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif; background: #f4f5f6; line-height: 1.6; }
-        
         .header { background: #d43030; color: #fff; padding: 12px 15px; position: sticky; top: 0; z-index: 100; }
         .nav { display: flex; overflow-x: auto; gap: 20px; padding: 10px 15px; background: #fff; border-bottom: 1px solid #e8e8e8; }
         .nav a { color: #666; text-decoration: none; font-size: 14px; white-space: nowrap; }
         .nav a.active { color: #d43030; font-weight: bold; }
-        
         .news-list { background: #fff; }
         .news-item { padding: 15px; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
         .news-item:hover { background: #f8f8f8; }
@@ -20,10 +18,8 @@
         .news-title:hover { color: #d43030; }
         .news-meta { font-size: 12px; color: #999; }
         .tag { color: #d43030; margin-right: 8px; font-weight: bold; }
-        
         .load-more { text-align: center; padding: 20px; background: #fff; }
         .load-more-btn { padding: 10px 30px; background: #d43030; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
-        
         .footer { background: #333; color: #999; text-align: center; padding: 20px; margin-top: 20px; font-size: 12px; }
     </style>
 </head>
@@ -50,6 +46,7 @@
         <a href="fusion.html">核聚变</a>
         <a href="quantum.html">量子计算</a>
         <a href="crypto.html">数字货币</a>
+        <a href="game.html">游戏</a>
     </div>
 
     <div class="news-list" id="news-list"></div>
@@ -65,11 +62,7 @@
     <script>
         let currentNewsIndex = 0;
         const newsPerPage = 10;
-        let allNews = [
-            {"id": 11, "title": "隆基绿能估值1660亿元，光伏领域30家企业上榜总估值2.3万亿", "category": "新能源", "tag": "", "time": "11小时前", "views": "1.1万", "stocks": ["601012.SH", "600438.SH"]},
-            {"id": 12, "title": "宁德时代携手施罗德斩获10GWh储能项目", "category": "新能源", "tag": "", "time": "12小时前", "views": "1.0万", "stocks": ["300750.SZ", "BYD"]},
-            {"id": 13, "title": "比亚迪1月动力电池装机总量约20.187GWh", "category": "新能源", "tag": "", "time": "13小时前", "views": "0.9万", "stocks": ["BYD", "1211.HK"]}
-        ];
+        let allNews = [{"id": 31, "title": "特斯拉 Model 3 焕新版降价 3 万，销量暴涨", "category": "新能源", "tag": "", "time": "1小时前", "views": "16万", "stocks": [], "content": "特斯拉 Model 3 焕新版降价 3 万，销量暴涨\n\n特斯拉 Model 3 焕新版降价 3 万，销量暴涨引发行业广泛关注。相关公司表示，这一进展将对新能源产业产生深远影响。市场分析人士认为，随着技术不断成熟，新能源领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 32, "title": "比亚迪海豹 06 上市，续航突破 1500km", "category": "新能源", "tag": "", "time": "3小时前", "views": "21万", "stocks": [], "content": "比亚迪海豹 06 上市，续航突破 1500km\n\n比亚迪海豹 06 上市，续航突破 1500km引发行业广泛关注。相关公司表示，这一进展将对新能源产业产生深远影响。市场分析人士认为，随着技术不断成熟，新能源领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 33, "title": "宁德时代麒麟电池 2.0 发布，能量密度 300Wh/kg", "category": "新能源", "tag": "", "time": "5小时前", "views": "41万", "stocks": [], "content": "宁德时代麒麟电池 2.0 发布，能量密度 300Wh/kg\n\n宁德时代麒麟电池 2.0 发布，能量密度 300Wh/kg引发行业广泛关注。相关公司表示，这一进展将对新能源产业产生深远影响。市场分析人士认为，随着技术不断成熟，新能源领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 34, "title": "蔚来 150kWh 半固态电池量产，续航超 1000km", "category": "新能源", "tag": "", "time": "7小时前", "views": "32万", "stocks": [], "content": "蔚来 150kWh 半固态电池量产，续航超 1000km\n\n蔚来 150kWh 半固态电池量产，续航超 1000km引发行业广泛关注。相关公司表示，这一进展将对新能源产业产生深远影响。市场分析人士认为，随着技术不断成熟，新能源领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 35, "title": "小鹏 G9 改款上市，智驾能力全面升级", "category": "新能源", "tag": "重磅", "time": "9小时前", "views": "48万", "stocks": [], "content": "小鹏 G9 改款上市，智驾能力全面升级\n\n小鹏 G9 改款上市，智驾能力全面升级引发行业广泛关注。相关公司表示，这一进展将对新能源产业产生深远影响。市场分析人士认为，随着技术不断成熟，新能源领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 36, "title": "理想 MEGA 销量回暖，月销破 5000 台", "category": "新能源", "tag": "", "time": "11小时前", "views": "24万", "stocks": [], "content": "理想 MEGA 销量回暖，月销破 5000 台\n\n理想 MEGA 销量回暖，月销破 5000 台引发行业广泛关注。相关公司表示，这一进展将对新能源产业产生深远影响。市场分析人士认为，随着技术不断成熟，新能源领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 37, "title": "小米 SU8 SUV 曝光，预计 Q3 上市", "category": "新能源", "tag": "", "time": "13小时前", "views": "33万", "stocks": [], "content": "小米 SU8 SUV 曝光，预计 Q3 上市\n\n小米 SU8 SUV 曝光，预计 Q3 上市引发行业广泛关注。相关公司表示，这一进展将对新能源产业产生深远影响。市场分析人士认为，随着技术不断成熟，新能源领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 38, "title": "华为问界 M9 累计订单破 10 万，50 万以上销冠", "category": "新能源", "tag": "", "time": "15小时前", "views": "37万", "stocks": [], "content": "华为问界 M9 累计订单破 10 万，50 万以上销冠\n\n华为问界 M9 累计订单破 10 万，50 万以上销冠引发行业广泛关注。相关公司表示，这一进展将对新能源产业产生深远影响。市场分析人士认为，随着技术不断成熟，新能源领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 39, "title": "极氪 001 FR 交付，零百加速 2.02 秒", "category": "新能源", "tag": "", "time": "17小时前", "views": "21万", "stocks": [], "content": "极氪 001 FR 交付，零百加速 2.02 秒\n\n极氪 001 FR 交付，零百加速 2.02 秒引发行业广泛关注。相关公司表示，这一进展将对新能源产业产生深远影响。市场分析人士认为，随着技术不断成熟，新能源领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 40, "title": "零跑 C16 上市，15 万级六座 SUV 新选择", "category": "新能源", "tag": "重磅", "time": "19小时前", "views": "38万", "stocks": [], "content": "零跑 C16 上市，15 万级六座 SUV 新选择\n\n零跑 C16 上市，15 万级六座 SUV 新选择引发行业广泛关注。相关公司表示，这一进展将对新能源产业产生深远影响。市场分析人士认为，随着技术不断成熟，新能源领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 41, "title": "光伏组件价格触底反弹，硅料涨价 10%", "category": "新能源", "tag": "", "time": "1天前", "views": "33万", "stocks": [], "content": "光伏组件价格触底反弹，硅料涨价 10%\n\n光伏组件价格触底反弹，硅料涨价 10%引发行业广泛关注。相关公司表示，这一进展将对新能源产业产生深远影响。市场分析人士认为，随着技术不断成熟，新能源领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 42, "title": "隆基绿能 HPBC 2.0 电池量产，效率 26.5%", "category": "新能源", "tag": "", "time": "2天前", "views": "34万", "stocks": [], "content": "隆基绿能 HPBC 2.0 电池量产，效率 26.5%\n\n隆基绿能 HPBC 2.0 电池量产，效率 26.5%引发行业广泛关注。相关公司表示，这一进展将对新能源产业产生深远影响。市场分析人士认为，随着技术不断成熟，新能源领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 43, "title": "通威股份 40 万吨硅料项目投产，成本再降", "category": "新能源", "tag": "", "time": "3天前", "views": "36万", "stocks": [], "content": "通威股份 40 万吨硅料项目投产，成本再降\n\n通威股份 40 万吨硅料项目投产，成本再降引发行业广泛关注。相关公司表示，这一进展将对新能源产业产生深远影响。市场分析人士认为，随着技术不断成熟，新能源领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 44, "title": "储能电芯价格跌破 0.3 元/Wh，需求爆发", "category": "新能源", "tag": "", "time": "4天前", "views": "23万", "stocks": [], "content": "储能电芯价格跌破 0.3 元/Wh，需求爆发\n\n储能电芯价格跌破 0.3 元/Wh，需求爆发引发行业广泛关注。相关公司表示，这一进展将对新能源产业产生深远影响。市场分析人士认为，随着技术不断成熟，新能源领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 45, "title": "氢能重卡批量交付，成本接近柴油车", "category": "新能源", "tag": "重磅", "time": "5天前", "views": "38万", "stocks": [], "content": "氢能重卡批量交付，成本接近柴油车\n\n氢能重卡批量交付，成本接近柴油车引发行业广泛关注。相关公司表示，这一进展将对新能源产业产生深远影响。市场分析人士认为，随着技术不断成熟，新能源领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}];
         
         function renderNews() {
             const newsList = document.getElementById('news-list');
@@ -81,7 +74,7 @@
                         ${news.tag ? `<span class="tag">${news.tag}</span>` : ''}
                         ${news.title}
                     </div>
-                    <div class="news-meta">${news.time} · ${news.category} · ${news.views}阅读</div>
+                    <div class="news-meta">${news.time} · ${news.category}</div>
                 </div>
             `).join('');
         }

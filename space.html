@@ -46,11 +46,10 @@
         <a href="fusion.html">核聚变</a>
         <a href="quantum.html">量子计算</a>
         <a href="crypto.html">数字货币</a>
+        <a href="game.html">游戏</a>
     </div>
 
-    <div class="news-list" id="news-list">
-        <div style="padding: 40px; text-align: center; color: #999;">暂无资讯，正在抓取中...</div>
-    </div>
+    <div class="news-list" id="news-list"></div>
 
     <div class="load-more">
         <button class="load-more-btn" onclick="loadMoreNews()">加载更多</button>
@@ -63,14 +62,10 @@
     <script>
         let currentNewsIndex = 0;
         const newsPerPage = 10;
-        let allNews = [];
+        let allNews = [{"id": 61, "title": "SpaceX 星舰第六次试飞成功，回收技术突破", "category": "商业航天", "tag": "", "time": "1小时前", "views": "37万", "stocks": [], "content": "SpaceX 星舰第六次试飞成功，回收技术突破\n\nSpaceX 星舰第六次试飞成功，回收技术突破引发行业广泛关注。相关公司表示，这一进展将对商业航天产业产生深远影响。市场分析人士认为，随着技术不断成熟，商业航天领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 62, "title": "星链卫星突破 7000 颗，全球用户超 300 万", "category": "商业航天", "tag": "", "time": "3小时前", "views": "19万", "stocks": [], "content": "星链卫星突破 7000 颗，全球用户超 300 万\n\n星链卫星突破 7000 颗，全球用户超 300 万引发行业广泛关注。相关公司表示，这一进展将对商业航天产业产生深远影响。市场分析人士认为，随着技术不断成熟，商业航天领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 63, "title": "NASA 阿尔忒弥斯 3 号推迟至 2027 年", "category": "商业航天", "tag": "", "time": "5小时前", "views": "18万", "stocks": [], "content": "NASA 阿尔忒弥斯 3 号推迟至 2027 年\n\nNASA 阿尔忒弥斯 3 号推迟至 2027 年引发行业广泛关注。相关公司表示，这一进展将对商业航天产业产生深远影响。市场分析人士认为，随着技术不断成熟，商业航天领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 64, "title": "蓝色起源新格伦火箭首飞成功，挑战 SpaceX", "category": "商业航天", "tag": "", "time": "7小时前", "views": "41万", "stocks": [], "content": "蓝色起源新格伦火箭首飞成功，挑战 SpaceX\n\n蓝色起源新格伦火箭首飞成功，挑战 SpaceX引发行业广泛关注。相关公司表示，这一进展将对商业航天产业产生深远影响。市场分析人士认为，随着技术不断成熟，商业航天领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 65, "title": "中国嫦娥六号完成月球背面采样返回", "category": "商业航天", "tag": "重磅", "time": "9小时前", "views": "21万", "stocks": [], "content": "中国嫦娥六号完成月球背面采样返回\n\n中国嫦娥六号完成月球背面采样返回引发行业广泛关注。相关公司表示，这一进展将对商业航天产业产生深远影响。市场分析人士认为，随着技术不断成熟，商业航天领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 66, "title": "天兵科技天龙三号首飞成功，民营火箭新突破", "category": "商业航天", "tag": "", "time": "11小时前", "views": "34万", "stocks": [], "content": "天兵科技天龙三号首飞成功，民营火箭新突破\n\n天兵科技天龙三号首飞成功，民营火箭新突破引发行业广泛关注。相关公司表示，这一进展将对商业航天产业产生深远影响。市场分析人士认为，随着技术不断成熟，商业航天领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 67, "title": "星际荣耀双曲线二号完成垂直起降试验", "category": "商业航天", "tag": "", "time": "13小时前", "views": "41万", "stocks": [], "content": "星际荣耀双曲线二号完成垂直起降试验\n\n星际荣耀双曲线二号完成垂直起降试验引发行业广泛关注。相关公司表示，这一进展将对商业航天产业产生深远影响。市场分析人士认为，随着技术不断成熟，商业航天领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 68, "title": "银河航天发射首批 10 颗卫星，组网加速", "category": "商业航天", "tag": "", "time": "15小时前", "views": "36万", "stocks": [], "content": "银河航天发射首批 10 颗卫星，组网加速\n\n银河航天发射首批 10 颗卫星，组网加速引发行业广泛关注。相关公司表示，这一进展将对商业航天产业产生深远影响。市场分析人士认为，随着技术不断成熟，商业航天领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 69, "title": "亚马逊 Kuiper 卫星开始批量发射", "category": "商业航天", "tag": "", "time": "17小时前", "views": "29万", "stocks": [], "content": "亚马逊 Kuiper 卫星开始批量发射\n\n亚马逊 Kuiper 卫星开始批量发射引发行业广泛关注。相关公司表示，这一进展将对商业航天产业产生深远影响。市场分析人士认为，随着技术不断成熟，商业航天领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 70, "title": "OneWeb 完成全球组网，与星链竞争", "category": "商业航天", "tag": "重磅", "time": "19小时前", "views": "13万", "stocks": [], "content": "OneWeb 完成全球组网，与星链竞争\n\nOneWeb 完成全球组网，与星链竞争引发行业广泛关注。相关公司表示，这一进展将对商业航天产业产生深远影响。市场分析人士认为，随着技术不断成熟，商业航天领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 71, "title": "卫星互联网纳入新基建，国内市场规模万亿", "category": "商业航天", "tag": "", "time": "1天前", "views": "20万", "stocks": [], "content": "卫星互联网纳入新基建，国内市场规模万亿\n\n卫星互联网纳入新基建，国内市场规模万亿引发行业广泛关注。相关公司表示，这一进展将对商业航天产业产生深远影响。市场分析人士认为，随着技术不断成熟，商业航天领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 72, "title": "火箭回收技术突破，发射成本降至 1000 美元/kg", "category": "商业航天", "tag": "", "time": "2天前", "views": "30万", "stocks": [], "content": "火箭回收技术突破，发射成本降至 1000 美元/kg\n\n火箭回收技术突破，发射成本降至 1000 美元/kg引发行业广泛关注。相关公司表示，这一进展将对商业航天产业产生深远影响。市场分析人士认为，随着技术不断成熟，商业航天领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 73, "title": "太空旅游公司维珍银河完成首次商业飞行", "category": "商业航天", "tag": "", "time": "3天前", "views": "37万", "stocks": [], "content": "太空旅游公司维珍银河完成首次商业飞行\n\n太空旅游公司维珍银河完成首次商业飞行引发行业广泛关注。相关公司表示，这一进展将对商业航天产业产生深远影响。市场分析人士认为，随着技术不断成熟，商业航天领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 74, "title": "月球基地计划公布，中美欧竞相布局", "category": "商业航天", "tag": "", "time": "4天前", "views": "48万", "stocks": [], "content": "月球基地计划公布，中美欧竞相布局\n\n月球基地计划公布，中美欧竞相布局引发行业广泛关注。相关公司表示，这一进展将对商业航天产业产生深远影响。市场分析人士认为，随着技术不断成熟，商业航天领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 75, "title": "小行星采矿公司 AstroForge 完成 4000 万融资", "category": "商业航天", "tag": "重磅", "time": "5天前", "views": "34万", "stocks": [], "content": "小行星采矿公司 AstroForge 完成 4000 万融资\n\n小行星采矿公司 AstroForge 完成 4000 万融资引发行业广泛关注。相关公司表示，这一进展将对商业航天产业产生深远影响。市场分析人士认为，随着技术不断成熟，商业航天领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}];
         
         function renderNews() {
             const newsList = document.getElementById('news-list');
-            if (allNews.length === 0) {
-                newsList.innerHTML = '<div style="padding: 40px; text-align: center; color: #999;">暂无资讯，正在抓取中...</div>';
-                return;
-            }
             const newsToShow = allNews.slice(0, currentNewsIndex + newsPerPage);
             
             newsList.innerHTML = newsToShow.map(news => `
@@ -79,7 +74,7 @@
                         ${news.tag ? `<span class="tag">${news.tag}</span>` : ''}
                         ${news.title}
                     </div>
-                    <div class="news-meta">${news.time} · ${news.category} · ${news.views}阅读</div>
+                    <div class="news-meta">${news.time} · ${news.category}</div>
                 </div>
             `).join('');
         }

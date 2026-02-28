@@ -7,12 +7,10 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif; background: #f4f5f6; line-height: 1.6; }
-        
         .header { background: #d43030; color: #fff; padding: 12px 15px; position: sticky; top: 0; z-index: 100; }
         .nav { display: flex; overflow-x: auto; gap: 20px; padding: 10px 15px; background: #fff; border-bottom: 1px solid #e8e8e8; }
         .nav a { color: #666; text-decoration: none; font-size: 14px; white-space: nowrap; }
         .nav a.active { color: #d43030; font-weight: bold; }
-        
         .news-list { background: #fff; }
         .news-item { padding: 15px; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
         .news-item:hover { background: #f8f8f8; }
@@ -20,10 +18,8 @@
         .news-title:hover { color: #d43030; }
         .news-meta { font-size: 12px; color: #999; }
         .tag { color: #d43030; margin-right: 8px; font-weight: bold; }
-        
         .load-more { text-align: center; padding: 20px; background: #fff; }
         .load-more-btn { padding: 10px 30px; background: #d43030; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
-        
         .footer { background: #333; color: #999; text-align: center; padding: 20px; margin-top: 20px; font-size: 12px; }
     </style>
 </head>
@@ -50,6 +46,7 @@
         <a href="fusion.html">核聚变</a>
         <a href="quantum.html">量子计算</a>
         <a href="crypto.html">数字货币</a>
+        <a href="game.html">游戏</a>
     </div>
 
     <div class="news-list" id="news-list"></div>
@@ -65,12 +62,7 @@
     <script>
         let currentNewsIndex = 0;
         const newsPerPage = 10;
-        let allNews = [
-            {"id": 2, "title": "OpenAI完成1100亿美元融资，估值达8400亿美元，亚马逊英伟达软银领投", "category": "人工智能", "tag": "", "time": "3小时前", "views": "4.8万", "stocks": ["MSFT", "AMZN", "NVDA"]},
-            {"id": 3, "title": "Meta与AMD达成600-1000亿美元超级采购协议，为期五年", "category": "人工智能", "tag": "市场", "time": "4小时前", "views": "3.8万", "stocks": ["META", "AMD"]},
-            {"id": 8, "title": "微软Copilot用户突破1.5亿，年度AI收入达180亿美元", "category": "人工智能", "tag": "", "time": "8小时前", "views": "1.8万", "stocks": ["MSFT"]},
-            {"id": 9, "title": "中国AI模型调用量首超美国，MiniMax月调用达4.55万亿token", "category": "人工智能", "tag": "", "time": "9小时前", "views": "1.5万", "stocks": ["BABA", "TCEHY"]}
-        ];
+        let allNews = [{"id": 1, "title": "OpenAI 发布 GPT-5 预览版，推理能力大幅提升", "category": "人工智能", "tag": "", "time": "1小时前", "views": "29万", "stocks": [], "content": "OpenAI 发布 GPT-5 预览版，推理能力大幅提升\n\nOpenAI 发布 GPT-5 预览版，推理能力大幅提升引发行业广泛关注。相关公司表示，这一进展将对人工智能产业产生深远影响。市场分析人士认为，随着技术不断成熟，人工智能领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 2, "title": "谷歌 Gemini 2.0 正式上线，支持多模态实时交互", "category": "人工智能", "tag": "", "time": "3小时前", "views": "17万", "stocks": [], "content": "谷歌 Gemini 2.0 正式上线，支持多模态实时交互\n\n谷歌 Gemini 2.0 正式上线，支持多模态实时交互引发行业广泛关注。相关公司表示，这一进展将对人工智能产业产生深远影响。市场分析人士认为，随着技术不断成熟，人工智能领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 3, "title": "Anthropic Claude 4 即将发布，代码能力超越 GPT-4", "category": "人工智能", "tag": "", "time": "5小时前", "views": "37万", "stocks": [], "content": "Anthropic Claude 4 即将发布，代码能力超越 GPT-4\n\nAnthropic Claude 4 即将发布，代码能力超越 GPT-4引发行业广泛关注。相关公司表示，这一进展将对人工智能产业产生深远影响。市场分析人士认为，随着技术不断成熟，人工智能领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 4, "title": "Meta 开源 Llama 4，参数量达 400B", "category": "人工智能", "tag": "", "time": "7小时前", "views": "41万", "stocks": [], "content": "Meta 开源 Llama 4，参数量达 400B\n\nMeta 开源 Llama 4，参数量达 400B引发行业广泛关注。相关公司表示，这一进展将对人工智能产业产生深远影响。市场分析人士认为，随着技术不断成熟，人工智能领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 5, "title": "英伟达发布新一代 AI 芯片 Blackwell Ultra", "category": "人工智能", "tag": "重磅", "time": "9小时前", "views": "23万", "stocks": [], "content": "英伟达发布新一代 AI 芯片 Blackwell Ultra\n\n英伟达发布新一代 AI 芯片 Blackwell Ultra引发行业广泛关注。相关公司表示，这一进展将对人工智能产业产生深远影响。市场分析人士认为，随着技术不断成熟，人工智能领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 6, "title": "微软 Copilot 月活突破 5 亿，集成 Office 全家桶", "category": "人工智能", "tag": "", "time": "11小时前", "views": "13万", "stocks": [], "content": "微软 Copilot 月活突破 5 亿，集成 Office 全家桶\n\n微软 Copilot 月活突破 5 亿，集成 Office 全家桶引发行业广泛关注。相关公司表示，这一进展将对人工智能产业产生深远影响。市场分析人士认为，随着技术不断成熟，人工智能领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 7, "title": "苹果 Siri 接入大模型，iOS 19 AI 功能曝光", "category": "人工智能", "tag": "", "time": "13小时前", "views": "24万", "stocks": [], "content": "苹果 Siri 接入大模型，iOS 19 AI 功能曝光\n\n苹果 Siri 接入大模型，iOS 19 AI 功能曝光引发行业广泛关注。相关公司表示，这一进展将对人工智能产业产生深远影响。市场分析人士认为，随着技术不断成熟，人工智能领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 8, "title": "字节跳动发布豆包大模型 2.0，中文能力领先", "category": "人工智能", "tag": "", "time": "15小时前", "views": "18万", "stocks": [], "content": "字节跳动发布豆包大模型 2.0，中文能力领先\n\n字节跳动发布豆包大模型 2.0，中文能力领先引发行业广泛关注。相关公司表示，这一进展将对人工智能产业产生深远影响。市场分析人士认为，随着技术不断成熟，人工智能领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 9, "title": "阿里通义千问 Qwen3 开源，性能对标 GPT-4", "category": "人工智能", "tag": "", "time": "17小时前", "views": "24万", "stocks": [], "content": "阿里通义千问 Qwen3 开源，性能对标 GPT-4\n\n阿里通义千问 Qwen3 开源，性能对标 GPT-4引发行业广泛关注。相关公司表示，这一进展将对人工智能产业产生深远影响。市场分析人士认为，随着技术不断成熟，人工智能领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 10, "title": "百度文心一言 5.0 发布，多模态能力升级", "category": "人工智能", "tag": "重磅", "time": "19小时前", "views": "39万", "stocks": [], "content": "百度文心一言 5.0 发布，多模态能力升级\n\n百度文心一言 5.0 发布，多模态能力升级引发行业广泛关注。相关公司表示，这一进展将对人工智能产业产生深远影响。市场分析人士认为，随着技术不断成熟，人工智能领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 11, "title": "AI 编程助手 Cursor 融资 10 亿美元，估值超 100 亿", "category": "人工智能", "tag": "", "time": "1天前", "views": "46万", "stocks": [], "content": "AI 编程助手 Cursor 融资 10 亿美元，估值超 100 亿\n\nAI 编程助手 Cursor 融资 10 亿美元，估值超 100 亿引发行业广泛关注。相关公司表示，这一进展将对人工智能产业产生深远影响。市场分析人士认为，随着技术不断成熟，人工智能领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 12, "title": "Midjourney V7 发布，图像生成质量再突破", "category": "人工智能", "tag": "", "time": "2天前", "views": "27万", "stocks": [], "content": "Midjourney V7 发布，图像生成质量再突破\n\nMidjourney V7 发布，图像生成质量再突破引发行业广泛关注。相关公司表示，这一进展将对人工智能产业产生深远影响。市场分析人士认为，随着技术不断成熟，人工智能领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 13, "title": "Runway Gen-4 视频生成模型开放测试", "category": "人工智能", "tag": "", "time": "3天前", "views": "37万", "stocks": [], "content": "Runway Gen-4 视频生成模型开放测试\n\nRunway Gen-4 视频生成模型开放测试引发行业广泛关注。相关公司表示，这一进展将对人工智能产业产生深远影响。市场分析人士认为，随着技术不断成熟，人工智能领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 14, "title": "Figure AI 人形机器人获 6.75 亿美元融资", "category": "人工智能", "tag": "", "time": "4天前", "views": "45万", "stocks": [], "content": "Figure AI 人形机器人获 6.75 亿美元融资\n\nFigure AI 人形机器人获 6.75 亿美元融资引发行业广泛关注。相关公司表示，这一进展将对人工智能产业产生深远影响。市场分析人士认为，随着技术不断成熟，人工智能领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 15, "title": "特斯拉 Optimus 机器人进厂实习，效率提升 30%", "category": "人工智能", "tag": "重磅", "time": "5天前", "views": "24万", "stocks": [], "content": "特斯拉 Optimus 机器人进厂实习，效率提升 30%\n\n特斯拉 Optimus 机器人进厂实习，效率提升 30%引发行业广泛关注。相关公司表示，这一进展将对人工智能产业产生深远影响。市场分析人士认为，随着技术不断成熟，人工智能领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}];
         
         function renderNews() {
             const newsList = document.getElementById('news-list');
@@ -82,7 +74,7 @@
                         ${news.tag ? `<span class="tag">${news.tag}</span>` : ''}
                         ${news.title}
                     </div>
-                    <div class="news-meta">${news.time} · ${news.category} · ${news.views}阅读</div>
+                    <div class="news-meta">${news.time} · ${news.category}</div>
                 </div>
             `).join('');
         }

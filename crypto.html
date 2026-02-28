@@ -46,11 +46,10 @@
         <a href="fusion.html">核聚变</a>
         <a href="quantum.html">量子计算</a>
         <a href="crypto.html" class="active">数字货币</a>
+        <a href="game.html">游戏</a>
     </div>
 
-    <div class="news-list" id="news-list">
-        <div style="padding: 40px; text-align: center; color: #999;">暂无资讯，正在抓取中...</div>
-    </div>
+    <div class="news-list" id="news-list"></div>
 
     <div class="load-more">
         <button class="load-more-btn" onclick="loadMoreNews()">加载更多</button>
@@ -63,20 +62,10 @@
     <script>
         let currentNewsIndex = 0;
         const newsPerPage = 10;
-        let allNews = [
-            {"id": 101, "title": "比特币突破10万美元大关，创历史新高", "category": "数字货币", "tag": "重磅", "time": "1小时前", "views": "8.5万", "stocks": ["BTC", "COIN"]},
-            {"id": 102, "title": "以太坊2.0质押量突破3000万枚，网络安全性大幅提升", "category": "数字货币", "tag": "", "time": "2小时前", "views": "5.2万", "stocks": ["ETH"]},
-            {"id": 103, "title": "美国SEC批准首个比特币现货ETF，机构资金涌入", "category": "数字货币", "tag": "重磅", "time": "3小时前", "views": "12.3万", "stocks": ["BTC", "GBTC"]},
-            {"id": 104, "title": "币安推出新稳定币，与美元1:1锚定", "category": "数字货币", "tag": "", "time": "4小时前", "views": "3.8万", "stocks": ["BNB"]},
-            {"id": 105, "title": "萨尔瓦多将比特币定为法定货币后，旅游业增长30%", "category": "数字货币", "tag": "", "time": "5小时前", "views": "4.1万", "stocks": ["BTC"]}
-        ];
+        let allNews = [{"id": 91, "title": "比特币突破 9.5 万美元，ETF 资金持续流入", "category": "数字货币", "tag": "", "time": "1小时前", "views": "49万", "stocks": [], "content": "比特币突破 9.5 万美元，ETF 资金持续流入\n\n比特币突破 9.5 万美元，ETF 资金持续流入引发行业广泛关注。相关公司表示，这一进展将对数字货币产业产生深远影响。市场分析人士认为，随着技术不断成熟，数字货币领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 92, "title": "以太坊 2.0 质押量突破 3000 万枚", "category": "数字货币", "tag": "", "time": "3小时前", "views": "42万", "stocks": [], "content": "以太坊 2.0 质押量突破 3000 万枚\n\n以太坊 2.0 质押量突破 3000 万枚引发行业广泛关注。相关公司表示，这一进展将对数字货币产业产生深远影响。市场分析人士认为，随着技术不断成熟，数字货币领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 93, "title": "美国 SEC 批准以太坊现货 ETF，7 月上市", "category": "数字货币", "tag": "", "time": "5小时前", "views": "43万", "stocks": [], "content": "美国 SEC 批准以太坊现货 ETF，7 月上市\n\n美国 SEC 批准以太坊现货 ETF，7 月上市引发行业广泛关注。相关公司表示，这一进展将对数字货币产业产生深远影响。市场分析人士认为，随着技术不断成熟，数字货币领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 94, "title": "贝莱德比特币 ETF 持仓突破 50 万枚", "category": "数字货币", "tag": "", "time": "7小时前", "views": "28万", "stocks": [], "content": "贝莱德比特币 ETF 持仓突破 50 万枚\n\n贝莱德比特币 ETF 持仓突破 50 万枚引发行业广泛关注。相关公司表示，这一进展将对数字货币产业产生深远影响。市场分析人士认为，随着技术不断成熟，数字货币领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 95, "title": "MicroStrategy 再购 1 万枚比特币，总持仓超 20 万", "category": "数字货币", "tag": "重磅", "time": "9小时前", "views": "39万", "stocks": [], "content": "MicroStrategy 再购 1 万枚比特币，总持仓超 20 万\n\nMicroStrategy 再购 1 万枚比特币，总持仓超 20 万引发行业广泛关注。相关公司表示，这一进展将对数字货币产业产生深远影响。市场分析人士认为，随着技术不断成熟，数字货币领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 96, "title": "香港批准比特币、以太坊现货 ETF 上市", "category": "数字货币", "tag": "", "time": "11小时前", "views": "18万", "stocks": [], "content": "香港批准比特币、以太坊现货 ETF 上市\n\n香港批准比特币、以太坊现货 ETF 上市引发行业广泛关注。相关公司表示，这一进展将对数字货币产业产生深远影响。市场分析人士认为，随着技术不断成熟，数字货币领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 97, "title": "新加坡金管局发布稳定币监管框架", "category": "数字货币", "tag": "", "time": "13小时前", "views": "49万", "stocks": [], "content": "新加坡金管局发布稳定币监管框架\n\n新加坡金管局发布稳定币监管框架引发行业广泛关注。相关公司表示，这一进展将对数字货币产业产生深远影响。市场分析人士认为，随着技术不断成熟，数字货币领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 98, "title": "欧盟 MiCA 法规正式生效，加密行业合规化", "category": "数字货币", "tag": "", "time": "15小时前", "views": "49万", "stocks": [], "content": "欧盟 MiCA 法规正式生效，加密行业合规化\n\n欧盟 MiCA 法规正式生效，加密行业合规化引发行业广泛关注。相关公司表示，这一进展将对数字货币产业产生深远影响。市场分析人士认为，随着技术不断成熟，数字货币领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 99, "title": "币安创始人赵长鹏出狱，社区热议回归", "category": "数字货币", "tag": "", "time": "17小时前", "views": "15万", "stocks": [], "content": "币安创始人赵长鹏出狱，社区热议回归\n\n币安创始人赵长鹏出狱，社区热议回归引发行业广泛关注。相关公司表示，这一进展将对数字货币产业产生深远影响。市场分析人士认为，随着技术不断成熟，数字货币领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 100, "title": "Solana 生态爆发，DEX 交易量超越以太坊", "category": "数字货币", "tag": "重磅", "time": "19小时前", "views": "15万", "stocks": [], "content": "Solana 生态爆发，DEX 交易量超越以太坊\n\nSolana 生态爆发，DEX 交易量超越以太坊引发行业广泛关注。相关公司表示，这一进展将对数字货币产业产生深远影响。市场分析人士认为，随着技术不断成熟，数字货币领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 101, "title": "Base 链 TVL 突破 100 亿，Coinbase 发力 L2", "category": "数字货币", "tag": "", "time": "1天前", "views": "45万", "stocks": [], "content": "Base 链 TVL 突破 100 亿，Coinbase 发力 L2\n\nBase 链 TVL 突破 100 亿，Coinbase 发力 L2引发行业广泛关注。相关公司表示，这一进展将对数字货币产业产生深远影响。市场分析人士认为，随着技术不断成熟，数字货币领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 102, "title": "RWA 代币化市场规模突破 150 亿美元", "category": "数字货币", "tag": "", "time": "2天前", "views": "17万", "stocks": [], "content": "RWA 代币化市场规模突破 150 亿美元\n\nRWA 代币化市场规模突破 150 亿美元引发行业广泛关注。相关公司表示，这一进展将对数字货币产业产生深远影响。市场分析人士认为，随着技术不断成熟，数字货币领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 103, "title": "美联储降息预期升温，比特币避险属性凸显", "category": "数字货币", "tag": "", "time": "3天前", "views": "49万", "stocks": [], "content": "美联储降息预期升温，比特币避险属性凸显\n\n美联储降息预期升温，比特币避险属性凸显引发行业广泛关注。相关公司表示，这一进展将对数字货币产业产生深远影响。市场分析人士认为，随着技术不断成熟，数字货币领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 104, "title": "特朗普称若当选将建立美国比特币战略储备", "category": "数字货币", "tag": "", "time": "4天前", "views": "26万", "stocks": [], "content": "特朗普称若当选将建立美国比特币战略储备\n\n特朗普称若当选将建立美国比特币战略储备引发行业广泛关注。相关公司表示，这一进展将对数字货币产业产生深远影响。市场分析人士认为，随着技术不断成熟，数字货币领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 105, "title": "萨尔瓦多比特币持仓浮盈 50%，持续定投", "category": "数字货币", "tag": "重磅", "time": "5天前", "views": "48万", "stocks": [], "content": "萨尔瓦多比特币持仓浮盈 50%，持续定投\n\n萨尔瓦多比特币持仓浮盈 50%，持续定投引发行业广泛关注。相关公司表示，这一进展将对数字货币产业产生深远影响。市场分析人士认为，随着技术不断成熟，数字货币领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}];
         
         function renderNews() {
             const newsList = document.getElementById('news-list');
-            if (allNews.length === 0) {
-                newsList.innerHTML = '<div style="padding: 40px; text-align: center; color: #999;">暂无资讯，正在抓取中...</div>';
-                return;
-            }
             const newsToShow = allNews.slice(0, currentNewsIndex + newsPerPage);
             
             newsList.innerHTML = newsToShow.map(news => `
@@ -85,7 +74,7 @@
                         ${news.tag ? `<span class="tag">${news.tag}</span>` : ''}
                         ${news.title}
                     </div>
-                    <div class="news-meta">${news.time} · ${news.category} · ${news.views}阅读</div>
+                    <div class="news-meta">${news.time} · ${news.category}</div>
                 </div>
             `).join('');
         }

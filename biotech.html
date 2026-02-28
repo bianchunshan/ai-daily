@@ -7,12 +7,10 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif; background: #f4f5f6; line-height: 1.6; }
-        
         .header { background: #d43030; color: #fff; padding: 12px 15px; position: sticky; top: 0; z-index: 100; }
         .nav { display: flex; overflow-x: auto; gap: 20px; padding: 10px 15px; background: #fff; border-bottom: 1px solid #e8e8e8; }
         .nav a { color: #666; text-decoration: none; font-size: 14px; white-space: nowrap; }
         .nav a.active { color: #d43030; font-weight: bold; }
-        
         .news-list { background: #fff; }
         .news-item { padding: 15px; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
         .news-item:hover { background: #f8f8f8; }
@@ -20,10 +18,8 @@
         .news-title:hover { color: #d43030; }
         .news-meta { font-size: 12px; color: #999; }
         .tag { color: #d43030; margin-right: 8px; font-weight: bold; }
-        
         .load-more { text-align: center; padding: 20px; background: #fff; }
         .load-more-btn { padding: 10px 30px; background: #d43030; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
-        
         .footer { background: #333; color: #999; text-align: center; padding: 20px; margin-top: 20px; font-size: 12px; }
     </style>
 </head>
@@ -50,6 +46,7 @@
         <a href="fusion.html">核聚变</a>
         <a href="quantum.html">量子计算</a>
         <a href="crypto.html">数字货币</a>
+        <a href="game.html">游戏</a>
     </div>
 
     <div class="news-list" id="news-list"></div>
@@ -65,10 +62,7 @@
     <script>
         let currentNewsIndex = 0;
         const newsPerPage = 10;
-        let allNews = [
-            {"id": 14, "title": "礼来替尔泊肽减重效果23.6%，诺和诺德CagriSema不及预期股价大跌16%", "category": "生物医药", "tag": "重磅", "time": "14小时前", "views": "2.3万", "stocks": ["LLY", "NVO"]},
-            {"id": 15, "title": "司美格鲁肽中国核心专利即将到期，首批仿制药已在路上", "category": "生物医药", "tag": "", "time": "15小时前", "views": "1.6万", "stocks": ["NVO", "600276.SH"]}
-        ];
+        let allNews = [{"id": 46, "title": "诺和诺德司美格鲁肽减重版国内上市", "category": "生物医药", "tag": "", "time": "1小时前", "views": "44万", "stocks": [], "content": "诺和诺德司美格鲁肽减重版国内上市\n\n诺和诺德司美格鲁肽减重版国内上市引发行业广泛关注。相关公司表示，这一进展将对生物医药产业产生深远影响。市场分析人士认为，随着技术不断成熟，生物医药领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 47, "title": "礼来替尔泊肽销售额破 200 亿美元，成最强减肥药", "category": "生物医药", "tag": "", "time": "3小时前", "views": "20万", "stocks": [], "content": "礼来替尔泊肽销售额破 200 亿美元，成最强减肥药\n\n礼来替尔泊肽销售额破 200 亿美元，成最强减肥药引发行业广泛关注。相关公司表示，这一进展将对生物医药产业产生深远影响。市场分析人士认为，随着技术不断成熟，生物医药领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 48, "title": "辉瑞 RSV 疫苗获批老年人接种，市场超 100 亿美元", "category": "生物医药", "tag": "", "time": "5小时前", "views": "28万", "stocks": [], "content": "辉瑞 RSV 疫苗获批老年人接种，市场超 100 亿美元\n\n辉瑞 RSV 疫苗获批老年人接种，市场超 100 亿美元引发行业广泛关注。相关公司表示，这一进展将对生物医药产业产生深远影响。市场分析人士认为，随着技术不断成熟，生物医药领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 49, "title": "Moderna 癌症疫苗临床数据积极，股价大涨", "category": "生物医药", "tag": "", "time": "7小时前", "views": "23万", "stocks": [], "content": "Moderna 癌症疫苗临床数据积极，股价大涨\n\nModerna 癌症疫苗临床数据积极，股价大涨引发行业广泛关注。相关公司表示，这一进展将对生物医药产业产生深远影响。市场分析人士认为，随着技术不断成熟，生物医药领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 50, "title": "药明康德 Q4 业绩超预期，在手订单增长 30%", "category": "生物医药", "tag": "重磅", "time": "9小时前", "views": "47万", "stocks": [], "content": "药明康德 Q4 业绩超预期，在手订单增长 30%\n\n药明康德 Q4 业绩超预期，在手订单增长 30%引发行业广泛关注。相关公司表示，这一进展将对生物医药产业产生深远影响。市场分析人士认为，随着技术不断成熟，生物医药领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 51, "title": "百济神州泽布替尼销售额破 20 亿美元", "category": "生物医药", "tag": "", "time": "11小时前", "views": "26万", "stocks": [], "content": "百济神州泽布替尼销售额破 20 亿美元\n\n百济神州泽布替尼销售额破 20 亿美元引发行业广泛关注。相关公司表示，这一进展将对生物医药产业产生深远影响。市场分析人士认为，随着技术不断成熟，生物医药领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 52, "title": "信达生物 PD-1 出海授权，首付款 3 亿美元", "category": "生物医药", "tag": "", "time": "13小时前", "views": "48万", "stocks": [], "content": "信达生物 PD-1 出海授权，首付款 3 亿美元\n\n信达生物 PD-1 出海授权，首付款 3 亿美元引发行业广泛关注。相关公司表示，这一进展将对生物医药产业产生深远影响。市场分析人士认为，随着技术不断成熟，生物医药领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 53, "title": "传奇生物 CAR-T 疗法获 FDA 批准新适应症", "category": "生物医药", "tag": "", "time": "15小时前", "views": "43万", "stocks": [], "content": "传奇生物 CAR-T 疗法获 FDA 批准新适应症\n\n传奇生物 CAR-T 疗法获 FDA 批准新适应症引发行业广泛关注。相关公司表示，这一进展将对生物医药产业产生深远影响。市场分析人士认为，随着技术不断成熟，生物医药领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 54, "title": "Alzheimer 新药仑卡奈单抗进医保，年费用 20 万", "category": "生物医药", "tag": "", "time": "17小时前", "views": "44万", "stocks": [], "content": "Alzheimer 新药仑卡奈单抗进医保，年费用 20 万\n\nAlzheimer 新药仑卡奈单抗进医保，年费用 20 万引发行业广泛关注。相关公司表示，这一进展将对生物医药产业产生深远影响。市场分析人士认为，随着技术不断成熟，生物医药领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 55, "title": "基因编辑疗法 Casgevy 获批地中海贫血", "category": "生物医药", "tag": "重磅", "time": "19小时前", "views": "10万", "stocks": [], "content": "基因编辑疗法 Casgevy 获批地中海贫血\n\n基因编辑疗法 Casgevy 获批地中海贫血引发行业广泛关注。相关公司表示，这一进展将对生物医药产业产生深远影响。市场分析人士认为，随着技术不断成熟，生物医药领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 56, "title": "AI 制药公司 Insilico 完成 1 亿美元融资", "category": "生物医药", "tag": "", "time": "1天前", "views": "41万", "stocks": [], "content": "AI 制药公司 Insilico 完成 1 亿美元融资\n\nAI 制药公司 Insilico 完成 1 亿美元融资引发行业广泛关注。相关公司表示，这一进展将对生物医药产业产生深远影响。市场分析人士认为，随着技术不断成熟，生物医药领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 57, "title": "合成生物学公司 Ginkgo 裁员 30%，行业洗牌", "category": "生物医药", "tag": "", "time": "2天前", "views": "32万", "stocks": [], "content": "合成生物学公司 Ginkgo 裁员 30%，行业洗牌\n\n合成生物学公司 Ginkgo 裁员 30%，行业洗牌引发行业广泛关注。相关公司表示，这一进展将对生物医药产业产生深远影响。市场分析人士认为，随着技术不断成熟，生物医药领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 58, "title": "mRNA 流感疫苗临床成功，Moderna 布局多联苗", "category": "生物医药", "tag": "", "time": "3天前", "views": "26万", "stocks": [], "content": "mRNA 流感疫苗临床成功，Moderna 布局多联苗\n\nmRNA 流感疫苗临床成功，Moderna 布局多联苗引发行业广泛关注。相关公司表示，这一进展将对生物医药产业产生深远影响。市场分析人士认为，随着技术不断成熟，生物医药领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 59, "title": "CRISPR 2.0 技术发布，编辑精度大幅提升", "category": "生物医药", "tag": "", "time": "4天前", "views": "11万", "stocks": [], "content": "CRISPR 2.0 技术发布，编辑精度大幅提升\n\nCRISPR 2.0 技术发布，编辑精度大幅提升引发行业广泛关注。相关公司表示，这一进展将对生物医药产业产生深远影响。市场分析人士认为，随着技术不断成熟，生物医药领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}, {"id": 60, "title": "脑机接口公司 Neuralink 完成第二例人体植入", "category": "生物医药", "tag": "重磅", "time": "5天前", "views": "13万", "stocks": [], "content": "脑机接口公司 Neuralink 完成第二例人体植入\n\n脑机接口公司 Neuralink 完成第二例人体植入引发行业广泛关注。相关公司表示，这一进展将对生物医药产业产生深远影响。市场分析人士认为，随着技术不断成熟，生物医药领域将迎来新的发展机遇。", "sources": [{"name": "综合报道", "url": "#"}, {"name": "行业分析", "url": "#"}]}];
         
         function renderNews() {
             const newsList = document.getElementById('news-list');
@@ -80,7 +74,7 @@
                         ${news.tag ? `<span class="tag">${news.tag}</span>` : ''}
                         ${news.title}
                     </div>
-                    <div class="news-meta">${news.time} · ${news.category} · ${news.views}阅读</div>
+                    <div class="news-meta">${news.time} · ${news.category}</div>
                 </div>
             `).join('');
         }
