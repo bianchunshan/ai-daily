@@ -3,121 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>前沿科技日报 - 首页</title>
+    <title>前沿科技日报 - 2026年2月28日</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #333;
-            min-height: 100vh;
-        }
-        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
-        header {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 50px 20px;
-            text-align: center;
-            border-radius: 16px;
-            margin-bottom: 30px;
+            min-height: 100vh;
+            padding: 20px;
         }
-        header h1 { font-size: 2.5em; margin-bottom: 15px; }
-        .date-badge {
-            background: rgba(255,255,255,0.2);
-            padding: 8px 20px;
-            border-radius: 25px;
-            display: inline-block;
-            margin-top: 15px;
-        }
-        .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        .nav-card {
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
             background: white;
-            border-radius: 16px;
-            padding: 25px;
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
         }
-        .nav-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        .nav-icon { font-size: 2.5em; margin-bottom: 15px; }
-        .nav-title { font-size: 1.3em; font-weight: bold; color: #333; margin-bottom: 10px; }
-        .nav-desc { color: #666; font-size: 0.9em; }
-        .hot-news {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: white;
-            padding: 25px;
-            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .header .date {
+            font-size: 1.1em;
+            opacity: 0.8;
+        }
+        .content {
+            padding: 40px;
+        }
+        .headline {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
             margin-bottom: 30px;
         }
-        footer {
+        .headline h2 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+        .headline p {
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+        .section {
+            margin-bottom: 35px;
+        }
+        .section h3 {
+            color: #1a1a2e;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        .news-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+        .news-item h4 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .news-item ul {
+            margin-left: 20px;
+            color: #555;
+        }
+        .news-item li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .data-table th, .data-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .data-table th {
+            background: #667eea;
+            color: white;
+        }
+        .data-table tr:hover {
+            background: #f5f5f5;
+        }
+        .insights {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        .insights h3 {
+            color: white;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+        }
+        .insights ol {
+            margin-left: 20px;
+            line-height: 2;
+        }
+        .footer {
             text-align: center;
-            padding: 40px;
-            color: rgba(255,255,255,0.6);
+            padding: 30px;
+            background: #f8f9fa;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-right: 8px;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.8em; }
+            .content { padding: 20px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>🚀 前沿科技日报</h1>
-            <p>每日精选七大前沿科技领域最新资讯</p>
-            <div class="date-badge">2026年2月28日</div>
-        </header>
-
-        <div class="hot-news">
-            <h3>🔥 今日头条</h3>
-            <p><strong>中国AI调用量首超美国</strong> — 据 OpenRouter 数据，中国AI模型调用量三周大涨 127%，全球前五中占据四席。</p>
+        <div class="header">
+            <h1>🤖 前沿科技日报</h1>
+            <div class="date">2026年2月28日 星期六</div>
         </div>
+        
+        <div class="content">
+            <div class="headline">
+                <h2>🔥 今日头条</h2>
+                <p><strong>Neuralink宣布2026年大规模量产，脑机接口进入工业化阶段</strong></p>
+                <p style="margin-top: 15px;">马斯克旗下Neuralink正式宣布启动脑机接口设备的大规模量产，生产体系由试验阶段迈向工业化。截至2026年1月，全球已有<span class="highlight">21名</span>患者完成植入，全球排队植入患者已超<span class="highlight">万人</span>。</p>
+            </div>
 
-        <div class="nav-grid">
-            <a href="ai.html" class="nav-card">
-                <div class="nav-icon">🤖</div>
-                <div class="nav-title">AI 人工智能</div>
-                <div class="nav-desc">大模型、AI Agent、Gemini、Claude 最新动态</div>
-            </a>
-            <a href="biotech.html" class="nav-card">
-                <div class="nav-icon">🧬</div>
-                <div class="nav-title">生物技术</div>
-                <div class="nav-desc">基因编辑、CRISPR、合成生物学、mRNA 进展</div>
-            </a>
-            <a href="quantum.html" class="nav-card">
-                <div class="nav-icon">⚛️</div>
-                <div class="nav-title">量子计算</div>
-                <div class="nav-desc">量子芯片、量子通信、精密测量突破</div>
-            </a>
-            <a href="fusion.html" class="nav-card">
-                <div class="nav-icon">☀️</div>
-                <div class="nav-title">可控核聚变</div>
-                <div class="nav-desc">ITER、EAST、商业化进程最新进展</div>
-            </a>
-            <a href="bci.html" class="nav-card">
-                <div class="nav-icon">🧠</div>
-                <div class="nav-title">脑机接口</div>
-                <div class="nav-desc">Neuralink、中文 BCI、临床试验突破</div>
-            </a>
-            <a href="robotics.html" class="nav-card">
-                <div class="nav-icon">🤖</div>
-                <div class="nav-title">具身智能/机器人</div>
-                <div class="nav-desc">人形机器人、自动驾驶、具身智能元年</div>
-            </a>
-            <a href="spatial.html" class="nav-card">
-                <div class="nav-icon">🥽</div>
-                <div class="nav-title">空间计算</div>
-                <div class="nav-desc">Vision Pro、XR/VR/AR、多模态交互</div>
-            </a>
+            <div class="section">
+                <h3>🏢 大厂动态</h3>
+                <div class="news-item">
+                    <h4>Anthropic指控中国AI公司"蒸馏"争议</h4>
+                    <ul>
+                        <li>Anthropic指控DeepSeek、月之暗面、MiniMax对其模型进行"非法蒸馏"</li>
+                        <li>马斯克评论"贼喊捉贼"，引发业界热议</li>
+                        <li>MiniMax股价受挫约10%</li>
+                    </ul>
+                </div>
+                <div class="news-item">
+                    <h4>OpenRouter：中国AI模型调用量首超美国</h4>
+                    <ul>
+                        <li>2026年2月中国AI模型token用量首次超越美国</li>
+                        <li>MiniMax M2.5发布仅两周斩获单月冠军，调用量达<span class="highlight">4.55万亿token</span></li>
+                        <li>全球前五中中国模型占据四席</li>
+                    </ul>
+                </div>
+                <div class="news-item">
+                    <h4>特斯拉人形机器人Optimus V3即将亮相</h4>
+                    <ul>
+                        <li>第三代Optimus可通过观察人类行为学习新技能</li>
+                        <li>特斯拉将Model S/X产线改造为Optimus专属产线</li>
+                        <li>计划2026年底投产</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>🧬 生物技术</h3>
+                <div class="news-item">
+                    <h4>晶泰科技 × 尧唐生物：AI辅助mRNA药物研发</h4>
+                    <ul>
+                        <li>构建"干湿实验"闭环迭代平台</li>
+                        <li>利用AI节省<span class="highlight">90%</span>实验成本</li>
+                        <li>可拓展至实体瘤、中枢神经系统疾病等复杂疾病</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>⚛️ 量子计算</h3>
+                <div class="news-item">
+                    <h4>北京大学：全球首个大规模量子通信芯片网络</h4>
+                    <ul>
+                        <li>构建"未名量子芯网"，支持<span class="highlight">20用户</span>并行通信</li>
+                        <li>组网能力达<span class="highlight">3700公里</span></li>
+                        <li>《自然》审稿人评价为量子芯片领域的重大突破</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>🔥 可控核聚变</h3>
+                <div class="news-item">
+                    <h4>中国EAST装置创世界纪录</h4>
+                    <ul>
+                        <li>实现1亿摄氏度<span class="highlight">千秒级</span>运行</li>
+                        <li>标志着可控核聚变技术迈入工程验证新阶段</li>
+                        <li>我国主要聚变项目预计投入达<span class="highlight">1460亿元</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>📈 关键数据</h3>
+                <table class="data-table">
+                    <tr><th>指标</th><th>数据</th></tr>
+                    <tr><td>Neuralink植入患者</td><td>21人（全球）</td></tr>
+                    <tr><td>Neuralink排队患者</td><td>超10,000人</td></tr>
+                    <tr><td>中国AI模型调用量</td><td>首超美国</td></tr>
+                    <tr><td>MiniMax M2.5月调用量</td><td>4.55万亿token</td></tr>
+                    <tr><td>量子科技赛道融资</td><td>25起/25亿元</td></tr>
+                    <tr><td>北大量子芯网组网能力</td><td>3,700公里</td></tr>
+                    <tr><td>特斯拉2026年AI投资</td><td>200亿美元+</td></tr>
+                </table>
+            </div>
+
+            <div class="insights">
+                <h3>💡 趋势洞察</h3>
+                <ol>
+                    <li><strong>脑机接口量产元年</strong>：Neuralink宣布大规模量产，BCI从实验室走向工业化</li>
+                    <li><strong>中国AI崛起</strong>：调用量首超美国，但面临国际争议</li>
+                    <li><strong>人形机器人竞赛升温</strong>：特斯拉、小鹏等车企加速布局</li>
+                    <li><strong>量子计算实用化加速</strong>：从科研走向工程化</li>
+                    <li><strong>核聚变工程验证</strong>：EAST创纪录运行，商业化进程进入关键阶段</li>
+                    <li><strong>AI+生物技术融合</strong>：干湿实验闭环成为新药研发新范式</li>
+                </ol>
+            </div>
         </div>
-
-        <footer>
-            <p>前沿科技日报 | 每日更新 | 早上9:00</p>
-        </footer>
+        
+        <div class="footer">
+            <p>播报时间：2026年2月28日 | 数据来源：各公司官方发布、科技媒体、OpenRouter</p>
+            <p style="margin-top: 10px;"><a href="https://github.com/bianchunshan/ai-daily" style="color: #667eea;">GitHub 仓库</a></p>
+        </div>
     </div>
 </body>
 </html>
