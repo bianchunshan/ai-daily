@@ -16,7 +16,7 @@
         
         /* Banner轮播 */
         .banner-container { position: relative; height: 220px; overflow: hidden; }
-        .banner-slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s; color: #fff; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; background-size: cover; background-position: center; }
+        .banner-slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s; color: #fff; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; background-size: cover; background-position: center; cursor: pointer; }
         .banner-slide.active { opacity: 1; }
         .banner-slide::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, transparent 100%); z-index: 1; }
         .banner-content { position: relative; z-index: 2; }
@@ -74,7 +74,7 @@
 
     <!-- Banner轮播 -->
     <div class="banner-container">
-        <div class="banner-slide active" style="background-image: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800');">
+        <div class="banner-slide active" style="background-image: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800');" onclick="location.href='news-detail.html?id=1'">
             <div class="banner-content">
                 <div class="banner-tag">重磅</div>
                 <div class="banner-title">英伟达Q4营收681亿美元暴增73%</div>
@@ -82,7 +82,7 @@
             </div>
         </div>
         
-        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800');">
+        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800');" onclick="location.href='news-detail.html?id=2'">
             <div class="banner-content">
                 <div class="banner-tag">独家</div>
                 <div class="banner-title">OpenAI完成1100亿美元融资</div>
@@ -90,7 +90,7 @@
             </div>
         </div>
         
-        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800');">
+        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800');" onclick="location.href='news-detail.html?id=3'">
             <div class="banner-content">
                 <div class="banner-tag">市场</div>
                 <div class="banner-title">Meta与AMD达成600-1000亿美元协议</div>
@@ -98,7 +98,7 @@
             </div>
         </div>
         
-        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800');">
+        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800');" onclick="location.href='news-detail.html?id=4'">
             <div class="banner-content">
                 <div class="banner-tag">财报</div>
                 <div class="banner-title">苹果Q1营收1437亿美元创新高</div>
@@ -106,7 +106,7 @@
             </div>
         </div>
         
-        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1563089145-599997674d42?w=800');">
+        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1563089145-599997674d42?w=800');" onclick="location.href='news-detail.html?id=5'">
             <div class="banner-content">
                 <div class="banner-tag">前沿</div>
                 <div class="banner-title">特斯拉Optimus机器人2027年面向公众销售</div>
@@ -199,9 +199,14 @@
             {"id": 30, "title": "英伟达数据中心业务创新高，AI芯片需求持续强劲", "category": "半导体", "tag": "", "time": "3天前", "views": "1.2万", "stocks": ["NVDA", "AMD"]}
         ];
         
+        // Banner 中的资讯ID（不在列表中显示）
+        const bannerNewsIds = [1, 2, 3, 4, 5];
+        
         function renderNews() {
             const newsList = document.getElementById('news-list');
-            const newsToShow = allNews.slice(0, currentNewsIndex + newsPerPage);
+            // 过滤掉 Banner 中的资讯
+            const filteredNews = allNews.filter(news => !bannerNewsIds.includes(news.id));
+            const newsToShow = filteredNews.slice(0, currentNewsIndex + newsPerPage);
             
             newsList.innerHTML = newsToShow.map(news => `
                 <div class="news-item" onclick="location.href='news-detail.html?id=${news.id}'">
