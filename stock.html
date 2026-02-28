@@ -163,11 +163,30 @@
                     const profileRes = await fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=${stock.symbol}&token=${API_KEY}`);
                     const profile = await profileRes.json();
                     if (profile.marketCapitalization) {
+                        // Finnhub 返回的市值单位是百万美元
+                        const marketCap = profile.marketCapitalization;
+                        let displayValue;
+                        let unit;
+                        
                         // 判断货币单位
                         const isUSD = !stockCode.includes('.SZ') && !stockCode.includes('.SH') && !stockCode.includes('.HK');
                         const currency = isUSD ? '美元' : '人民币';
-                        const unit = isUSD ? '亿' : '亿';
-                        document.getElementById('marketCap').textContent = profile.marketCapitalization.toFixed(2) + unit + currency;
+                        
+                        // 转换显示单位
+                        if (marketCap >= 1000000) {
+                            // 超过1百万百万 = 1万亿
+                            displayValue = (marketCap / 1000000).toFixed(2);
+                            unit = '万亿';
+                        } else if (marketCap >= 1000) {
+                            // 超过1千百万 = 1千亿
+                            displayValue = (marketCap / 1000).toFixed(2);
+                            unit = '千亿';
+                        } else {
+                            displayValue = marketCap.toFixed(2);
+                            unit = '亿';
+                        }
+                        
+                        document.getElementById('marketCap').textContent = displayValue + unit + currency;
                     }
 
                     loadRelatedNews();
