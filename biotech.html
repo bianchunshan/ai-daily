@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生物医药 - 前沿科技日报</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif; background: #f4f5f6; line-height: 1.6; }
+        
+        .header { background: #d43030; color: #fff; padding: 12px 15px; position: sticky; top: 0; z-index: 100; }
+        .nav { display: flex; overflow-x: auto; gap: 20px; padding: 10px 15px; background: #fff; border-bottom: 1px solid #e8e8e8; }
+        .nav a { color: #666; text-decoration: none; font-size: 14px; white-space: nowrap; }
+        .nav a.active { color: #d43030; font-weight: bold; }
+        
+        .news-list { background: #fff; }
+        .news-item { padding: 15px; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
+        .news-item:hover { background: #f8f8f8; }
+        .news-title { font-size: 16px; color: #333; margin-bottom: 8px; line-height: 1.5; }
+        .news-title:hover { color: #d43030; }
+        .news-meta { font-size: 12px; color: #999; }
+        .tag { color: #d43030; margin-right: 8px; font-weight: bold; }
+        
+        .load-more { text-align: center; padding: 20px; background: #fff; }
+        .load-more-btn { padding: 10px 30px; background: #d43030; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        
+        .footer { background: #333; color: #999; text-align: center; padding: 20px; margin-top: 20px; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 18px; font-weight: bold;">前沿科技日报</div>
+            <div>
+                <button onclick="alert('登录功能开发中')" style="background: #fff; color: #d43030; border: none; padding: 6px 16px; border-radius: 4px; font-size: 14px; cursor: pointer; margin-right: 8px;">登录</button>
+                <button onclick="alert('注册功能开发中')" style="background: transparent; color: #fff; border: 1px solid #fff; padding: 6px 16px; border-radius: 4px; font-size: 14px; cursor: pointer;">注册</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="nav">
+        <a href="index.html">首页</a>
+        <a href="ai.html">人工智能</a>
+        <a href="semiconductor.html">半导体</a>
+        <a href="new-energy.html">新能源</a>
+        <a href="biotech.html" class="active">生物医药</a>
+        <a href="frontier.html">前沿科技</a>
+    </div>
+
+    <div class="news-list" id="news-list"></div>
+
+    <div class="load-more">
+        <button class="load-more-btn" onclick="loadMoreNews()">加载更多</button>
+    </div>
+
+    <div class="footer">
+        <p>前沿科技日报 · 全球科技投资情报 · 每日更新</p>
+    </div>
+
+    <script>
+        let currentNewsIndex = 0;
+        const newsPerPage = 10;
+        let allNews = [
+            {"id": 14, "title": "礼来替尔泊肽减重效果23.6%，诺和诺德CagriSema不及预期股价大跌16%", "category": "生物医药", "tag": "重磅", "time": "14小时前", "views": "2.3万", "stocks": ["LLY", "NVO"]},
+            {"id": 15, "title": "司美格鲁肽中国核心专利即将到期，首批仿制药已在路上", "category": "生物医药", "tag": "", "time": "15小时前", "views": "1.6万", "stocks": ["NVO", "600276.SH"]}
+        ];
+        
+        function renderNews() {
+            const newsList = document.getElementById('news-list');
+            const newsToShow = allNews.slice(0, currentNewsIndex + newsPerPage);
+            
+            newsList.innerHTML = newsToShow.map(news => `
+                <div class="news-item" onclick="location.href='news-detail.html?id=${news.id}'">
+                    <div class="news-title">
+                        ${news.tag ? `<span class="tag">${news.tag}</span>` : ''}
+                        ${news.title}
+                    </div>
+                    <div class="news-meta">${news.time} · ${news.category} · ${news.views}阅读</div>
+                </div>
+            `).join('');
+        }
+        
+        function loadMoreNews() {
+            currentNewsIndex += newsPerPage;
+            renderNews();
+        }
+        
+        renderNews();
+    </script>
+</body>
+</html>
