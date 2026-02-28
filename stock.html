@@ -163,7 +163,11 @@
                     const profileRes = await fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=${stock.symbol}&token=${API_KEY}`);
                     const profile = await profileRes.json();
                     if (profile.marketCapitalization) {
-                        document.getElementById('marketCap').textContent = (profile.marketCapitalization / 1000).toFixed(2) + '万亿';
+                        // 判断货币单位
+                        const isUSD = !stockCode.includes('.SZ') && !stockCode.includes('.SH') && !stockCode.includes('.HK');
+                        const currency = isUSD ? '美元' : '人民币';
+                        const unit = isUSD ? '亿' : '亿';
+                        document.getElementById('marketCap').textContent = profile.marketCapitalization.toFixed(2) + unit + currency;
                     }
 
                     loadRelatedNews();
@@ -190,4 +194,4 @@
         }
     </script>
 </body>
-</html><!-- updated: 1772291008 -->
+</html>
