@@ -59,7 +59,7 @@
         <div class="article-header">
             <div class="article-title"><span id="tag"></span><span id="title"></span></div>
             <div class="article-meta">
-                <span id="category"></span> · <span id="time"></span> · <span id="views"></span>阅读
+                <span id="category"></span> · <span id="time"></span>
             </div>
         </div>
         
@@ -101,8 +101,7 @@
             document.getElementById('title').textContent = news.title;
             document.getElementById('category').textContent = news.category;
             document.getElementById('time').textContent = news.time;
-            document.getElementById('views').textContent = news.views;
-            document.getElementById('content').innerHTML = `<p>${news.content}</p><p>（更多详细内容正在整理中...）</p>`;
+            document.getElementById('content').innerHTML = `<p>${news.content}</p>`;
             
             if (news.tag) {
                 document.getElementById('tag').innerHTML = `<span class="article-tag">${news.tag}</span>`;
