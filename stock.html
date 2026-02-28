@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>股票详情 - 前沿科技日报</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif; background: #f4f5f6; line-height: 1.6; }
+        
+        .header { background: #d43030; color: #fff; padding: 12px 15px; position: sticky; top: 0; z-index: 100; }
+        .nav { display: flex; overflow-x: auto; gap: 20px; padding: 10px 15px; background: #fff; border-bottom: 1px solid #e8e8e8; }
+        .nav a { color: #666; text-decoration: none; font-size: 14px; white-space: nowrap; }
+        .nav a.active { color: #d43030; font-weight: bold; }
+        
+        .stock-header { background: #fff; padding: 20px; margin-bottom: 15px; }
+        .stock-name { font-size: 20px; font-weight: bold; color: #333; }
+        .stock-code { font-size: 14px; color: #999; margin-left: 10px; }
+        .stock-price { font-size: 36px; font-weight: bold; color: #d43030; margin-top: 10px; }
+        .stock-change { font-size: 16px; color: #d43030; margin-top: 5px; }
+        .stock-change.down { color: #00b578; }
+        
+        .stock-info { display: flex; flex-wrap: wrap; background: #fff; padding: 15px; margin-bottom: 15px; }
+        .info-item { width: 33.33%; padding: 10px; }
+        .info-label { font-size: 12px; color: #999; }
+        .info-value { font-size: 14px; color: #333; margin-top: 5px; }
+        
+        .section { background: #fff; margin-bottom: 15px; padding: 15px; }
+        .section-title { font-size: 16px; font-weight: bold; color: #333; margin-bottom: 15px; border-left: 3px solid #d43030; padding-left: 10px; }
+        
+        .news-item { padding: 12px 0; border-bottom: 1px solid #f5f5f5; }
+        .news-item:last-child { border-bottom: none; }
+        .news-title { font-size: 14px; color: #333; line-height: 1.5; }
+        .news-meta { font-size: 12px; color: #999; margin-top: 5px; }
+        
+        .chart-placeholder { height: 200px; background: #f8f8f8; display: flex; align-items: center; justify-content: center; color: #999; }
+        
+        .footer { background: #333; color: #999; text-align: center; padding: 20px; margin-top: 20px; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 18px; font-weight: bold;">前沿科技日报</div>
+            <div>
+                <button onclick="alert('登录功能开发中')" style="background: #fff; color: #d43030; border: none; padding: 6px 16px; border-radius: 4px; font-size: 14px; cursor: pointer; margin-right: 8px;">登录</button>
+                <button onclick="alert('注册功能开发中')" style="background: transparent; color: #fff; border: 1px solid #fff; padding: 6px 16px; border-radius: 4px; font-size: 14px; cursor: pointer;">注册</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="nav">
+        <a href="index.html">首页</a>
+        <a href="ai.html">人工智能</a>
+        <a href="semiconductor.html">半导体</a>
+        <a href="new-energy.html">新能源</a>
+        <a href="biotech.html">生物医药</a>
+        <a href="frontier.html">前沿科技</a>
+    </div>
+
+    <div class="stock-header">
+        <div>
+            <span class="stock-name" id="stockName">--</span>
+            <span class="stock-code" id="stockCode">--</span>
+        </div>
+        <div class="stock-price" id="stockPrice">--</div>
+        <div class="stock-change" id="stockChange">--</div>
+    </div>
+
+    <div class="stock-info">
+        <div class="info-item">
+            <div class="info-label">今开</div>
+            <div class="info-value" id="openPrice">--</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">最高</div>
+            <div class="info-value" id="highPrice">--</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">最低</div>
+            <div class="info-value" id="lowPrice">--</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">成交量</div>
+            <div class="info-value" id="volume">--</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">市值</div>
+            <div class="info-value" id="marketCap">--</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">市盈率</div>
+            <div class="info-value" id="peRatio">--</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">走势图</div>
+        <div class="chart-placeholder">
+            走势图加载中...
+            <br><small>（调用东方财富数据接口）</small>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">相关资讯</div>
+        <div id="relatedNews">
+            <div class="news-item">
+                <div class="news-title">加载中...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>前沿科技日报 · 全球科技投资情报 · 每日更新</p>
+    </div>
+
+    <script>
+        // 获取URL参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const stockCode = urlParams.get('code');
+        
+        // 股票名称映射
+        const stockNames = {
+            'NVDA': '英伟达',
+            'AMD': '超威半导体',
+            'TSM': '台积电',
+            'MSFT': '微软',
+            'AMZN': '亚马逊',
+            'META': 'Meta',
+            'AAPL': '苹果',
+            'TSLA': '特斯拉',
+            'GOOGL': '谷歌',
+            'AVGO': '博通',
+            'LLY': '礼来',
+            'NVO': '诺和诺德',
+            'BYD': '比亚迪',
+            'BABA': '阿里巴巴',
+            'TCEHY': '腾讯'
+        };
+        
+        // 显示股票信息
+        if (stockCode) {
+            document.getElementById('stockCode').textContent = stockCode;
+            document.getElementById('stockName').textContent = stockNames[stockCode] || stockCode;
+            
+            // 模拟数据（实际应调用东方财富API）
+            const mockData = {
+                price: (Math.random() * 500 + 50).toFixed(2),
+                change: (Math.random() * 10 - 5).toFixed(2),
+                changePercent: (Math.random() * 10 - 5).toFixed(2),
+                open: (Math.random() * 500 + 50).toFixed(2),
+                high: (Math.random() * 550 + 50).toFixed(2),
+                low: (Math.random() * 450 + 50).toFixed(2),
+                volume: (Math.random() * 1000 + 100).toFixed(0) + '万',
+                marketCap: (Math.random() * 10000 + 1000).toFixed(0) + '亿',
+                pe: (Math.random() * 50 + 10).toFixed(2)
+            };
+            
+            document.getElementById('stockPrice').textContent = '$' + mockData.price;
+            
+            const changeEl = document.getElementById('stockChange');
+            const changeValue = parseFloat(mockData.change);
+            changeEl.textContent = (changeValue >= 0 ? '+' : '') + mockData.change + ' (' + mockData.changePercent + '%)';
+            changeEl.className = 'stock-change' + (changeValue < 0 ? ' down' : '');
+            
+            document.getElementById('openPrice').textContent = '$' + mockData.open;
+            document.getElementById('highPrice').textContent = '$' + mockData.high;
+            document.getElementById('lowPrice').textContent = '$' + mockData.low;
+            document.getElementById('volume').textContent = mockData.volume;
+            document.getElementById('marketCap').textContent = mockData.marketCap;
+            document.getElementById('peRatio').textContent = mockData.pe;
+            
+            // 加载相关资讯
+            document.getElementById('relatedNews').innerHTML = `
+                <div class="news-item" onclick="location.href='news-detail.html?id=1'">
+                    <div class="news-title">英伟达Q4营收681亿美元暴增73%，股价却大跌5.5%</div>
+                    <div class="news-meta">2小时前 · 半导体 · 5.2万阅读</div>
+                </div>
+                <div class="news-item" onclick="location.href='news-detail.html?id=2'">
+                    <div class="news-title">OpenAI完成1100亿美元融资，估值达8400亿美元</div>
+                    <div class="news-meta">3小时前 · 人工智能 · 4.8万阅读</div>
+                </div>
+            `;
+        } else {
+            document.getElementById('stockName').textContent = '股票代码错误';
+        }
+    </script>
+</body>
+</html>
