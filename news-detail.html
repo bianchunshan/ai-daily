@@ -92,42 +92,49 @@
         const urlParams = new URLSearchParams(window.location.search);
         const newsId = urlParams.get('id');
         
-        // 所有资讯数据（简化版，实际应从服务器获取）
-        const allNews = [
-            {"id": 1, "title": "英伟达Q4营收681亿美元暴增73%，股价却大跌5.5%市值蒸发2500亿", "category": "半导体", "tag": "重磅", "time": "2小时前", "views": "5.2万", "stocks": ["NVDA", "AMD", "TSM"], "content": "英伟达发布2026财年第四季度财报，营收达681亿美元，同比增长73%，但股价盘后大跌5.5%，市值蒸发约2500亿美元。投资者担忧AI芯片需求增长放缓。", "sources": [{"name": "新浪财经", "url": "https://finance.sina.com.cn"}, {"name": "虎嗅", "url": "https://www.huxiu.com"}]},
-            {"id": 2, "title": "OpenAI完成1100亿美元融资，估值达8400亿美元，亚马逊英伟达软银领投", "category": "人工智能", "tag": "独家", "time": "3小时前", "views": "4.8万", "stocks": ["MSFT", "AMZN", "NVDA"], "content": "OpenAI宣布完成1100亿美元融资，投前估值达7300亿美元。本轮融资由亚马逊领投500亿美元，英伟达和软银各投300亿美元。", "sources": [{"name": "华尔街见闻", "url": "https://wallstreetcn.com"}, {"name": "东方财富", "url": "https://finance.eastmoney.com"}]},
-            {"id": 3, "title": "Meta与AMD达成600-1000亿美元超级采购协议，为期五年", "category": "人工智能", "tag": "市场", "time": "4小时前", "views": "3.8万", "stocks": ["META", "AMD"], "content": "Meta与AMD宣布达成五年战略合作协议，Meta将部署6GW算力的AMD芯片，交易总价值预计达600-1000亿美元。", "sources": [{"name": "新浪财经", "url": "https://finance.sina.cn"}, {"name": "澎湃新闻", "url": "https://m.thepaper.cn"}]}
-        ];
-        
-        // 查找对应资讯
-        const news = allNews.find(n => n.id == newsId);
-        
-        if (news) {
-            document.getElementById('title').textContent = news.title;
-            document.getElementById('category').textContent = news.category;
-            document.getElementById('time').textContent = news.time;
-            document.getElementById('content').innerHTML = `<p>${news.content}</p>`;
-            
-            if (news.tag) {
-                document.getElementById('tag').innerHTML = `<span class="article-tag">${news.tag}</span>`;
+        // 从 JSON 文件加载资讯数据
+        async function loadNewsData() {
+            try {
+                const response = await fetch('news-data.json');
+                const data = await response.json();
+                return data.news;
+            } catch (error) {
+                console.error('加载资讯数据失败:', error);
+                return [];
             }
-            
-            // 显示来源
-            if (news.sources) {
-                document.getElementById('sources-list').innerHTML = news.sources.map(s => 
-                    `<div class="source-item">• <a href="${s.url}" target="_blank">${s.name}</a></div>`
-                ).join('');
-            }
-            
-            // 显示股票
-            if (news.stocks) {
-                document.getElementById('stocks-list').innerHTML = news.stocks.map(s => 
-                    `<span class="stock-item" onclick="location.href='stock.html?code=${s}'">${s}</span>`
-                ).join('');
-            }
-        } else {
-            document.getElementById('content').innerHTML = '<p>资讯不存在或已被删除</p>';
         }
+        
+        // 页面加载时显示资讯
+        loadNewsData().then(allNews => {
+            const news = allNews.find(n => n.id == newsId);
+            
+            if (news) {
+                document.getElementById('title').textContent = news.title;
+                document.getElementById('category').textContent = news.category;
+                document.getElementById('time').textContent = news.time;
+                document.getElementById('content').innerHTML = `<p>${news.content}</p>`;
+                
+                if (news.tag) {
+                    document.getElementById('tag').innerHTML = `<span class="article-tag">${news.tag}</span>`;
+                }
+                
+                // 显示来源
+                if (news.sources) {
+                    document.getElementById('sources-list').innerHTML = news.sources.map(s => 
+                        `<div class="source-item">• <a href="${s.url}" target="_blank">${s.name}</a></div>`
+                    ).join('');
+                }
+                
+                // 显示股票
+                if (news.stocks) {
+                    document.getElementById('stocks-list').innerHTML = news.stocks.map(s => 
+                        `<span class="stock-item" onclick="location.href='stock.html?code=${s}'">${s}</span>`
+                    ).join('');
+                }
+            } else {
+                document.getElementById('content').innerHTML = '<p>资讯不存在或已被删除</p>';
+            }
+        });
     </script>
 </body>
 </html>
