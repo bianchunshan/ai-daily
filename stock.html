@@ -109,14 +109,13 @@
 
         const urlParams = new URLSearchParams(window.location.search);
         const stockCode = urlParams.get('code');
-        let API_KEY = localStorage.getItem('finnhub_api_key') || '';
+        let API_KEY = 'd6hg3j1r01qr5k4br23gd6hg3j1r01qr5k4br240';
 
-        if (API_KEY) {
-            document.getElementById('apiConfig').style.display = 'none';
-            document.getElementById('stockInfo').style.display = 'block';
-            document.getElementById('stockDetails').style.display = 'flex';
-            loadStockData();
-        }
+        // API Key 已配置，直接加载
+        document.getElementById('apiConfig').style.display = 'none';
+        document.getElementById('stockInfo').style.display = 'block';
+        document.getElementById('stockDetails').style.display = 'flex';
+        loadStockData();
 
         function saveApiKey() {
             const key = document.getElementById('apiKeyInput').value.trim();
