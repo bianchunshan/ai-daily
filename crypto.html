@@ -63,7 +63,13 @@
     <script>
         let currentNewsIndex = 0;
         const newsPerPage = 10;
-        let allNews = [];
+        let allNews = [
+            {"id": 101, "title": "比特币突破10万美元大关，创历史新高", "category": "数字货币", "tag": "重磅", "time": "1小时前", "views": "8.5万", "stocks": ["BTC", "COIN"]},
+            {"id": 102, "title": "以太坊2.0质押量突破3000万枚，网络安全性大幅提升", "category": "数字货币", "tag": "", "time": "2小时前", "views": "5.2万", "stocks": ["ETH"]},
+            {"id": 103, "title": "美国SEC批准首个比特币现货ETF，机构资金涌入", "category": "数字货币", "tag": "重磅", "time": "3小时前", "views": "12.3万", "stocks": ["BTC", "GBTC"]},
+            {"id": 104, "title": "币安推出新稳定币，与美元1:1锚定", "category": "数字货币", "tag": "", "time": "4小时前", "views": "3.8万", "stocks": ["BNB"]},
+            {"id": 105, "title": "萨尔瓦多将比特币定为法定货币后，旅游业增长30%", "category": "数字货币", "tag": "", "time": "5小时前", "views": "4.1万", "stocks": ["BTC"]}
+        ];
         
         function renderNews() {
             const newsList = document.getElementById('news-list');
