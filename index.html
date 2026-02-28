@@ -52,9 +52,13 @@
     <div class="header">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div style="font-size: 18px; font-weight: bold;">前沿科技日报</div>
-            <div>
-                <button onclick="alert('登录功能开发中')" style="background: #fff; color: #d43030; border: none; padding: 6px 16px; border-radius: 4px; font-size: 14px; cursor: pointer; margin-right: 8px;">登录</button>
-                <button onclick="alert('注册功能开发中')" style="background: transparent; color: #fff; border: 1px solid #fff; padding: 6px 16px; border-radius: 4px; font-size: 14px; cursor: pointer;">注册</button>
+            <div id="auth-section">
+                <button id="login-btn" style="background: #fff; color: #d43030; border: none; padding: 6px 16px; border-radius: 4px; font-size: 14px; cursor: pointer; margin-right: 8px;">登录</button>
+                <button id="register-btn" style="background: transparent; color: #fff; border: 1px solid #fff; padding: 6px 16px; border-radius: 4px; font-size: 14px; cursor: pointer;">注册</button>
+                <div id="user-menu" style="display: none;">
+                    <span id="user-name" style="margin-right: 10px;"></span>
+                    <button id="logout-btn" style="background: transparent; color: #fff; border: 1px solid #fff; padding: 4px 12px; border-radius: 4px; font-size: 12px; cursor: pointer;">退出</button>
+                </div>
             </div>
         </div>
     </div>
@@ -163,9 +167,9 @@
         let currentNewsIndex = 0;
         const newsPerPage = 10;
         let allNews = [
-            {"id": 1, "title": "英伟达Q4营收681亿美元暴增73%，股价却大跌5.5%市值蒸发2500亿", "category": "半导体", "tag": "重磅", "time": "2小时前", "views": "5.2万", "stocks": ["NVDA", "AMD", "TSM"]},
-            {"id": 2, "title": "OpenAI完成1100亿美元融资，估值达8400亿美元，亚马逊英伟达软银领投", "category": "人工智能", "tag": "独家", "time": "3小时前", "views": "4.8万", "stocks": ["MSFT", "AMZN", "NVDA"]},
-            {"id": 3, "title": "Meta与AMD达成600-1000亿美元超级采购协议，为期五年", "category": "人工智能", "tag": "市场", "time": "4小时前", "views": "3.8万", "stocks": ["META", "AMD"]},
+            {"id": 1, "title": "英伟达Q4营收681亿美元暴增73%，股价却大跌5.5%市值蒸发2500亿", "category": "半导体", "tag": "重磅", "time": "2小时前", "views": "5.2万", "stocks": ["NVDA", "AMD", "TSM"], "sources": ["新浪财经", "虎嗅", "新华网"]},
+            {"id": 2, "title": "OpenAI完成1100亿美元融资，估值达8400亿美元，亚马逊英伟达软银领投", "category": "人工智能", "tag": "独家", "time": "3小时前", "views": "4.8万", "stocks": ["MSFT", "AMZN", "NVDA"], "sources": ["华尔街见闻", "东方财富", "InfoQ"]},
+            {"id": 3, "title": "Meta与AMD达成600-1000亿美元超级采购协议，为期五年", "category": "人工智能", "tag": "市场", "time": "4小时前", "views": "3.8万", "stocks": ["META", "AMD"], "sources": ["新浪财经", "澎湃新闻", "国际电子商情"]},
             {"id": 4, "title": "苹果Q1营收1437亿美元创历史新高，iPhone营收852亿同比大增23%", "category": "消费电子", "tag": "财报", "time": "5小时前", "views": "3.5万", "stocks": ["AAPL"]},
             {"id": 5, "title": "特斯拉Optimus机器人2027年面向公众销售，FSD即将登陆欧洲", "category": "机器人", "tag": "前沿", "time": "6小时前", "views": "2.9万", "stocks": ["TSLA"]},
             {"id": 6, "title": "台积电ADR跌逾2.8%，费城半导体指数重挫超3%", "category": "半导体", "tag": "", "time": "6小时前", "views": "2.5万", "stocks": ["TSM", "NVDA", "AMD"]},
@@ -217,6 +221,64 @@
         
         // 页面加载时直接渲染
         renderNews();
+    </script>
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyAz67XVA74xQOYY99RqOOfR8JSxonbJutY",
+            authDomain: "ai-daily-a170c.firebaseapp.com",
+            projectId: "ai-daily-a170c",
+            storageBucket: "ai-daily-a170c.firebasestorage.app",
+            messagingSenderId: "680737623017",
+            appId: "1:680737623017:web:e3c33827a43ce1fabed978",
+            measurementId: "G-HMB4JBBMJL"
+        };
+        
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        
+        // 登录按钮
+        document.getElementById('login-btn').addEventListener('click', () => {
+            const provider = new GoogleAuthProvider();
+            signInWithPopup(auth, provider).catch(error => {
+                alert('登录失败: ' + error.message);
+            });
+        });
+        
+        // 注册按钮（使用Google登录）
+        document.getElementById('register-btn').addEventListener('click', () => {
+            const provider = new GoogleAuthProvider();
+            signInWithPopup(auth, provider).catch(error => {
+                alert('注册失败: ' + error.message);
+            });
+        });
+        
+        // 退出按钮
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            signOut(auth);
+        });
+        
+        // 监听登录状态
+        onAuthStateChanged(auth, user => {
+            const loginBtn = document.getElementById('login-btn');
+            const registerBtn = document.getElementById('register-btn');
+            const userMenu = document.getElementById('user-menu');
+            const userName = document.getElementById('user-name');
+            
+            if (user) {
+                loginBtn.style.display = 'none';
+                registerBtn.style.display = 'none';
+                userMenu.style.display = 'block';
+                userName.textContent = user.displayName || user.email || '用户';
+            } else {
+                loginBtn.style.display = 'inline-block';
+                registerBtn.style.display = 'inline-block';
+                userMenu.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html><!-- cache-bust: 1772282787 -->
