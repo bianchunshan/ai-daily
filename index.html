@@ -65,6 +65,7 @@
     
     <div class="nav">
         <a href="index.html" class="active">首页</a>
+        <a href="world.html">国际局势</a>
         <a href="ai.html">人工智能</a>
         <a href="semiconductor.html">半导体</a>
         <a href="new-energy.html">新能源</a>
@@ -218,7 +219,7 @@
                         ${news.tag ? `<span class="tag">${news.tag}</span>` : ''}
                         ${news.title}
                     </div>
-                    <div class="news-meta">${news.time} · ${news.category} · ${news.views}阅读</div>
+                    <div class="news-meta">${news.time} · ${news.category}</div>
                 </div>
             `).join('');
         }
