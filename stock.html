@@ -33,18 +33,26 @@
         .news-title { font-size: 14px; color: #333; line-height: 1.5; }
         .news-meta { font-size: 12px; color: #999; margin-top: 5px; }
         
-        .chart-placeholder { height: 200px; background: #f8f8f8; display: flex; align-items: center; justify-content: center; color: #999; }
+        .chart-placeholder { height: 200px; background: #f8f8f8; display: flex; align-items: center; justify-content: center; color: #999; flex-direction: column; }
+        .chart-placeholder a { color: #d43030; text-decoration: none; margin-top: 10px; }
         
         .footer { background: #333; color: #999; text-align: center; padding: 20px; margin-top: 20px; font-size: 12px; }
+        
+        .loading { text-align: center; padding: 20px; color: #999; }
+        .error { text-align: center; padding: 20px; color: #d43030; }
     </style>
 </head>
 <body>
     <div class="header">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div style="font-size: 18px; font-weight: bold;">前沿科技日报</div>
-            <div>
-                <button onclick="alert('登录功能开发中')" style="background: #fff; color: #d43030; border: none; padding: 6px 16px; border-radius: 4px; font-size: 14px; cursor: pointer; margin-right: 8px;">登录</button>
-                <button onclick="alert('注册功能开发中')" style="background: transparent; color: #fff; border: 1px solid #fff; padding: 6px 16px; border-radius: 4px; font-size: 14px; cursor: pointer;">注册</button>
+            <div id="auth-section">
+                <button id="login-btn" style="background: #fff; color: #d43030; border: none; padding: 6px 16px; border-radius: 4px; font-size: 14px; cursor: pointer; margin-right: 8px;">登录</button>
+                <button id="register-btn" style="background: transparent; color: #fff; border: 1px solid #fff; padding: 6px 16px; border-radius: 4px; font-size: 14px; cursor: pointer;">注册</button>
+                <div id="user-menu" style="display: none;">
+                    <span id="user-name" style="margin-right: 10px;"></span>
+                    <button id="logout-btn" style="background: transparent; color: #fff; border: 1px solid #fff; padding: 4px 12px; border-radius: 4px; font-size: 12px; cursor: pointer;">退出</button>
+                </div>
             </div>
         </div>
     </div>
@@ -97,17 +105,15 @@
     <div class="section">
         <div class="section-title">走势图</div>
         <div class="chart-placeholder">
-            走势图加载中...
-            <br><small>（调用东方财富数据接口）</small>
+            <div>走势图由东方财富提供</div>
+            <a id="chartLink" href="#" target="_blank">点击查看实时行情 →</a>
         </div>
     </div>
 
     <div class="section">
         <div class="section-title">相关资讯</div>
         <div id="relatedNews">
-            <div class="news-item">
-                <div class="news-title">加载中...</div>
-            </div>
+            <div class="loading">加载中...</div>
         </div>
     </div>
 
@@ -116,75 +122,144 @@
     </div>
 
     <script>
+        // 股票代码映射（美股+港股+A股）
+        const stockMap = {
+            // 美股
+            'NVDA': { name: '英伟达', type: 'us', eastmoney: '105.NVDA' },
+            'AMD': { name: 'AMD', type: 'us', eastmoney: '105.AMD' },
+            'TSM': { name: '台积电', type: 'us', eastmoney: '105.TSM' },
+            'AAPL': { name: '苹果', type: 'us', eastmoney: '105.AAPL' },
+            'MSFT': { name: '微软', type: 'us', eastmoney: '105.MSFT' },
+            'GOOGL': { name: '谷歌', type: 'us', eastmoney: '105.GOOGL' },
+            'META': { name: 'Meta', type: 'us', eastmoney: '105.META' },
+            'TSLA': { name: '特斯拉', type: 'us', eastmoney: '105.TSLA' },
+            'AMZN': { name: '亚马逊', type: 'us', eastmoney: '105.AMZN' },
+            'AVGO': { name: '博通', type: 'us', eastmoney: '105.AVGO' },
+            'LLY': { name: '礼来', type: 'us', eastmoney: '105.LLY' },
+            'NVO': { name: '诺和诺德', type: 'us', eastmoney: '105.NVO' },
+            'INTC': { name: '英特尔', type: 'us', eastmoney: '105.INTC' },
+            // A股
+            '300750.SZ': { name: '宁德时代', type: 'cn', eastmoney: '0.300750' },
+            '601012.SH': { name: '隆基绿能', type: 'cn', eastmoney: '1.601012' },
+            '600438.SH': { name: '通威股份', type: 'cn', eastmoney: '1.600438' },
+            '600276.SH': { name: '恒瑞医药', type: 'cn', eastmoney: '1.600276' },
+            'BYD': { name: '比亚迪', type: 'hk', eastmoney: '116.HKBYD' },
+            '1211.HK': { name: '比亚迪股份', type: 'hk', eastmoney: '116.01211' },
+            'BABA': { name: '阿里巴巴', type: 'us', eastmoney: '105.BABA' },
+            'TCEHY': { name: '腾讯控股', type: 'us', eastmoney: '105.TCEHY' }
+        };
+
         // 获取URL参数
         const urlParams = new URLSearchParams(window.location.search);
         const stockCode = urlParams.get('code');
-        
-        // 股票名称映射
-        const stockNames = {
-            'NVDA': '英伟达',
-            'AMD': '超威半导体',
-            'TSM': '台积电',
-            'MSFT': '微软',
-            'AMZN': '亚马逊',
-            'META': 'Meta',
-            'AAPL': '苹果',
-            'TSLA': '特斯拉',
-            'GOOGL': '谷歌',
-            'AVGO': '博通',
-            'LLY': '礼来',
-            'NVO': '诺和诺德',
-            'BYD': '比亚迪',
-            'BABA': '阿里巴巴',
-            'TCEHY': '腾讯'
-        };
-        
-        // 显示股票信息
-        if (stockCode) {
+
+        if (stockCode && stockMap[stockCode]) {
+            const stock = stockMap[stockCode];
+            document.getElementById('stockName').textContent = stock.name;
             document.getElementById('stockCode').textContent = stockCode;
-            document.getElementById('stockName').textContent = stockNames[stockCode] || stockCode;
+            document.getElementById('chartLink').href = `https://quote.eastmoney.com/${stock.eastmoney}.html`;
             
-            // 模拟数据（实际应调用东方财富API）
-            const mockData = {
-                price: (Math.random() * 500 + 50).toFixed(2),
-                change: (Math.random() * 10 - 5).toFixed(2),
-                changePercent: (Math.random() * 10 - 5).toFixed(2),
-                open: (Math.random() * 500 + 50).toFixed(2),
-                high: (Math.random() * 550 + 50).toFixed(2),
-                low: (Math.random() * 450 + 50).toFixed(2),
-                volume: (Math.random() * 1000 + 100).toFixed(0) + '万',
-                marketCap: (Math.random() * 10000 + 1000).toFixed(0) + '亿',
-                pe: (Math.random() * 50 + 10).toFixed(2)
-            };
+            // 显示加载中
+            document.getElementById('stockPrice').textContent = '加载中...';
             
-            document.getElementById('stockPrice').textContent = '$' + mockData.price;
-            
-            const changeEl = document.getElementById('stockChange');
-            const changeValue = parseFloat(mockData.change);
-            changeEl.textContent = (changeValue >= 0 ? '+' : '') + mockData.change + ' (' + mockData.changePercent + '%)';
-            changeEl.className = 'stock-change' + (changeValue < 0 ? ' down' : '');
-            
-            document.getElementById('openPrice').textContent = '$' + mockData.open;
-            document.getElementById('highPrice').textContent = '$' + mockData.high;
-            document.getElementById('lowPrice').textContent = '$' + mockData.low;
-            document.getElementById('volume').textContent = mockData.volume;
-            document.getElementById('marketCap').textContent = mockData.marketCap;
-            document.getElementById('peRatio').textContent = mockData.pe;
-            
-            // 加载相关资讯
-            document.getElementById('relatedNews').innerHTML = `
-                <div class="news-item" onclick="location.href='news-detail.html?id=1'">
-                    <div class="news-title">英伟达Q4营收681亿美元暴增73%，股价却大跌5.5%</div>
-                    <div class="news-meta">2小时前 · 半导体 · 5.2万阅读</div>
-                </div>
-                <div class="news-item" onclick="location.href='news-detail.html?id=2'">
-                    <div class="news-title">OpenAI完成1100亿美元融资，估值达8400亿美元</div>
-                    <div class="news-meta">3小时前 · 人工智能 · 4.8万阅读</div>
-                </div>
-            `;
+            // 调用东方财富API获取实时数据
+            fetchStockData(stock.eastmoney);
         } else {
             document.getElementById('stockName').textContent = '股票代码错误';
+            document.querySelector('.stock-header').innerHTML += '<div class="error">请使用正确的股票代码访问</div>';
         }
+
+        async function fetchStockData(eastmoneyCode) {
+            try {
+                // 使用东方财富API获取实时行情
+                const apiUrl = `https://push2.eastmoney.com/api/qt/stock/get?secid=${eastmoneyCode}&fields=f43,f44,f45,f46,f47,f48,f57,f58,f60,f170`;
+                
+                // 由于跨域限制，这里显示引导用户到东方财富查看
+                document.getElementById('stockPrice').innerHTML = '请<a href="https://quote.eastmoney.com/' + eastmoneyCode + '.html" target="_blank" style="color:#d43030;">点击此处</a>查看实时行情';
+                document.getElementById('stockChange').textContent = '数据由东方财富提供';
+                
+                // 隐藏其他字段
+                document.getElementById('openPrice').textContent = '-';
+                document.getElementById('highPrice').textContent = '-';
+                document.getElementById('lowPrice').textContent = '-';
+                document.getElementById('volume').textContent = '-';
+                document.getElementById('marketCap').textContent = '-';
+                document.getElementById('peRatio').textContent = '-';
+                
+            } catch (error) {
+                console.error('获取股票数据失败:', error);
+                document.getElementById('stockPrice').textContent = '数据加载失败';
+            }
+        }
+
+        // 加载相关资讯
+        function loadRelatedNews() {
+            const relatedNews = [
+                { id: 1, title: '英伟达Q4营收681亿美元暴增73%，股价却大跌5.5%', category: '半导体', time: '2小时前', views: '5.2万' },
+                { id: 2, title: 'OpenAI完成1100亿美元融资，估值达8400亿美元', category: '人工智能', time: '3小时前', views: '4.8万' },
+                { id: 3, title: 'Meta与AMD达成600-1000亿美元超级采购协议', category: '人工智能', time: '4小时前', views: '3.8万' }
+            ];
+            
+            const html = relatedNews.map(news => `
+                <div class="news-item" onclick="location.href='news-detail.html?id=${news.id}'">
+                    <div class="news-title">${news.title}</div>
+                    <div class="news-meta">${news.time} · ${news.category} · ${news.views}阅读</div>
+                </div>
+            `).join('');
+            
+            document.getElementById('relatedNews').innerHTML = html;
+        }
+
+        loadRelatedNews();
+    </script>
+    
+    <!-- Firebase登录脚本 -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyAz67XVA74xQOYY99RqOOfR8JSxonbJutY",
+            authDomain: "ai-daily-a170c.firebaseapp.com",
+            projectId: "ai-daily-a170c",
+            storageBucket: "ai-daily-a170c.firebasestorage.app",
+            messagingSenderId: "680737623017",
+            appId: "1:680737623017:web:e3c33827a43ce1fabed978",
+            measurementId: "G-HMB4JBBMJL"
+        };
+        
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        
+        document.getElementById('login-btn')?.addEventListener('click', () => {
+            const provider = new GoogleAuthProvider();
+            signInWithPopup(auth, provider).catch(error => alert('登录失败: ' + error.message));
+        });
+        
+        document.getElementById('register-btn')?.addEventListener('click', () => {
+            const provider = new GoogleAuthProvider();
+            signInWithPopup(auth, provider).catch(error => alert('注册失败: ' + error.message));
+        });
+        
+        document.getElementById('logout-btn')?.addEventListener('click', () => signOut(auth));
+        
+        onAuthStateChanged(auth, user => {
+            const loginBtn = document.getElementById('login-btn');
+            const registerBtn = document.getElementById('register-btn');
+            const userMenu = document.getElementById('user-menu');
+            const userName = document.getElementById('user-name');
+            
+            if (user) {
+                loginBtn && (loginBtn.style.display = 'none');
+                registerBtn && (registerBtn.style.display = 'none');
+                userMenu && (userMenu.style.display = 'block');
+                userName && (userName.textContent = user.displayName || user.email || '用户');
+            } else {
+                loginBtn && (loginBtn.style.display = 'inline-block');
+                registerBtn && (registerBtn.style.display = 'inline-block');
+                userMenu && (userMenu.style.display = 'none');
+            }
+        });
     </script>
 </body>
 </html>
