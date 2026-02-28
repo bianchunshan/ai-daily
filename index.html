@@ -162,30 +162,31 @@
         // 加载资讯
         let currentNewsIndex = 0;
         const newsPerPage = 10;
-        let allNews = [];
-        
-        async function loadNews() {
-            console.log('Loading news...');
-            try {
-                const response = await fetch('news-data.json?v=' + Date.now());
-                console.log('Response:', response.status);
-                if (!response.ok) throw new Error('HTTP ' + response.status);
-                const data = await response.json();
-                console.log('Data:', data);
-                allNews = data.news || [];
-                renderNews();
-            } catch (error) {
-                console.error('加载失败:', error);
-                document.getElementById('news-list').innerHTML = '<div style="padding:20px;text-align:center;color:#999;">加载失败，请刷新重试</div>';
-            }
-        }
+        let allNews = [
+            {"id": 1, "title": "英伟达Q4营收681亿美元暴增73%，股价却大跌5.5%市值蒸发2500亿", "category": "半导体", "tag": "重磅", "time": "2小时前", "views": "5.2万", "stocks": ["NVDA", "AMD", "TSM"]},
+            {"id": 2, "title": "OpenAI完成1100亿美元融资，估值达8400亿美元，亚马逊英伟达软银领投", "category": "人工智能", "tag": "独家", "time": "3小时前", "views": "4.8万", "stocks": ["MSFT", "AMZN", "NVDA"]},
+            {"id": 3, "title": "Meta与AMD达成600-1000亿美元超级采购协议，为期五年", "category": "人工智能", "tag": "市场", "time": "4小时前", "views": "3.8万", "stocks": ["META", "AMD"]},
+            {"id": 4, "title": "苹果Q1营收1437亿美元创历史新高，iPhone营收852亿同比大增23%", "category": "消费电子", "tag": "财报", "time": "5小时前", "views": "3.5万", "stocks": ["AAPL"]},
+            {"id": 5, "title": "特斯拉Optimus机器人2027年面向公众销售，FSD即将登陆欧洲", "category": "机器人", "tag": "前沿", "time": "6小时前", "views": "2.9万", "stocks": ["TSLA"]},
+            {"id": 6, "title": "台积电ADR跌逾2.8%，费城半导体指数重挫超3%", "category": "半导体", "tag": "", "time": "6小时前", "views": "2.5万", "stocks": ["TSM", "NVDA", "AMD"]},
+            {"id": 7, "title": "纳指月跌幅逾3%创2023年以来最差月度表现，科技股集体承压", "category": "市场", "tag": "", "time": "7小时前", "views": "2.1万", "stocks": ["QQQ", "NDX"]},
+            {"id": 8, "title": "微软Copilot用户突破1.5亿，年度AI收入达180亿美元", "category": "人工智能", "tag": "", "time": "8小时前", "views": "1.8万", "stocks": ["MSFT"]},
+            {"id": 9, "title": "中国AI模型调用量首超美国，MiniMax月调用达4.55万亿token", "category": "人工智能", "tag": "", "time": "9小时前", "views": "1.5万", "stocks": ["BABA", "TCEHY"]},
+            {"id": 10, "title": "博通AI芯片业务增长超预期，与谷歌合作深化", "category": "半导体", "tag": "", "time": "10小时前", "views": "1.2万", "stocks": ["AVGO", "GOOGL"]},
+            {"id": 11, "title": "隆基绿能估值1660亿元，光伏领域30家企业上榜总估值2.3万亿", "category": "新能源", "tag": "", "time": "11小时前", "views": "1.1万", "stocks": ["601012.SH", "600438.SH"]},
+            {"id": 12, "title": "宁德时代携手施罗德斩获10GWh储能项目", "category": "新能源", "tag": "", "time": "12小时前", "views": "1.0万", "stocks": ["300750.SZ", "BYD"]},
+            {"id": 13, "title": "比亚迪1月动力电池装机总量约20.187GWh", "category": "新能源", "tag": "", "time": "13小时前", "views": "0.9万", "stocks": ["BYD", "1211.HK"]},
+            {"id": 14, "title": "礼来替尔泊肽减重效果23.6%，诺和诺德CagriSema不及预期股价大跌16%", "category": "生物医药", "tag": "重磅", "time": "14小时前", "views": "2.3万", "stocks": ["LLY", "NVO"]},
+            {"id": 15, "title": "司美格鲁肽中国核心专利即将到期，首批仿制药已在路上", "category": "生物医药", "tag": "", "time": "15小时前", "views": "1.6万", "stocks": ["NVO", "600276.SH"]},
+            {"id": 16, "title": "中国量子计算新突破！全球首个开放下载的量子计算机操作系统本源司南上线", "category": "前沿科技", "tag": "重磅", "time": "16小时前", "views": "1.4万", "stocks": ["IBM", "GOOGL"]},
+            {"id": 17, "title": "Neuralink 2026年开启大规模量产，全球排队植入患者已超万人", "category": "前沿科技", "tag": "", "time": "17小时前", "views": "1.3万", "stocks": ["TSLA"]},
+            {"id": 18, "title": "SpaceX 2026年已发射500颗星链卫星，估值超1.75万亿美元", "category": "前沿科技", "tag": "", "time": "18小时前", "views": "1.2万", "stocks": ["TSLA"]},
+            {"id": 19, "title": "中金：量子计算正处于由科研突破向商业落地的关键拐点", "category": "前沿科技", "tag": "", "time": "19小时前", "views": "1.1万", "stocks": ["IBM", "MSFT"]},
+            {"id": 20, "title": "马斯克官宣：2026为Neuralink量产元年，手术机器人实现全自动化", "category": "前沿科技", "tag": "", "time": "20小时前", "views": "1.0万", "stocks": ["TSLA"]}
+        ];
         
         function renderNews() {
             const newsList = document.getElementById('news-list');
-            if (!allNews.length) {
-                newsList.innerHTML = '<div style="padding:20px;text-align:center;color:#999;">暂无资讯</div>';
-                return;
-            }
             const newsToShow = allNews.slice(0, currentNewsIndex + newsPerPage);
             
             newsList.innerHTML = newsToShow.map(news => `
@@ -204,12 +205,8 @@
             renderNews();
         }
         
-        // 页面加载完成后加载资讯
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', loadNews);
-        } else {
-            loadNews();
-        }
+        // 页面加载时直接渲染
+        renderNews();
     </script>
 </body>
 </html><!-- cache-bust: 1772282787 -->
