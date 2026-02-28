@@ -1,280 +1,389 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>前沿科技日报 - 2026年2月28日</title>
+    <title>前沿科技日报 — 2026年2月28日</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans SC', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-        .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15); }
-        .metric-card { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); }
-        .trend-icon { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
-        .news-tag { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); }
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.7);
+        }
+        
+        .gradient-mesh {
+            background: 
+                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(147, 51, 234, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.1) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(236, 72, 153, 0.08) 0px, transparent 50%);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-lift {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .metric-glow {
+            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.1), 0 4px 20px -4px rgba(59, 130, 246, 0.2);
+        }
+        
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
     </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
-    <header class="bg-white border-b border-gray-100">
-        <div class="max-w-6xl mx-auto px-6 py-8">
-            <div class="flex items-center gap-3 mb-2">
-                <div class="w-1.5 h-8 bg-blue-500 rounded-full"></div>
-                <h1 class="text-3xl font-bold text-gray-900">前沿科技日报</h1>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-slate-200/50 dark:border-slate-700/50">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <span class="font-semibold text-lg tracking-tight">TechDaily</span>
+                </div>
+                <div class="flex items-center gap-6">
+                    <span class="text-sm text-slate-500 dark:text-slate-400">2026年2月28日</span>
+                    <button onclick="toggleDark()" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                        <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <p class="text-gray-500 text-sm ml-4">2026年2月28日 | 全球前沿科技动态汇总</p>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-16 px-6 gradient-mesh">
+        <div class="max-w-7xl mx-auto">
+            <div class="animate-fade-in">
+                <p class="text-sm font-medium text-blue-600 dark:text-blue-400 mb-4 tracking-wider uppercase">Daily Tech Intelligence</p>
+                <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6">
+                    <span class="text-gradient">前沿科技日报</span>
+                </h1>
+                <p class="text-xl text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
+                    全球 AI、生物技术、量子计算、可控核聚变、脑机接口、机器人、空间计算领域最新动态
+                </p>
+            </div>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 py-8">
-        <!-- 行业趋势解读 -->
-        <section class="mb-12">
-            <div class="flex items-center gap-2 mb-6">
-                <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                </svg>
-                <h2 class="text-xl font-semibold text-gray-900">行业趋势解读</h2>
+    <main class="max-w-7xl mx-auto px-6 pb-24">
+        
+        <!-- Key Metrics -->
+        <section class="mb-20 animate-slide-up">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 metric-glow">
+                    <p class="text-3xl font-bold text-slate-900 dark:text-white mb-1">21</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">Neuralink 植入患者</p>
+                </div>
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 metric-glow">
+                    <p class="text-3xl font-bold text-slate-900 dark:text-white mb-1">4.55T</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">MiniMax 月调用量</p>
+                </div>
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 metric-glow">
+                    <p class="text-3xl font-bold text-slate-900 dark:text-white mb-1">3,700km</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">量子芯网组网能力</p>
+                </div>
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 metric-glow">
+                    <p class="text-3xl font-bold text-slate-900 dark:text-white mb-1">1,460亿</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">中国聚变项目投入</p>
+                </div>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-white rounded-xl p-6 border border-gray-100 card-hover">
-                    <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 trend-icon rounded-lg flex items-center justify-center flex-shrink-0">
-                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        </section>
+
+        <!-- Trend Analysis -->
+        <section class="mb-20">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-1 h-8 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></div>
+                <h2 class="text-2xl font-semibold">行业趋势解读</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Trend Card 1 -->
+                <article class="group bg-white dark:bg-slate-800 rounded-2xl p-8 card-lift border border-slate-100 dark:border-slate-700">
+                    <div class="flex items-start gap-5">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
                             </svg>
                         </div>
                         <div class="flex-1">
-                            <h3 class="font-semibold text-gray-900 mb-2">脑机接口进入量产时代</h3>
-                            <p class="text-gray-600 text-sm leading-relaxed">Neuralink宣布2026年大规模量产，全球已有21名患者完成植入，排队患者超万人。</p>
+                            <h3 class="text-lg font-semibold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">脑机接口量产时代</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3">Neuralink 宣布 2026 年大规模量产，全球已有 21 名患者完成植入，排队患者超万人。这标志着 BCI 技术从实验室走向工业化，全自动化手术流程将大幅降低植入门槛。</p>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="bg-white rounded-xl p-6 border border-gray-100 card-hover">
-                    <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 trend-icon rounded-lg flex items-center justify-center flex-shrink-0">
-                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <!-- Trend Card 2 -->
+                <article class="group bg-white dark:bg-slate-800 rounded-2xl p-8 card-lift border border-slate-100 dark:border-slate-700">
+                    <div class="flex items-start gap-5">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
                         <div class="flex-1">
-                            <h3 class="font-semibold text-gray-900 mb-2">中国AI调用量首超美国</h3>
-                            <p class="text-gray-600 text-sm leading-relaxed">MiniMax M2.5发布两周斩获单月冠军，调用量达4.55万亿token，全球前五占四席。</p>
+                            <h3 class="text-lg font-semibold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">中国 AI 首超美国</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3">OpenRouter 数据显示，2026 年 2 月中国 AI 模型 token 用量首次超越美国。MiniMax M2.5 发布两周斩获单月冠军，调用量达 4.55 万亿 token。</p>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="bg-white rounded-xl p-6 border border-gray-100 card-hover">
-                    <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 trend-icon rounded-lg flex items-center justify-center flex-shrink-0">
-                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <!-- Trend Card 3 -->
+                <article class="group bg-white dark:bg-slate-800 rounded-2xl p-8 card-lift border border-slate-100 dark:border-slate-700">
+                    <div class="flex items-start gap-5">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
                             </svg>
                         </div>
                         <div class="flex-1">
-                            <h3 class="font-semibold text-gray-900 mb-2">量子计算实用化加速</h3>
-                            <p class="text-gray-600 text-sm leading-relaxed">北大构建全球首个大规模量子通信芯片网络，支持20用户并行通信，组网3700公里。</p>
+                            <h3 class="text-lg font-semibold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">量子计算实用化</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3">北京大学构建全球首个大规模量子通信芯片网络"未名量子芯网"，支持 20 用户并行通信，组网能力达 3700 公里。《自然》审稿人评价为重大突破。</p>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="bg-white rounded-xl p-6 border border-gray-100 card-hover">
-                    <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 trend-icon rounded-lg flex items-center justify-center flex-shrink-0">
-                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <!-- Trend Card 4 -->
+                <article class="group bg-white dark:bg-slate-800 rounded-2xl p-8 card-lift border border-slate-100 dark:border-slate-700">
+                    <div class="flex items-start gap-5">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                             </svg>
                         </div>
                         <div class="flex-1">
-                            <h3 class="font-semibold text-gray-900 mb-2">核聚变工程验证突破</h3>
-                            <p class="text-gray-600 text-sm leading-relaxed">中国EAST装置实现1亿摄氏度千秒级运行，创世界纪录，迈入工程验证新阶段。</p>
+                            <h3 class="text-lg font-semibold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">核聚变工程突破</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3">中国 EAST 装置实现 1 亿摄氏度千秒级运行，创世界纪录，标志着可控核聚变技术迈入工程验证新阶段。我国主要聚变项目预计投入达 1460 亿元。</p>
                         </div>
                     </div>
-                </div>
+                </article>
             </div>
         </section>
 
-        <!-- 全球科技巨头动态 -->
-        <section class="mb-12">
-            <div class="flex items-center gap-2 mb-6">
-                <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                </svg>
-                <h2 class="text-xl font-semibold text-gray-900">全球科技巨头动态</h2>
+        <!-- Company News -->
+        <section class="mb-20">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-1 h-8 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></div>
+                <h2 class="text-2xl font-semibold">全球科技巨头动态</h2>
             </div>
 
-            <!-- Neuralink -->
-            <div class="bg-white rounded-2xl p-8 border border-gray-100 mb-6 card-hover">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="news-tag px-3 py-1 rounded-full">
-                        <span class="text-blue-600 text-xs font-medium">脑机接口</span>
+            <div class="space-y-6">
+                <!-- Neuralink News -->
+                <article class="bg-white dark:bg-slate-800 rounded-3xl p-8 md:p-10 card-lift border border-slate-100 dark:border-slate-700">
+                    <div class="flex flex-wrap items-center gap-3 mb-6">
+                        <span class="px-3 py-1 rounded-full bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 text-xs font-medium">脑机接口</span>
+                        <span class="text-slate-400 text-sm">2026.02.28</span>
                     </div>
-                    <span class="text-gray-400 text-sm">2026-02-28</span>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-900 mb-3">Neuralink</h3>
-                <h4 class="text-lg font-semibold text-gray-800 mb-4">2026年启动大规模量产，脑机接口进入工业化阶段</h4>
-                <p class="text-gray-600 leading-relaxed mb-6">
-                    马斯克旗下Neuralink正式宣布，2026年将启动脑机接口设备的<span class="font-semibold text-gray-900">大规模量产</span>，生产体系由试验阶段迈向工业化。截至2026年1月，全球已有<span class="font-semibold text-blue-600">21名</span>患者完成植入，全球排队植入患者已超<span class="font-semibold text-blue-600">万人</span>。
-                </p>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="metric-card rounded-xl p-4">
-                        <p class="text-gray-500 text-xs mb-1">植入患者</p>
-                        <p class="text-xl font-bold text-gray-900">21人</p>
-                    </div>
-                    <div class="metric-card rounded-xl p-4">
-                        <p class="text-gray-500 text-xs mb-1">排队患者</p>
-                        <p class="text-xl font-bold text-gray-900">10,000+</p>
-                    </div>
-                    <div class="metric-card rounded-xl p-4">
-                        <p class="text-gray-500 text-xs mb-1">量产时间</p>
-                        <p class="text-xl font-bold text-gray-900">2026年</p>
-                    </div>
-                    <div class="metric-card rounded-xl p-4">
-                        <p class="text-gray-500 text-xs mb-1">手术方式</p>
-                        <p class="text-xl font-bold text-gray-900">全自动化</p>
-                    </div>
-                </div>
-            </div>
 
-            <!-- OpenRouter -->
-            <div class="bg-white rounded-2xl p-8 border border-gray-100 mb-6 card-hover">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="news-tag px-3 py-1 rounded-full">
-                        <span class="text-blue-600 text-xs font-medium">AI大模型</span>
-                    </div>
-                    <span class="text-gray-400 text-sm">2026-02-28</span>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-900 mb-3">OpenRouter</h3>
-                <h4 class="text-lg font-semibold text-gray-800 mb-4">中国AI模型调用量首超美国，MiniMax M2.5斩获月冠军</h4>
-                <p class="text-gray-600 leading-relaxed mb-6">
-                    据OpenRouter数据，2026年2月中国AI模型token用量<span class="font-semibold text-gray-900">首次超越美国</span>。发布仅两周的MiniMax M2.5模型斩获单月冠军，调用量达<span class="font-semibold text-blue-600">4.55万亿</span>token。全球前五中中国模型占据<span class="font-semibold text-blue-600">四席</span>。
-                </p>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="metric-card rounded-xl p-4">
-                        <p class="text-gray-500 text-xs mb-1">MiniMax月调用量</p>
-                        <p class="text-xl font-bold text-gray-900">4.55万亿</p>
-                    </div>
-                    <div class="metric-card rounded-xl p-4">
-                        <p class="text-gray-500 text-xs mb-1">全球排名</p>
-                        <p class="text-xl font-bold text-gray-900">中国占4席</p>
-                    </div>
-                    <div class="metric-card rounded-xl p-4">
-                        <p class="text-gray-500 text-xs mb-1">Anthropic指控</p>
-                        <p class="text-xl font-bold text-gray-900">蒸馏争议</p>
-                    </div>
-                    <div class="metric-card rounded-xl p-4">
-                        <p class="text-gray-500 text-xs mb-1">马斯克回应</p>
-                        <p class="text-xl font-bold text-gray-900">贼喊捉贼</p>
-                    </div>
-                </div>
-            </div>
+                    <h3 class="text-3xl font-bold mb-2">Neuralink</h3>
+                    <p class="text-xl text-slate-700 dark:text-slate-300 mb-6 font-medium">2026 年启动大规模量产，脑机接口进入工业化阶段</p>
 
-            <!-- 北京大学 -->
-            <div class="bg-white rounded-2xl p-8 border border-gray-100 mb-6 card-hover">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="news-tag px-3 py-1 rounded-full">
-                        <span class="text-blue-600 text-xs font-medium">量子计算</span>
-                    </div>
-                    <span class="text-gray-400 text-sm">2026-02-28</span>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-900 mb-3">北京大学</h3>
-                <h4 class="text-lg font-semibold text-gray-800 mb-4">构建全球首个大规模量子通信芯片网络</h4>
-                <p class="text-gray-600 leading-relaxed mb-6">
-                    北大团队构建全球首个基于集成光量子芯片的大规模量子密钥分发网络<span class="font-semibold text-gray-900">"未名量子芯网"</span>，支持<span class="font-semibold text-blue-600">20用户</span>并行通信，组网能力达<span class="font-semibold text-blue-600">3700公里</span>。《自然》审稿人评价为量子芯片领域的重大突破。
-                </p>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="metric-card rounded-xl p-4">
-                        <p class="text-gray-500 text-xs mb-1">并行用户数</p>
-                        <p class="text-xl font-bold text-gray-900">20</p>
-                    </div>
-                    <div class="metric-card rounded-xl p-4">
-                        <p class="text-gray-500 text-xs mb-1">组网能力</p>
-                        <p class="text-xl font-bold text-gray-900">3,700公里</p>
-                    </div>
-                    <div class="metric-card rounded-xl p-4">
-                        <p class="text-gray-500 text-xs mb-1">量子科技融资</p>
-                        <p class="text-xl font-bold text-gray-900">25起/25亿</p>
-                    </div>
-                    <div class="metric-card rounded-xl p-4">
-                        <p class="text-gray-500 text-xs mb-1">期刊评价</p>
-                        <p class="text-xl font-bold text-gray-900">《自然》</p>
-                    </div>
-                </div>
-            </div>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8 max-w-4xl">
+                        马斯克旗下 Neuralink 正式宣布，2026 年将启动脑机接口设备的<span class="font-semibold text-slate-900 dark:text-white">大规模量产</span>，生产体系由试验阶段迈向工业化。截至 2026 年 1 月，全球已有<span class="font-semibold text-blue-600 dark:text-blue-400">21 名</span>患者完成植入，全球排队植入患者已超<span class="font-semibold text-blue-600 dark:text-blue-400">万人</span>。
+                    </p>
 
-            <!-- 特斯拉 -->
-            <div class="bg-white rounded-2xl p-8 border border-gray-100 card-hover">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="news-tag px-3 py-1 rounded-full">
-                        <span class="text-blue-600 text-xs font-medium">具身智能</span>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-slate-50 dark:bg-slate-700/50 rounded-xl p-4">
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mb-1">植入患者</p>
+                            <p class="text-2xl font-bold">21</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-700/50 rounded-xl p-4">
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mb-1">排队患者</p>
+                            <p class="text-2xl font-bold">10,000+</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-700/50 rounded-xl p-4">
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mb-1">量产时间</p>
+                            <p class="text-2xl font-bold">2026</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-700/50 rounded-xl p-4">
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mb-1">手术方式</p>
+                            <p class="text-2xl font-bold">全自动</p>
+                        </div>
                     </div>
-                    <span class="text-gray-400 text-sm">2026-02-28</span>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-900 mb-3">特斯拉</h3>
-                <h4 class="text-lg font-semibold text-gray-800 mb-4">Optimus V3即将亮相，Model S/X产线改造为机器人专属</h4>
-                <p class="text-gray-600 leading-relaxed mb-6">
-                    特斯拉发文称，第三代特斯拉人形机器人<span class="font-semibold text-gray-900">Optimus V3</span>即将亮相，它是一款<span class="font-semibold text-blue-600">通用人形机器人</span>，通过观察人类行为即可学习新技能。特斯拉将Model S/X产线改造为Optimus专属产线，计划2026年底投产。
-                </p>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="metric-card rounded-xl p-4">
-                        <p class="text-gray-500 text-xs mb-1">产品代际</p>
-                        <p class="text-xl font-bold text-gray-900">Optimus V3</p>
-                    </div>
-                    <div class="metric-card rounded-xl p-4">
-                        <p class="text-gray-500 text-xs mb-1">学习方式</p>
-                        <p class="text-xl font-bold text-gray-900">观察人类</p>
-                    </div>
-                    <div class="metric-card rounded-xl p-4">
-                        <p class="text-gray-500 text-xs mb-1">产线改造</p>
-                        <p class="text-xl font-bold text-gray-900">Model S/X</p>
-                    </div>
-                    <div class="metric-card rounded-xl p-4">
-                        <p class="text-gray-500 text-xs mb-1">投产时间</p>
-                        <p class="text-xl font-bold text-gray-900">2026年底</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+                </article>
 
-        <!-- 关键数据概览 -->
-        <section class="mb-12">
-            <div class="flex items-center gap-2 mb-6">
-                <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                </svg>
-                <h2 class="text-xl font-semibold text-gray-900">关键数据概览</h2>
-            </div>
+                <!-- OpenRouter News -->
+                <article class="bg-white dark:bg-slate-800 rounded-3xl p-8 md:p-10 card-lift border border-slate-100 dark:border-slate-700">
+                    <div class="flex flex-wrap items-center gap-3 mb-6">
+                        <span class="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-medium">AI 大模型</span>
+                        <span class="text-slate-400 text-sm">2026.02.28</span>
+                    </div>
 
-            <div class="bg-white rounded-2xl p-8 border border-gray-100">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div class="text-center">
-                        <p class="text-3xl font-bold text-blue-600 mb-1">21</p>
-                        <p class="text-gray-500 text-sm">Neuralink植入患者</p>
+                    <h3 class="text-3xl font-bold mb-2">OpenRouter</h3>
+                    <p class="text-xl text-slate-700 dark:text-slate-300 mb-6 font-medium">中国 AI 模型调用量首超美国，MiniMax M2.5 斩获月冠军</p>
+
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8 max-w-4xl">
+                        据 OpenRouter 数据，2026 年 2 月中国 AI 模型 token 用量<span class="font-semibold text-slate-900 dark:text-white">首次超越美国</span>。发布仅两周的 MiniMax M2.5 模型斩获单月冠军，调用量达<span class="font-semibold text-blue-600 dark:text-blue-400">4.55 万亿</span> token。全球前五中中国模型占据<span class="font-semibold text-blue-600 dark:text-blue-400">四席</span>。
+                    </p>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-slate-50 dark:bg-slate-700/50 rounded-xl p-4">
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mb-1">月调用量</p>
+                            <p class="text-2xl font-bold">4.55T</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-700/50 rounded-xl p-4">
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mb-1">全球排名</p>
+                            <p class="text-2xl font-bold">4/5</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-700/50 rounded-xl p-4">
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Anthropic</p>
+                            <p class="text-2xl font-bold">指控</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-700/50 rounded-xl p-4">
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mb-1">马斯克</p>
+                            <p class="text-2xl font-bold">回应</p>
+                        </div>
                     </div>
-                    <div class="text-center">
-                        <p class="text-3xl font-bold text-blue-600 mb-1">4.55万亿</p>
-                        <p class="text-gray-500 text-sm">MiniMax月调用量(token)</p>
+                </article>
+
+                <!-- PKU Quantum -->
+                <article class="bg-white dark:bg-slate-800 rounded-3xl p-8 md:p-10 card-lift border border-slate-100 dark:border-slate-700">
+                    <div class="flex flex-wrap items-center gap-3 mb-6">
+                        <span class="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-xs font-medium">量子计算</span>
+                        <span class="text-slate-400 text-sm">2026.02.28</span>
                     </div>
-                    <div class="text-center">
-                        <p class="text-3xl font-bold text-blue-600 mb-1">3,700公里</p>
-                        <p class="text-gray-500 text-sm">量子芯网组网能力</p>
+
+                    <h3 class="text-3xl font-bold mb-2">北京大学</h3>
+                    <p class="text-xl text-slate-700 dark:text-slate-300 mb-6 font-medium">构建全球首个大规模量子通信芯片网络</p>
+
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8 max-w-4xl">
+                        北大团队构建全球首个基于集成光量子芯片的大规模量子密钥分发网络<span class="font-semibold text-slate-900 dark:text-white">"未名量子芯网"</span>，支持<span class="font-semibold text-blue-600 dark:text-blue-400">20 用户</span>并行通信，组网能力达<span class="font-semibold text-blue-600 dark:text-blue-400">3700 公里</span>。《自然》审稿人评价为量子芯片领域的重大突破。
+                    </p>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-slate-50 dark:bg-slate-700/50 rounded-xl p-4">
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mb-1">并行用户</p>
+                            <p class="text-2xl font-bold">20</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-700/50 rounded-xl p-4">
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mb-1">组网能力</p>
+                            <p class="text-2xl font-bold">3,700km</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-700/50 rounded-xl p-4">
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mb-1">融资</p>
+                            <p class="text-2xl font-bold">25起</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-700/50 rounded-xl p-4">
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mb-1">期刊</p>
+                            <p class="text-2xl font-bold">Nature</p>
+                        </div>
                     </div>
-                    <div class="text-center">
-                        <p class="text-3xl font-bold text-blue-600 mb-1">1,460亿</p>
-                        <p class="text-gray-500 text-sm">中国聚变项目投入(元)</p>
-                    </div>
-                </div>
+                </article>
             </div>
         </section>
     </main>
 
-    <footer class="bg-white border-t border-gray-100 mt-12">
-        <div class="max-w-6xl mx-auto px-6 py-6">
-            <p class="text-gray-400 text-sm text-center">
-                播报时间：2026年2月28日 | 数据来源：各公司官方发布、科技媒体、OpenRouter
-            </p>
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 py-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-6 h-6 rounded bg-gradient-to-br from-blue-500 to-purple-600"></div>
+                    <span class="font-medium">TechDaily</span>
+                </div>
+                <p class="text-sm text-slate-500 dark:text-slate-400">
+                    2026年2月28日 · 数据来源：各公司官方发布、科技媒体、OpenRouter
+                </p>
+            </div>
         </div>
     </footer>
+
+    <script>
+        function toggleDark() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        }
+        
+        // Check saved theme
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
 </body>
 </html>
