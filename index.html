@@ -40,6 +40,10 @@
         .nav-bar { background: #151520; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; }
         .nav-bar a { color: #667eea; text-decoration: none; margin: 0 12px; font-size: 0.95em; }
         .nav-bar a:hover { text-decoration: underline; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: #1a1a2e; padding: 20px; border-radius: 8px; border: 1px solid #2a2a3a; }
+        .card h3 { color: #667eea; margin-bottom: 10px; }
+        .card p { color: #888; font-size: 0.9em; }
     </style>
 </head>
 <body>
@@ -58,169 +62,98 @@
 
         <header>
             <h1>🚀 AI日报</h1>
-            <div class="date">2026年3月1日 星期日 | 北京时间 16:33</div>
+            <div class="date">2026年3月1日 星期日 | 北京时间 18:03</div>
         </header>
 
         <div class="ticker">
             <div class="ticker-content">
                 <span class="ticker-label">实时</span>
-                <span class="ticker-item">🔴 美以联合空袭伊朗，哈梅内伊生死成谜</span>
+                <span class="ticker-item">🔴 美以联合空袭伊朗，哈梅内伊生死成谜，霍尔木兹海峡关闭</span>
                 <span class="ticker-item">|</span>
-                <span class="ticker-item">🤖 中国发布首个国家级人形机器人标准体系</span>
+                <span class="ticker-item">💾 半导体涨价潮蔓延，超20家企业发布涨价函</span>
                 <span class="ticker-item">|</span>
-                <span class="ticker-item">💾 英伟达超越苹果成台积电2025年最大客户</span>
+                <span class="ticker-item">🔋 小米YU7拿下1月车市全品类销冠</span>
                 <span class="ticker-item">|</span>
-                <span class="ticker-item">🔋 固态电池产业化加速，多家企业宣布突破</span>
+                <span class="ticker-item">🔮 量子计算融资超25亿，赛道加速升温</span>
             </div>
         </div>
 
         <div class="breaking">
             <h3>🔥 突发：美以联合空袭伊朗，中东冲突全面升级</h3>
-            <p>2月28日，美国和以色列对伊朗发动联合军事打击。伊朗宣布40天哀悼期，并向以色列及27个美军中东基地发动报复性攻击。特朗普声称哈梅内伊"已死"，伊朗坚决否认。伊朗关闭霍尔木兹海峡，全球石油运输命脉中断。冲突已造成近千人伤亡，烈度或超"12日战争"。</p>
+            <p>北京时间2月28日，美国和以色列对伊朗发动联合军事打击。特朗普声称伊朗最高领袖哈梅内伊"已死"，伊朗方面坚决否认。伊朗宣布40天哀悼期，并向以色列及27个美军中东基地发动报复性攻击。伊朗关闭霍尔木兹海峡，全球石油运输命脉中断。冲突已造成<span class="highlight">201人死亡、747人受伤</span>，烈度或超"12日战争"。</p>
         </div>
 
-        <div class="section">
-            <h2>🌍 国际局势 · 美伊战争</h2>
-            <div class="news-item">
-                <span class="tag tag-breaking">最新</span>
-                <h3>战火升级！烈度或超"12日战争"，本轮美伊冲突五大疑问待解</h3>
-                <p>本轮美以联合打击伊朗，冲突烈度可能超过此前的"12日战争"。专家分析指出，中东冲突已从代理人战争升级为国家级正面交战。目前五大核心问题待解：哈梅内伊生死、伊朗报复力度、美国后续行动、国际油价走势、以及地区安全格局重塑。</p>
-                <div class="meta">来源: 中国新闻网 | 时间: 2026-03-01</div>
+        <div class="grid">
+            <div class="card">
+                <h3>🌍 国际局势</h3>
+                <p>• 日本：大国打破国际规则的时代到来<br>• 联合国秘书长谴责冲突升级<br>• 土耳其呼吁停火与对话<br>• 全球20%石油运输受影响</p>
+                <a href="world.html" style="color: #667eea; font-size: 0.9em;">查看详情 →</a>
             </div>
-            <div class="news-item">
-                <span class="tag tag-hot">突发</span>
-                <h3>美国以色列联手攻击伊朗，哈梅内伊丧生？</h3>
-                <p>美以联合空袭伊朗，特朗普声称伊朗最高领袖哈梅内伊"已死"。伊朗方面坚决否认，称哈梅内伊"坚定、沉着地指挥战场局势"。目前哈梅内伊生死成谜，各方消息相互矛盾，局势扑朔迷离。</p>
-                <div class="meta">来源: BBC | 时间: 2026-03-01</div>
+            <div class="card">
+                <h3>🤖 人工智能</h3>
+                <p>• 北京力争AI产业规模突破5500亿元<br>• OpenAI完成1100亿美元融资<br>• AI从"聊天"走向"做事"<br>• 中国AI调用量首超美国</p>
+                <a href="ai.html" style="color: #667eea; font-size: 0.9em;">查看详情 →</a>
             </div>
-            <div class="news-item">
-                <span class="tag">深度分析</span>
-                <h3>为何美国以色列此刻出手？伊朗进入"生存模式"</h3>
-                <p>专家分析认为，美以选择此时出手有多重考量：伊朗核设施接近临界点、地区力量平衡变化、以及美国国内政治因素。伊朗已进入"生存模式"，结局仍充满变数。冲突可能引发更广泛的中东地区动荡。</p>
-                <div class="meta">来源: BBC | 时间: 2026-03-01</div>
+            <div class="card">
+                <h3>💻 半导体</h3>
+                <p>• 超20家企业发布涨价函<br>• 存储芯片最高涨幅80%<br>• 2026年销售额预计9750亿美元<br>• 摩尔线程营收涨超2倍</p>
+                <a href="semiconductor.html" style="color: #667eea; font-size: 0.9em;">查看详情 →</a>
             </div>
-            <div class="news-item">
-                <span class="tag">伤亡更新</span>
-                <h3>美以空袭致伊朗近千人伤亡，伊朗否认美军伤亡</h3>
-                <p>美以联合空袭已造成伊朗近千人伤亡。伊朗称已打击14个美军基地，造成约200名美军伤亡。美方否认人员伤亡，称成功防御了数百次伊朗导弹和无人机攻击。双方信息战激烈，真实情况有待核实。</p>
-                <div class="meta">来源: 新华网 | 时间: 2026-03-01</div>
+            <div class="card">
+                <h3>🔋 新能源</h3>
+                <p>• 小米YU7拿下1月全品类销冠<br>• 固态电池2027年量产装车<br>• 春节充电量同比增长52%<br>• 1月投资493亿元涌向电池新能源</p>
+                <a href="new-energy.html" style="color: #667eea; font-size: 0.9em;">查看详情 →</a>
+            </div>
+            <div class="card">
+                <h3>🔮 量子计算</h3>
+                <p>• 全球首个开放下载量子操作系统<br>• 25起融资超25亿元<br>• IQM估值18亿美元即将上市<br>• 十五五规划未来产业首位</p>
+                <a href="quantum.html" style="color: #667eea; font-size: 0.9em;">查看详情 →</a>
+            </div>
+            <div class="card">
+                <h3>☀️ 核聚变</h3>
+                <p>• 星环聚能10亿元A轮融资创纪录<br>• 阿里领投诺瓦聚变<br>• 全球累计投资超97亿美元<br>• 预计2040年前并网发电</p>
+                <a href="fusion.html" style="color: #667eea; font-size: 0.9em;">查看详情 →</a>
             </div>
         </div>
 
-        <div class="section">
-            <h2>🤖 AI前沿</h2>            
+        <div class="section" style="margin-top: 30px;">
+            <h2>📰 今日要闻</h2>            
             <div class="news-item">
                 <span class="tag tag-breaking">最新</span>
-                <h3>最新AI军事模拟：Claude、Gemini、GPT对决，95%对局发射核武器</h3>
-                <p>最新AI模拟军事博弈揭示致命真相：面对地缘危机，最先进的AI在95%的对局中按下了核按钮。机器不懂恐惧，拒绝投降，安全协议在压力下全面失效。这一发现引发对AI军事化使用的严重担忧。</p>
-                <div class="meta">来源: 新浪财经, MIT Technology Review | 时间: 2026-02-28</div>
+                <h3>日本发表伊朗局势谈话：大国打破国际规则的时代到来</h3>
+                <p>日本外务大臣茂木敏充3月1日发表谈话，表示希望尽快平息局势。日本原经产大臣斎藤健表示："大国公然打破国际规则的时代正在到来。"日本约九成原油进口依赖中东地区，2023年进口量中约74%经由霍尔木兹海峡运输。</p>
+                <div class="meta">来源: 法广网 | 时间: 2026-03-01</div>
             </div>
             <div class="news-item">
                 <span class="tag tag-hot">重磅</span>
-                <h3>Gemini 3.1 Pro曝光，推理能力翻倍价格不变</h3>
-                <p>谷歌Gemini 3.1 Pro曝光，推理能力达77.1%，相比前代Gemini 3 Pro的31.1%实现翻倍提升。谷歌意图通过这一升级重新定义AI推理标准，与OpenAI GPT-5.2展开激烈竞争。</p>
-                <div class="meta">来源: 极客公园 | 时间: 2026-02-26</div>
+                <h3>OpenAI完成1100亿美元融资，估值达7300亿美元</h3>
+                <p>OpenAI完成了1100亿美元的融资，其中亚马逊投资500亿美元，英伟达和软银各投资300亿美元。此次投资使OpenAI的投前估值达到7300亿美元，较去年10月二级融资中5000亿美元的估值大幅增长。</p>
+                <div class="meta">来源: CNBC | 时间: 2026-02-27</div>
             </div>
             <div class="news-item">
                 <span class="tag tag-new">国产</span>
-                <h3>阿里千问最强模型亮相，性能媲美GPT-5.2及Gemini 3 Pro</h3>
-                <p>阿里巴巴发布千问最强模型，在多项关键性能基准测试中表现超过GPT-5.2、Claude Opus 4.5和Gemini 3 Pro等顶尖模型，成为迄今为止最接近国际顶尖模型的国内最强人工智能。</p>
-                <div class="meta">来源: 阿斯达克 | 时间: 2026-01-26</div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>💻 半导体</h2>
-            <div class="news-item">
-                <span class="tag tag-breaking">最新</span>
-                <h3>台积电最大客户变动！英伟达超越苹果位居第一</h3>
-                <p>晶圆代工厂台积电最大客户格局生变，人工智能芯片龙头英伟达首度超越苹果，跃居台积电2025年最大客户。台积电2025年合并营收达3兆8,090亿元，年增31.6%，续创历史新高。</p>
-                <div class="meta">来源: 电子工程专辑 | 时间: 2026-02-28</div>
+                <h3>我国量子计算新突破！全球首个开放下载的量子操作系统</h3>
+                <p>我国首款自主研发量子计算机操作系统"本源司南"正式开放线上下载，成为全球首个开放下载的量子计算机操作系统。该系统由本源量子自主研发，兼容多种主流技术路线。</p>
+                <div class="meta">来源: 科创板日报 | 时间: 2026-02-24</div>
             </div>
             <div class="news-item">
-                <span class="tag tag-hot">市场</span>
-                <h3>冰火两重天：AI推动2025年半导体行业整体增长25.6%</h3>
-                <p>数据显示，2025年第四季度半导体行业业绩表现分化。内存公司营收较第三季度增长21%至34%不等，英伟达增长20%。AI需求持续推动行业增长，但结构性瓶颈依然存在。</p>
-                <div class="meta">来源: 新浪财经 | 时间: 2026-02-27</div>
+                <span class="tag">市场</span>
+                <h3>半导体行业掀涨价风暴，超20家企业发涨价函</h3>
+                <p>截至目前已有超过20家国内外半导体企业正式发布涨价函，涨幅从5%到80%不等。本轮涨价潮的核心驱动力来自AI需求爆发引发的供需失衡，以及金银铜等原材料价格持续攀升带来的成本压力。</p>
+                <div class="meta">来源: 国际电子商情 | 时间: 2026-02-11</div>
             </div>
             <div class="news-item">
-                <span class="tag">产能</span>
-                <h3>台积电敦促客户尽快预订N2制程产能</h3>
-                <p>台积电正敦促其客户尽快预订N2制程产能。随着AI计算需求激增，数据中心对高性能芯片的需求呈现指数增长。台积电作为全球唯一具备3nm以下先进制程量产能力的厂商，产能持续紧张。</p>
-                <div class="meta">来源: 搜狐科技 | 时间: 2026-02-27</div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>🔋 新能源</h2>
-            <div class="news-item">
-                <span class="tag tag-breaking">最新</span>
-                <h3>深圳固态电池新星正式量产，已交付卫星电池</h3>
-                <p>2月10日，全国最大锂金属固态电池量产项目正式投产——欣界能源在杭州下线了首批具有完全自主知识产权的固态圆柱电池，其2GWh锂金属固态电池项目全面投产。固态电池产业化进程加速。</p>
-                <div class="meta">来源: 新浪财经 | 时间: 2026-02-24</div>
-            </div>
-            <div class="news-item">
-                <span class="tag tag-hot">投资</span>
-                <h3>项目同比翻倍！1月近500亿元涌向电池新能源</h3>
-                <p>据电池网统计，2026年1月我国电池新能源产业链企业投资扩产新项目44个，公布投资额的新项目33个，共计总额493.71亿元。与去年同期21个新项目相比，项目数量翻倍，显示行业投资热情高涨。</p>
-                <div class="meta">来源: 盖世汽车 | 时间: 2026-03-01</div>
-            </div>
-            <div class="news-item">
-                <span class="tag">产业化</span>
-                <h3>固态电池领域动作频频，产业化进程面临多重挑战</h3>
-                <p>近期，一汽、广汽、比亚迪、宁德时代等多家企业宣布中试产线投产或取得阶段性突破。目前市场以半固态电池为主，已率先在高端电动车和储能领域商业化落地。全固态电池预计2027年左右实现小批量装车验证。</p>
-                <div class="meta">来源: 低碳网 | 时间: 2026-02-26</div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>🤖 机器人</h2>
-            <div class="news-item">
-                <span class="tag tag-breaking">最新</span>
-                <h3>我国首个国家级人形机器人与具身智能标准体系发布</h3>
-                <p>2026年3月1日，我国首个国家级人形机器人与具身智能标准体系正式发布。这一标准体系的建立将规范行业发展，推动人形机器人从"秀功夫"走向"真干活"，加速产业化进程。</p>
-                <div class="meta">来源: 央视网 | 时间: 2026-03-01</div>
-            </div>
-            <div class="news-item">
-                <span class="tag tag-hot">数据</span>
-                <h3>2025年国内发布人形机器人产品超330款，整机企业数量超140家</h3>
-                <p>2025年国内人形机器人产业爆发式增长，全年发布产品超330款，整机企业数量超140家。从CES到春晚，中国人形机器人频频"破圈"，具身智能迈入应用时代。</p>
-                <div class="meta">来源: 新浪科技 | 时间: 2026-03-01</div>
-            </div>
-            <div class="news-item">
-                <span class="tag">国际观察</span>
-                <h3>中国人形机器人频频"破圈"，具身智能迈入应用时代</h3>
-                <p>2026年伊始，从美国拉斯维加斯消费电子展（CES）到中国春晚，中国自主研发的人形机器人频频"破圈"，多家中国企业的产品和应用不仅在海外业界引发热议，更标志着中国在这一领域的崛起。</p>
-                <div class="meta">来源: 光明网, 央广网 | 时间: 2026-02-27</div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>🔮 量子计算</h2>
-            <div class="news-item">
-                <span class="tag tag-breaking">最新</span>
-                <h3>我国量子计算新突破！全球首个，开放线上下载</h3>
-                <p>2026年刚开年，量子计算领域率先点燃硬科技赛道融资热情。量旋科技宣布完成数亿元C轮融资，距离上一轮仅隔6个月。我国量子计算取得新突破，相关成果开放线上下载。</p>
-                <div class="meta">来源: 证券时报 | 时间: 2026-02-25</div>
-            </div>
-            <div class="news-item">
-                <span class="tag tag-hot">融资</span>
-                <h3>25起+超25亿！量子科技赛道加速升温</h3>
-                <p>财联社星矿数据统计显示，2025年初至2026年2月5日，量子科技赛道融资金额达25.16亿元，融资事件数25起。量子计算正从实验室走向产业应用，资本热度持续攀升。</p>
-                <div class="meta">来源: 财联社 | 时间: 2026-02</div>
-            </div>
-            <div class="news-item">
-                <span class="tag">技术</span>
-                <h3>技术突破加速实用容错量子计算机面世</h3>
-                <p>在量子门保真度上，一些研究团队取得显著突破。2025年6月，英国牛津大学团队报告高达99.999985%的单量子比特门保真度，较此前纪录提升10倍。实用容错量子计算机面世指日可待。</p>
-                <div class="meta">来源: 科技日报 | 时间: 2026-02-12</div>
+                <span class="tag">融资</span>
+                <h3>星环聚能完成10亿元A轮融资，刷新国内可控核聚变融资纪录</h3>
+                <p>2026年1月12日，民营聚变企业上海星环聚能完成10亿元A轮融资，一举刷新国内同类企业单笔融资纪录。阿里巴巴领投诺瓦聚变，英伟达、谷歌和比尔·盖茨共同主导为CFS注入8.63亿美元。</p>
+                <div class="meta">来源: 证券时报 | 时间: 2026-02-27</div>
             </div>
         </div>
 
         <footer>
             <p>AI日报 | 每日更新全球科技前沿资讯</p>
-            <p style="margin-top: 10px; font-size: 0.9em;">数据来源: 中国新闻网, BBC, 新华网, 新浪财经, 证券时报等</p>
-            <p style="margin-top: 5px; font-size: 0.85em; color: #555;">更新时间: 2026-03-01 16:33 CST</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">数据来源: 中国新闻网, 新华网, 德国之声, 法广网, 新浪财经, 证券时报等权威媒体</p>
+            <p style="margin-top: 5px; font-size: 0.85em; color: #555;">更新时间: 2026-03-01 18:03 CST</p>
         </footer>
     </div>
 </body>

@@ -4,32 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>新能源 - AI日报</title>
+    <title>AI日报 - 新能源 | 2026年3月1日</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #0a0a0f; color: #e0e0e0; line-height: 1.6; }
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .nav { background: #151520; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
-        .nav a { color: #667eea; text-decoration: none; margin-right: 20px; }
-        .nav a:hover { text-decoration: underline; }
         header { text-align: center; padding: 40px 0; border-bottom: 1px solid #2a2a3a; margin-bottom: 30px; }
-        header h1 { font-size: 2.5em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+        header h1 { font-size: 2.5em; background: linear-gradient(135deg, #00c864 0%, #00a854 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+        header .date { color: #888; font-size: 1.1em; }
+        .nav-bar { background: #151520; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; }
+        .nav-bar a { color: #667eea; text-decoration: none; margin: 0 12px; font-size: 0.95em; }
+        .nav-bar a:hover { text-decoration: underline; }
         .section { background: #151520; border-radius: 12px; padding: 25px; margin-bottom: 25px; border: 1px solid #2a2a3a; }
-        .section h2 { color: #667eea; font-size: 1.5em; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        .news-item { padding: 15px 0; border-bottom: 1px solid #2a2a3a; }
+        .section h2 { color: #00c864; font-size: 1.5em; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .section h2::before { content: ''; width: 4px; height: 24px; background: linear-gradient(135deg, #00c864 0%, #00a854 100%); border-radius: 2px; }
+        .news-item { padding: 20px 0; border-bottom: 1px solid #2a2a3a; }
         .news-item:last-child { border-bottom: none; }
-        .news-item h3 { color: #e0e0e0; font-size: 1.1em; margin-bottom: 8px; }
-        .news-item p { color: #888; font-size: 0.95em; line-height: 1.5; }
-        .news-item .meta { color: #667eea; font-size: 0.85em; margin-top: 8px; }
-        .tag { display: inline-block; padding: 4px 12px; background: rgba(102, 126, 234, 0.2); color: #667eea; border-radius: 20px; font-size: 0.8em; margin-right: 8px; }
+        .news-item h3 { color: #e0e0e0; font-size: 1.2em; margin-bottom: 10px; }
+        .news-item p { color: #aaa; font-size: 0.95em; line-height: 1.7; margin-bottom: 10px; }
+        .news-item .meta { color: #00c864; font-size: 0.85em; }
+        .tag { display: inline-block; padding: 4px 12px; background: rgba(0, 200, 100, 0.2); color: #00c864; border-radius: 20px; font-size: 0.8em; margin-right: 8px; }
         .tag-hot { background: rgba(255, 107, 107, 0.2); color: #ff6b6b; }
+        .tag-breaking { background: rgba(255, 165, 0, 0.2); color: #ffa500; }
+        .highlight { color: #ffd700; font-weight: bold; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
+        .stat-box { background: rgba(0,200,100,0.1); padding: 15px; border-radius: 8px; text-align: center; }
+        .stat-box .number { font-size: 2em; color: #00c864; font-weight: bold; }
+        .stat-box .label { color: #888; font-size: 0.9em; }
         footer { text-align: center; padding: 30px; color: #666; border-top: 1px solid #2a2a3a; margin-top: 40px; }
+        a.back { color: #667eea; text-decoration: none; display: inline-block; margin-bottom: 20px; }
+        a.back:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="nav">
-            <a href="index.html">← 返回首页</a>
+        <div class="nav-bar">
+            <a href="index.html">首页</a>
             <a href="world.html">国际局势</a>
             <a href="ai.html">人工智能</a>
             <a href="semiconductor.html">半导体</a>
@@ -42,97 +52,131 @@
 
         <header>
             <h1>🔋 新能源</h1>
-            <div style="color: #888;">固态电池、储能与光伏产业动态</div>
+            <div class="date">2026年3月1日 | 北京时间 18:03</div>
         </header>
 
+        <div class="stats">
+            <div class="stat-box">
+                <div class="number">2万+</div>
+                <div class="label">小米汽车2月交付量(台)</div>
+            </div>
+            <div class="stat-box">
+                <div class="number">2.8万</div>
+                <div class="label">零跑2月交付量(台)</div>
+            </div>
+            <div class="stat-box">
+                <div class="number">52%</div>
+                <div class="label">春节充电量同比增长</div>
+            </div>
+            <div class="stat-box">
+                <div class="number">493亿</div>
+                <div class="label">1月电池新能源投资额(元)</div>
+            </div>
+        </div>
+
         <div class="section">
-            <h2>🔬 固态电池</h2>
+            <h2>🚗 新能源汽车销量</h2>
             <div class="news-item">
-                <span class="tag tag-hot">政策</span>
-                <h3>固态电池2026年商业化元年，工信部明确突破目标</h3>
-                <p>工信部节能与新能源汽车产业发展部际联席会议首次将"加快突破全固态电池应用技术"明确列为提升产业链自主可控能力的关键任务。2026年正式迎来半固态商业化元年。</p>
-                <div class="meta">来源: 工信部 | 时间: 2026-02-25</div>
+                <span class="tag tag-breaking">销冠</span>
+                <h3>小米YU7拿下1月车市全品类销冠</h3>
+                <p>2026年开年第一个月，小米YU7以37869辆的销量成绩，一举夺得1月份国内乘用车市场全品类销量冠军，不论能源形式、不论价格、不论SUV还是轿车。小米汽车2月交付量超过20000台，目前在售车辆主要是YU7。</p>
+                <div class="meta">来源: IT之家/新浪财经 | 时间: 2026-03-01</div>
             </div>
             <div class="news-item">
-                <span class="tag">企业动态</span>
-                <h3>比亚迪、宁德时代、广汽等多家企业中试线投产</h3>
-                <p>比亚迪硫化物固态电池有望在2027年实现小批量生产；广汽计划2026年启动小批量装车实验；宁德时代2027年有望实现小批量生产。多家企业固态电池中试线投产或取得阶段性突破。</p>
-                <div class="meta">来源: 经济参考报 | 时间: 2026-02-26</div>
+                <span class="tag">交付数据</span>
+                <h3>2026年2月新能源汽车销量汇总</h3>
+                <p><strong>零跑汽车</strong>：2月交付28067台；<strong>理想汽车</strong>：2月交付26421辆；<strong>蔚来汽车</strong>：2月交付20797台，同比增长57.6%；<strong>极氪汽车</strong>：2月交付23867辆，同比激增70%；<strong>小鹏汽车</strong>：2月交付15256台。</p>
+                <div class="meta">来源: 各车企官方/电子工程专辑 | 时间: 2026-03-01</div>
             </div>
             <div class="news-item">
-                <span class="tag">深度</span>
-                <h3>比亚迪固态电池路线：半固态+刀片电池融合方案</h3>
-                <p>比亚迪放弃全固态激进路线，押注半固态+刀片电池融合方案。第二代刀片电池+半固态电芯系统能量密度达360Wh/kg，CLTC续航突破1000公里，循环寿命超3000次，量产成本比全固态低40%。2026年已搭载腾势Z9、汉L、唐L等车型上市。</p>
-                <div class="meta">来源: 东方财富, 中汽研 | 时间: 2026-02-27</div>
+                <span class="tag tag-hot">新品</span>
+                <h3>2026款小鹏X9纯电版3月2日上市</h3>
+                <p>2026款小鹏X9纯电版将于3月2日正式上市，现已开启预订，提供5款车型。新车全系标配800V高压平台与5C超充AI电池，CLTC续航最高达750km。智能化方面，标配图灵芯片（最高算力2250TOPS）和第二代VLA私人司机系统。</p>
+                <div class="meta">来源: 网通社 | 时间: 2026-03-01</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔋 固态电池突破</h2>
+            <div class="news-item">
+                <span class="tag tag-breaking">量产</span>
+                <h3>固态电池取得实质性突破！2026年出样车，2027年量产装车？</h3>
+                <p>困扰新能源汽车终极发展目标的固态电池正在从实验室走进现实。欣界能源在杭州下线了首批具有完全自主知识产权的固态圆柱电池，其2GWh锂金属固态电池项目全面投产。一汽、广汽、比亚迪、宁德时代等多家企业宣布中试产线投产或取得阶段性突破。</p>
+                <div class="meta">来源: 车矩阵/新浪财经 | 时间: 2026-02-24</div>
+            </div>
+            <div class="news-item">
+                <span class="tag">产业化</span>
+                <h3>固态电池领域动作频频，产业化进程面临多重挑战</h3>
+                <p>目前市场以半固态电池为主，已率先在高端电动车和储能领域商业化落地。全固态电池预计2027年左右实现小批量装车验证。固态电池"破冰"意味着北方电动车的春天来了，冬季续航"打骨折"的问题有望得到解决。</p>
+                <div class="meta">来源: 低碳网 | 时间: 2026-02-26</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚡ 基础设施与政策</h2>
+            <div class="news-item">
+                <span class="tag tag-hot">充电数据</span>
+                <h3>日均增长52%！春节新能源汽车充电量创新高</h3>
+                <p>据国家能源局数据，今年春节假期，新能源汽车出行规模持续扩大，充电量创历史新高。2月15日至2月23日，高速公路电动汽车充电量达到14976.75万千瓦时，日均充电量1664.08万千瓦时，比去年春节日均增长52.01%。</p>
+                <div class="meta">来源: 中国环境网 | 时间: 2026-03-01</div>
             </div>
             <div class="news-item">
                 <span class="tag">投资</span>
-                <h3>固态电池领域掀起产能"军备赛"</h3>
-                <p>云石卫蓝拟斥资52亿元投建年产15GWh固态锂电池基地；金龙羽斥资12亿元投建年产2GWh固态电池量产线；中创新航规划建设新体系固态电解质材料项目。总投资超百亿的5大储能与电池项目迎来最新进展。</p>
-                <div class="meta">来源: 电池网, 集邦光储观察 | 时间: 2026-03-01</div>
+                <h3>项目同比翻倍！1月近500亿元涌向电池新能源</h3>
+                <p>据电池网统计，2026年1月我国电池新能源产业链企业投资扩产新项目44个，公布投资额的新项目33个，共计总额493.71亿元。与去年同期21个新项目相比，项目数量翻倍，显示行业投资热情高涨。</p>
+                <div class="meta">来源: 盖世汽车 | 时间: 2026-03-01</div>
+            </div>
+            <div class="news-item">
+                <span class="tag">安全标准</span>
+                <h3>工信部：加快推动动力电池安全评价指南等重点标准研制</h3>
+                <p>工信部就"制定动力电池高安全标准"建议答复称，将会同相关部门持续完善相关技术标准，促进动力电池安全防护水平不断提升，保护消费者生命财产安全，保障新能源汽车产业健康发展。</p>
+                <div class="meta">来源: 新浪财经 | 时间: 2026-03-01</div>
             </div>
         </div>
 
         <div class="section">
-            <h2>🔋 储能产业</h2>
+            <h2>🏢 企业动态</h2>
             <div class="news-item">
-                <span class="tag tag-hot">数据</span>
-                <h3>2026年1月新型储能装机同比翻倍，同比增长106%</h3>
-                <p>中关村储能产业技术联盟数据显示，2026年1月国内新型储能市场新增投运装机规模达3.78GW/10.90GWh，同比分别增长62%、106%。城市台区储能成为万亿储能市场新增长极。</p>
-                <div class="meta">来源: 中关村储能产业技术联盟 | 时间: 2026-02-24</div>
+                <span class="tag">战略整合</span>
+                <h3>极氪领克完成股权交割，吉利控股战略整合迈出重要一步</h3>
+                <p>极氪完成领克汽车收购及注资事项。至此，吉利控股乘用车板块"两横"布局成形：吉利汽车主攻大众主流市场乘用车，加速新能源转型；极氪科技集团主攻高端豪华新能源汽车市场。极氪与领克将在技术、产品、供应链、制造、营销与服务、国际市场拓展等方面强化协同。</p>
+                <div class="meta">来源: 新浪财经 | 时间: 2026-03-01</div>
             </div>
             <div class="news-item">
-                <span class="tag">市场规模</span>
-                <h3>2026年全球电池市场规模预计达1.5万亿美元</h3>
-                <p>2026年全球电池市场规模预计将达到1.5万亿美元，年复合增长率超过25%。其中动力电池占比62%，储能电池占比28%，消费电子电池占比10%。</p>
-                <div class="meta">来源: EET-China | 时间: 2026-02-26</div>
+                <span class="tag">海外拓展</span>
+                <h3>中加电动车破冰：4.9万辆配额背后，中国品牌正悄然登陆北美</h3>
+                <p>2026年1月，加拿大总理卡尼在北京宣布重大转向：每年允许最多49,000辆中国制造的电动汽车，以6.1%的最惠国税率进入加拿大市场。关税从106.1%骤降至6.1%，贸易通道重新打开。</p>
+                <div class="meta">来源: 新浪财经 | 时间: 2026-03-01</div>
             </div>
             <div class="news-item">
-                <span class="tag">投资热潮</span>
-                <h3>2026年1月电池新能源投资扩产493亿元，项目数量翻倍</h3>
-                <p>据电池网统计，2026年1月我国电池新能源产业链企业投资扩产新项目44个，公布投资额的新项目33个，共计493.71亿元。与去年同期21个新项目相比，项目数量实现翻倍增长，产业回暖信号明确。</p>
-                <div class="meta">来源: 电池网 | 时间: 2026-03-01</div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>☀️ 光伏产业</h2>
-            <div class="news-item">
-                <span class="tag">装机数据</span>
-                <h3>2025年全国光伏新增装机3.17亿千瓦，同比增长14%</h3>
-                <p>国家能源局数据显示，2025年全国光伏新增装机3.17亿千瓦，其中集中式1.64亿千瓦，分布式1.53亿千瓦。截至2025年12月，全国光伏发电装机容量达12亿千瓦，同比增长35%。</p>
-                <div class="meta">来源: 国家能源局 | 时间: 2026-02-21</div>
-            </div>
-            <div class="news-item">
-                <span class="tag">政策</span>
-                <h3>2026年4月起取消光伏产品出口退税</h3>
-                <p>财政部、税务总局公告，自2026年4月1日起取消光伏等产品增值税出口退税，电池退税率降至6%。</p>
-                <div class="meta">来源: 财政部 | 时间: 2026-01</div>
+                <span class="tag">特斯拉</span>
+                <h3>马斯克：特斯拉得州锂精炼厂全面投产</h3>
+                <p>2026年1月15日，马斯克宣布特斯拉位于得克萨斯州罗布斯顿的锂精炼厂全面投产。这座被称为"美国最大且最先进"的锂精炼设施，以19个月从破土到满产就绪的惊人速度，创下全球大型锂精炼厂建设的颠覆性纪录。</p>
+                <div class="meta">来源: 新浪财经 | 时间: 2026-03-01</div>
             </div>
         </div>
 
         <div class="section">
-            <h2>🔬 技术突破</h2>
+            <h2>🔮 未来展望</h2>
             <div class="news-item">
-                <span class="tag tag-hot">突破</span>
-                <h3>我国科学家取得锂电池核心技术首创性突破</h3>
-                <p>南开大学和上海空间电源研究所团队通过全新电解液技术，有望使现有锂电池在同等大小和重量的情况下，实现续航力的成倍提升，耐低温性能也明显增强。成果发表在《自然》期刊。</p>
-                <div class="meta">来源: 新华社 | 时间: 2026-02-27</div>
+                <span class="tag">新品预告</span>
+                <h3>2026开年纯电SUV热门车型推荐</h3>
+                <p>在25万到45万元价位区间内，小米YU7、乐道L90、蔚来ES8和理想L9成为热门选择。小米YU7指导价区间为25.35万元至32.99万元，直接对标特斯拉Model Y。2026款零跑C11以15万级价位提供双叉臂悬架+640km续航，累计销量接近30万辆。</p>
+                <div class="meta">来源: 中关村在线 | 时间: 2026-03-01</div>
             </div>
-        </div>
-
-        <div class="section">
-            <h2>⚡ 电网投资</h2>
             <div class="news-item">
-                <span class="tag">投资</span>
-                <h3>"十五五"期间全国电网总投资超5万亿元</h3>
-                <p>国家电网宣布"十五五"期间固定资产投资总额将达4万亿元，年均8000亿元；南方电网2026年投资规模1800亿元。配电网投资占比超50%，达1.9万亿元。</p>
-                <div class="meta">来源: 证券日报</div>
+                <span class="tag">技术趋势</span>
+                <h3>新能源重卡拐点之后，谁在重构竞争规则？</h3>
+                <p>2025年，中国新能源重卡销量突破23万辆，同比增长182%。在高频运营场景下，电动重卡每公里综合成本已降至燃油车的三分之一。新能源重卡的市场渗透逻辑发生根本转变，行业增长不再依靠补贴拉动，而是由供需两端的结构性缺口共同驱动。</p>
+                <div class="meta">来源: 财经杂志 | 时间: 2026-03-01</div>
             </div>
         </div>
 
         <footer>
+            <p><a href="index.html" class="back">← 返回首页</a></p>
             <p>AI日报 | 每日更新全球科技前沿资讯</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">数据来源: IT之家, 新浪财经, 国家能源局, 盖世汽车等</p>
+            <p style="margin-top: 5px; font-size: 0.85em; color: #555;">更新时间: 2026-03-01 18:03 CST</p>
         </footer>
     </div>
 </body>

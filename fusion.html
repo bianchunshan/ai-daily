@@ -4,32 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>核聚变 - AI日报</title>
+    <title>AI日报 - 核聚变 | 2026年3月1日</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #0a0a0f; color: #e0e0e0; line-height: 1.6; }
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .nav { background: #151520; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
-        .nav a { color: #667eea; text-decoration: none; margin-right: 20px; }
-        .nav a:hover { text-decoration: underline; }
         header { text-align: center; padding: 40px 0; border-bottom: 1px solid #2a2a3a; margin-bottom: 30px; }
-        header h1 { font-size: 2.5em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+        header h1 { font-size: 2.5em; background: linear-gradient(135deg, #ff9500 0%, #ff6b00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+        header .date { color: #888; font-size: 1.1em; }
+        .nav-bar { background: #151520; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; }
+        .nav-bar a { color: #667eea; text-decoration: none; margin: 0 12px; font-size: 0.95em; }
+        .nav-bar a:hover { text-decoration: underline; }
         .section { background: #151520; border-radius: 12px; padding: 25px; margin-bottom: 25px; border: 1px solid #2a2a3a; }
-        .section h2 { color: #667eea; font-size: 1.5em; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        .news-item { padding: 15px 0; border-bottom: 1px solid #2a2a3a; }
+        .section h2 { color: #ff9500; font-size: 1.5em; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .section h2::before { content: ''; width: 4px; height: 24px; background: linear-gradient(135deg, #ff9500 0%, #ff6b00 100%); border-radius: 2px; }
+        .news-item { padding: 20px 0; border-bottom: 1px solid #2a2a3a; }
         .news-item:last-child { border-bottom: none; }
-        .news-item h3 { color: #e0e0e0; font-size: 1.1em; margin-bottom: 8px; }
-        .news-item p { color: #888; font-size: 0.95em; line-height: 1.5; }
-        .news-item .meta { color: #667eea; font-size: 0.85em; margin-top: 8px; }
-        .tag { display: inline-block; padding: 4px 12px; background: rgba(102, 126, 234, 0.2); color: #667eea; border-radius: 20px; font-size: 0.8em; margin-right: 8px; }
+        .news-item h3 { color: #e0e0e0; font-size: 1.2em; margin-bottom: 10px; }
+        .news-item p { color: #aaa; font-size: 0.95em; line-height: 1.7; margin-bottom: 10px; }
+        .news-item .meta { color: #ff9500; font-size: 0.85em; }
+        .tag { display: inline-block; padding: 4px 12px; background: rgba(255, 149, 0, 0.2); color: #ff9500; border-radius: 20px; font-size: 0.8em; margin-right: 8px; }
         .tag-hot { background: rgba(255, 107, 107, 0.2); color: #ff6b6b; }
+        .tag-breaking { background: rgba(255, 165, 0, 0.2); color: #ffa500; }
+        .highlight { color: #ffd700; font-weight: bold; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
+        .stat-box { background: rgba(255,149,0,0.1); padding: 15px; border-radius: 8px; text-align: center; }
+        .stat-box .number { font-size: 2em; color: #ff9500; font-weight: bold; }
+        .stat-box .label { color: #888; font-size: 0.9em; }
         footer { text-align: center; padding: 30px; color: #666; border-top: 1px solid #2a2a3a; margin-top: 40px; }
+        a.back { color: #667eea; text-decoration: none; display: inline-block; margin-bottom: 20px; }
+        a.back:hover { text-decoration: underline; }
+        .quote { border-left: 4px solid #ff9500; padding-left: 15px; margin: 15px 0; color: #ccc; font-style: italic; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="nav">
-            <a href="index.html">← 返回首页</a>
+        <div class="nav-bar">
+            <a href="index.html">首页</a>
             <a href="world.html">国际局势</a>
             <a href="ai.html">人工智能</a>
             <a href="semiconductor.html">半导体</a>
@@ -41,89 +52,124 @@
         </div>
 
         <header>
-            <h1>⚛️ 可控核聚变</h1>
-            <div style="color: #888;">人造太阳与清洁能源终极方案</div>
+            <h1>☀️ 可控核聚变</h1>
+            <div class="date">2026年3月1日 | 北京时间 18:03</div>
         </header>
+
+        <div class="stats">
+            <div class="stat-box">
+                <div class="number">10亿</div>
+                <div class="label">星环聚能A轮融资(元)</div>
+            </div>
+            <div class="stat-box">
+                <div class="number">97亿</div>
+                <div class="label">全球累计投资(美元)</div>
+            </div>
+            <div class="stat-box">
+                <div class="number">200亿</div>
+                <div class="label">国家聚变产业基金(元)</div>
+            </div>
+            <div class="stat-box">
+                <div class="number">2040</div>
+                <div class="label">预计并网发电年份</div>
+            </div>
+        </div>
 
         <div class="section">
             <h2>🔥 融资热潮</h2>
             <div class="news-item">
-                <span class="tag tag-hot">重磅</span>
-                <h3>星环聚能完成10亿元A轮融资，刷新国内纪录</h3>
-                <p>民营聚变企业上海星环聚能完成10亿元A轮融资，一举刷新国内同类企业单笔融资纪录。公司聚焦高温超导托卡马克技术路线，计划2027年实现聚变发电关键节点。</p>
-                <div class="meta">来源: 证券时报 | 时间: 2026-01-12</div>
+                <span class="tag tag-breaking">纪录</span>
+                <h3>星环聚能完成10亿元A轮融资，刷新国内同类企业单笔融资纪录</h3>
+                <p>2026年1月12日，民营聚变企业上海星环聚能完成10亿元A轮融资，一举刷新国内同类企业单笔融资纪录。此轮融资潮背后，是AI"吃电"的速度正在挑战传统电网的极限。华西证券研报指出，当前全球数据中心年用电量约为415太瓦时，预计到2030年将飙升至945太瓦时。</p>
+                <div class="meta">来源: 证券时报/凤凰网 | 时间: 2026-02-27</div>
             </div>
             <div class="news-item">
-                <span class="tag">融资</span>
+                <span class="tag tag-hot">阿里领投</span>
+                <h3>阿里巴巴领投诺瓦聚变，目标为AI数据中心供给能源</h3>
+                <p>今年开年，阿里巴巴领投了国内核聚变初创企业诺瓦聚变的天使轮投资，目标直指为AI数据中心供给能源。而就在前几个月，英伟达、谷歌和比尔·盖茨共同主导的一轮融资，为核聚变公司CFS注入了8.63亿美元。</p>
+                <div class="meta">来源: 证券时报 | 时间: 2026-02-27</div>
+            </div>
+            <div class="news-item">
+                <span class="tag">Pre-A轮</span>
                 <h3>中科清能完成近5亿元Pre-A++轮融资</h3>
-                <p>河南中科清能完成近5亿元Pre-A++轮融资，公司专注于低温技术与聚变装置研发。2026年以来可控核聚变领域融资消息接连不断，单笔融资规模屡创新高。</p>
-                <div class="meta">来源: 证券时报 | 时间: 2026-02</div>
+                <p>2月，河南中科清能完成了近5亿元Pre-A++轮融资。2026年以来，星环聚能、中科清能、东昇聚变、束研聚创等可控核聚变项目陆续更新了融资进展。押注这一方向的投资机构从几年前少数机构的"孤注一掷"，到如今国资、产业资本与市场化基金纷纷入场。</p>
+                <div class="meta">来源: 证券时报 | 时间: 2026-02-27</div>
             </div>
             <div class="news-item">
-                <span class="tag">投资</span>
-                <h3>阿里巴巴领投诺瓦聚变，海外巨头积极布局</h3>
-                <p>阿里巴巴领投国内核聚变初创企业诺瓦聚变的天使轮投资，目标直指为AI数据中心供给能源。英伟达、谷歌和比尔·盖茨共同为主导的核聚变公司CFS注入8.63亿美元。</p>
-                <div class="meta">来源: 证券时报 | 时间: 2026-02</div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>📜 政策支持</h2>
-            <div class="news-item">
-                <span class="tag tag-hot">政策</span>
-                <h3>"十五五"规划明确将核聚变能纳入未来产业</h3>
-                <p>2025年10月发布的"十五五"规划中，核聚变首次被列入"未来产业"核心清单，与氢能并列，明确为新的经济增长点。政策层面明确提出探索多元技术路线、典型应用场景及可行商业模式。</p>
-                <div class="meta">来源: 证券时报 | 时间: 2026-02</div>
-            </div>
-            <div class="news-item">
-                <span class="tag">法规</span>
-                <h3>《原子能法》正式施行，明确鼓励受控热核聚变</h3>
-                <p>2026年1月《中华人民共和国原子能法》正式施行，明确"鼓励和支持受控热核聚变"。国家能源局设立200亿元"聚变产业基金"，上海未来产业基金规模增至150亿元。</p>
-                <div class="meta">来源: 证券时报 | 时间: 2026-02</div>
+                <span class="tag">海外</span>
+                <h3>美国Inertia Enterprises完成4.5亿美元A轮融资</h3>
+                <p>美国核聚变能源初创企业Inertia Enterprises近日完成4.5亿美元A轮融资，资金将用于开发激光聚变发电厂，该公司计划2030年启动商业化核电站建设。据美国核聚变产业协会数据，截至2025年年中，全球核聚变行业累计吸引投资已超97亿美元。</p>
+                <div class="meta">来源: 证券时报 | 时间: 2026-02-27</div>
             </div>
         </div>
 
         <div class="section">
-            <h2>🔬 技术进展</h2>
+            <h2>🏛️ 政策支持</h2>
             <div class="news-item">
-                <span class="tag">突破</span>
-                <h3>EAST实现1亿摄氏度1066秒稳态运行</h3>
-                <p>2025年，全超导托卡马克核聚变实验装置（EAST）实现1亿摄氏度高温等离子体、1066秒稳态运行，首次在实验室模拟出未来聚变堆的运行环境。</p>
-                <div class="meta">来源: 中国科学院 | 时间: 2026-02</div>
+                <span class="tag tag-breaking">十五五规划</span>
+                <h3>"十五五"规划建议明确将核聚变能纳入未来产业</h3>
+                <p>"十五五"规划建议明确将核聚变能纳入未来产业，今年1月《中华人民共和国原子能法》正式施行，明确"鼓励和支持受控热核聚变"。对大多数资本而言，从观望转向出手，转折点出现在2025年下半年，可控核聚变开始以更明确的战略定位强势回归。</p>
+                <div class="meta">来源: 证券时报 | 时间: 2026-02-27</div>
             </div>
             <div class="news-item">
-                <span class="tag">突破</span>
-                <h3>中国环流三号实现原子核温度1.17亿度</h3>
-                <p>中国环流三号在国内首次实现原子核温度1.17亿度、电子温度1.6亿度，综合参数聚变三乘积实现大幅跃升。目前正在改造中，为2027年聚变能燃烧实验做准备。</p>
-                <div class="meta">来源: 核工业西南物理研究院 | 时间: 2026-02</div>
-            </div>
-            <div class="news-item">
-                <span class="tag">项目</span>
-                <h3>BEST项目计划2027年建成</h3>
-                <p>位于安徽合肥的BEST（聚变能紧凑型燃烧等离子体装置）项目计划于2027年建成，沿着"物理验证—工程突破—商业应用"的清晰路径稳步推进。2025年项目招标数量达到43个，招标预算金额达20.43亿元。</p>
-                <div class="meta">来源: 证券时报 | 时间: 2026-02</div>
+                <span class="tag">产业基金</span>
+                <h3>国家能源局设立200亿元"聚变产业基金"</h3>
+                <p>国家能源局设立200亿元"聚变产业基金"，上海国投公司旗下上海未来产业基金宣布规模由100亿元增至150亿元，首个直投项目便是中国聚变能源有限公司。国资是行业发展的主力军，资金规模最大、参与最深。</p>
+                <div class="meta">来源: 证券时报 | 时间: 2026-02-27</div>
             </div>
         </div>
 
         <div class="section">
-            <h2>⏰ 商业化时间表</h2>
-            <div class="news-item">
-                <span class="tag">预测</span>
-                <h3>业内预计2040年之前实现并网发电</h3>
-                <p>聚变工业协会（FIA）调查显示，在2040年之前实现并网发电已成为绝大多数商业聚变公司的共识，其中28家公司预计将在2030年—2035年实现并网。</p>
-                <div class="meta">来源: 证券时报 | 时间: 2026-02</div>
+            <h2>💡 投资逻辑</h2>
+            <div class="quote">"作为硬科技投资人，如果不布局可控核聚变，很可能错过下一代科技革命中最关键的能源变革机遇。"——中科创星创始合伙人米磊
             </div>
             <div class="news-item">
-                <h3>未来十年发展三阶段</h3>
-                <p>2028年—2030年：多个头部项目将冲击聚变发电关键节点，行业从科学研究走向工程实现；<br>
-                2030年—2035年：头部企业将启动示范电站建设，行业从工程实现走向商业应用；<br>
-                2035年后：若示范阶段验证可行性，可控核聚变将迈向规模化推广，有望重构全球能源体系。</p>
-                <div class="meta">来源: 证券时报 | 时间: 2026-02</div>
+                <span class="tag">AI驱动</span>
+                <h3>AI的尽头是算力，算力的尽头是能源</h3>
+                <p>人工智能的发展浪潮越汹涌，产业界对电力供给的焦虑就越大。可控核聚变被视为有望从根本上解决人类能源问题的"终极方案"。从能源发展的物理路径来看，基于电子层面的能量利用在能量密度上正逐渐接近理论极限，突破方向必然指向原子核层面的能量释放。</p>
+                <div class="meta">来源: 证券时报 | 时间: 2026-02-27</div>
+            </div>
+            <div class="news-item">
+                <span class="tag">三大变化</span>
+                <h3>行业出现三大变化</h3>
+                <p>千乘资本投资副总裁钱亚声观察到，近一年的融资潮中，行业出现了三大变化：一是政策环境从鼓励发展走向产业扶持；二是项目数量从屈指可数走向全产业链涌现；三是项目估值从普遍极具性价比走向头部项目获得溢价。</p>
+                <div class="meta">来源: 证券时报 | 时间: 2026-02-27</div>
+            </div>
+            <div class="news-item">
+                <span class="tag">布局特点</span>
+                <h3>"核心装置集中资源，上下游产业百花齐放"</h3>
+                <p>资本的布局呈现出"核心装置集中资源，上下游产业百花齐放"的特点。从单项目融资额、资本集中度来看，核心装置仍是最主要的资金投向；而上下游赛道因投资门槛更低、项目更充足，且在聚变技术路线尚未完全确定的背景下，有着"卖铲子"的相对确定性，吸引了更多资本和机构关注。</p>
+                <div class="meta">来源: 证券时报 | 时间: 2026-02-27</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔮 未来展望</h2>
+            <div class="news-item">
+                <span class="tag tag-hot">时间表</span>
+                <h3>业内预计2040年之前能实现并网发电</h3>
+                <p>聚变工业协会（FIA）在调查了45家受访公司后，给出的答案是，在2040年之前实现并网发电，已成为绝大多数商业聚变公司的共识，其中28家公司预计将在2030年—2035年实现并网，届时也会伴随着标志性的技术突破和项目落地带来资本集聚的爆发。</p>
+                <div class="meta">来源: 证券时报 | 时间: 2026-02-27</div>
+            </div>
+            <div class="news-item">
+                <span class="tag">三阶段</span>
+                <h3>未来十年将分为三个关键阶段</h3>
+                <p>2028年—2030年：多个头部项目将冲击聚变发电的关键节点，行业从科学研究走向工程实现；<br>2030年—2035年：头部企业将启动示范电站建设，行业从工程实现走向商业应用；<br>2035年后：若示范阶段验证了商业化推广的可行性，可控核聚变将真正迈向规模化推广，甚至有望重构全球能源体系。</p>
+                <div class="meta">来源: 证券时报 | 时间: 2026-02-27</div>
+            </div>
+            <div class="news-item">
+                <span class="tag">技术突破</span>
+                <h3>高温超导材料突破使装置小型化成为可能</h3>
+                <p>中科创星创始合伙人米磊表示，高温超导材料的突破使可控核聚变装置的小型化成为可能，AI对算力与能源的巨大需求也为该领域带来了新的投资机遇。国内外聚变实验装置正在不断达成新的技术指标，上游超导材料、射频系统、控制方式都在持续进步。</p>
+                <div class="meta">来源: 证券时报 | 时间: 2026-02-27</div>
             </div>
         </div>
 
         <footer>
+            <p><a href="index.html" class="back">← 返回首页</a></p>
             <p>AI日报 | 每日更新全球科技前沿资讯</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">数据来源: 证券时报, 凤凰网, 华西证券等</p>
+            <p style="margin-top: 5px; font-size: 0.85em; color: #555;">更新时间: 2026-03-01 18:03 CST</p>
         </footer>
     </div>
 </body>

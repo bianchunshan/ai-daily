@@ -4,123 +4,174 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>半导体 - AI日报</title>
+    <title>AI日报 - 半导体芯片 | 2026年3月1日</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #0a0a0f; color: #e0e0e0; line-height: 1.6; }
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .nav { background: #151520; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
-        .nav a { color: #667eea; text-decoration: none; margin-right: 20px; }
-        .nav a:hover { text-decoration: underline; }
         header { text-align: center; padding: 40px 0; border-bottom: 1px solid #2a2a3a; margin-bottom: 30px; }
-        header h1 { font-size: 2.5em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+        header h1 { font-size: 2.5em; background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+        header .date { color: #888; font-size: 1.1em; }
+        .nav-bar { background: #151520; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; }
+        .nav-bar a { color: #667eea; text-decoration: none; margin: 0 12px; font-size: 0.95em; }
+        .nav-bar a:hover { text-decoration: underline; }
         .section { background: #151520; border-radius: 12px; padding: 25px; margin-bottom: 25px; border: 1px solid #2a2a3a; }
-        .section h2 { color: #667eea; font-size: 1.5em; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        .news-item { padding: 15px 0; border-bottom: 1px solid #2a2a3a; }
+        .section h2 { color: #00d4ff; font-size: 1.5em; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .section h2::before { content: ''; width: 4px; height: 24px; background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%); border-radius: 2px; }
+        .news-item { padding: 20px 0; border-bottom: 1px solid #2a2a3a; }
         .news-item:last-child { border-bottom: none; }
-        .news-item h3 { color: #e0e0e0; font-size: 1.1em; margin-bottom: 8px; }
-        .news-item p { color: #888; font-size: 0.95em; line-height: 1.5; }
-        .news-item .meta { color: #667eea; font-size: 0.85em; margin-top: 8px; }
-        .tag { display: inline-block; padding: 4px 12px; background: rgba(102, 126, 234, 0.2); color: #667eea; border-radius: 20px; font-size: 0.8em; margin-right: 8px; }
+        .news-item h3 { color: #e0e0e0; font-size: 1.2em; margin-bottom: 10px; }
+        .news-item p { color: #aaa; font-size: 0.95em; line-height: 1.7; margin-bottom: 10px; }
+        .news-item .meta { color: #00d4ff; font-size: 0.85em; }
+        .tag { display: inline-block; padding: 4px 12px; background: rgba(0, 212, 255, 0.2); color: #00d4ff; border-radius: 20px; font-size: 0.8em; margin-right: 8px; }
         .tag-hot { background: rgba(255, 107, 107, 0.2); color: #ff6b6b; }
+        .tag-breaking { background: rgba(255, 165, 0, 0.2); color: #ffa500; }
+        .highlight { color: #ffd700; font-weight: bold; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
+        .stat-box { background: rgba(0,212,255,0.1); padding: 15px; border-radius: 8px; text-align: center; }
+        .stat-box .number { font-size: 2em; color: #00d4ff; font-weight: bold; }
+        .stat-box .label { color: #888; font-size: 0.9em; }
         footer { text-align: center; padding: 30px; color: #666; border-top: 1px solid #2a2a3a; margin-top: 40px; }
+        a.back { color: #667eea; text-decoration: none; display: inline-block; margin-bottom: 20px; }
+        a.back:hover { text-decoration: underline; }
+        .warning { background: rgba(255,165,0,0.1); border-left: 4px solid #ffa500; padding: 15px; margin: 15px 0; border-radius: 0 8px 8px 0; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="nav">
-            <a href="index.html">← 返回首页</a>
+        <div class="nav-bar">
+            <a href="index.html">首页</a>
             <a href="world.html">国际局势</a>
             <a href="ai.html">人工智能</a>
             <a href="new-energy.html">新能源</a>
+            <a href="robotics.html">机器人</a>
+            <a href="quantum.html">量子计算</a>
+            <a href="biotech.html">脑机接口</a>
             <a href="space.html">商业航天</a>
+            <a href="fusion.html">核聚变</a>
         </div>
 
         <header>
-            <h1>💻 半导体</h1>
-            <div style="color: #888;">芯片产业与国产替代进展</div>
+            <h1>💻 半导体芯片</h1>
+            <div class="date">2026年3月1日 | 北京时间 18:03</div>
         </header>
 
-        <div class="section">
-            <h2>🔥 重磅消息</h2>
-            <div class="news-item">
-                <span class="tag tag-hot">重磅</span>
-                <h3>英伟达GTC 2026前瞻：黄仁勋将发布全球首款1.6nm芯片Feynman</h3>
-                <p>英伟达GTC 2026大会将于3月15日在圣何塞举行，黄仁勋将揭晓"令世界惊讶"的全新芯片——代号Feynman。这将是全球首款采用台积电A16（1.6nm）制程的芯片，融入超级电轨（SPR）技术，预计2028年启动量产。Feynman还可能首次集成Groq的LPU（语言处理单元）硬件堆栈以优化延迟。</p>
-                <div class="meta">来源: EET-China, 快科技, 光纤在线 | 时间: 2026-02-26</div>
+        <div class="stats">
+            <div class="stat-box">
+                <div class="number">9750亿</div>
+                <div class="label">2026年全球半导体销售额(美元)</div>
             </div>
-            <div class="news-item">
-                <span class="tag tag-hot">里程碑</span>
-                <h3>台积电最大客户易主：英伟达超越苹果</h3>
-                <p>台积电2025年财报显示，英伟达贡献营收占比达19%，超越苹果的17%，正式成为台积电最大客户。英伟达2025年采购额猛增至233亿美元，已锁定延伸至2027年的供货承诺。法人预估2026年英伟达对台积电营收贡献比重可望突破20%。</p>
-                <div class="meta">来源: 凤凰网, 台积电财报 | 时间: 2026-03-01</div>
+            <div class="stat-box">
+                <div class="number">26%</div>
+                <div class="label">2026年行业增长率</div>
             </div>
-            <div class="news-item">
-                <span class="tag">产能紧张</span>
-                <h3>台积电2nm产能已被预订一空，2026年HBM产能全部售罄</h3>
-                <p>台积电2nm制程产能几乎被一线客户预订一空，苹果、高通、联发科、AMD和英伟达等均已锁定产能，排期远至2027年Q2。存储芯片方面，2026年HBM产能已全部售罄，涨价趋势持续。</p>
-                <div class="meta">来源: 新浪财经, culpium | 时间: 2026-03-01</div>
+            <div class="stat-box">
+                <div class="number">20+</div>
+                <div class="label">涨价企业数量</div>
             </div>
-            <div class="news-item">
-                <span class="tag">技术突破</span>
-                <h3>硅光芯片2026年成商转元年，代工大战全面打响</h3>
-                <p>2026年将成为硅光技术大规模商用的关键转折点。野村证券预测，800G与1.6T光模块出货量将在2026年实现显著翻倍，硅光子技术渗透率预计达50%-70%。Tower、GlobalFoundries、台积电、联电等代工巨头纷纷加码布局。</p>
-                <div class="meta">来源: 经济日报, 半导体行业观察 | 时间: 2026-03-01</div>
+            <div class="stat-box">
+                <div class="number">50%</div>
+                <div class="label">AI芯片收入占比</div>
             </div>
         </div>
 
         <div class="section">
-            <h2>🇨🇳 国产替代</h2>
+            <h2>🔥 最新动态</h2>
             <div class="news-item">
-                <span class="tag tag-hot">国产突破</span>
-                <h3>DeepSeek V4优先适配华为昇腾，打破英伟达垄断格局</h3>
-                <p>DeepSeek V4将优先向华为、寒武纪等国产厂商提供早期访问权限，打破行业惯例。DeepSeek在昇腾平台完成模型迁移后，推理速度直接提升超35倍。华为昇腾950 PR/950 DT预计分别于2026年Q1/Q4推出，后续将推出支持8192张昇腾卡的Atlas 950 SuperPoD。</p>
-                <div class="meta">来源: 路透社, 36氪 | 时间: 2026-02-27</div>
+                <span class="tag tag-breaking">涨价潮</span>
+                <h3>半导体行业掀涨价风暴，超20家企业发涨价函</h3>
+                <p>进入2026年以来，全球半导体产业链迎来新一轮全面涨价潮。从存储芯片到MCU，从晶圆代工到封装测试，从被动元件到连接器，涨价信号此起彼伏。截至目前已有超过20家国内外半导体企业正式发布涨价函，涨幅从5%到80%不等。本轮涨价潮的核心驱动力来自AI需求爆发引发的供需失衡，以及金银铜等原材料价格持续攀升带来的成本压力。</p>
+                <div class="meta">来源: 国际电子商情 | 时间: 2026-02-11</div>
             </div>
             <div class="news-item">
-                <span class="tag">国产突破</span>
-                <h3>国产算力加速追赶，海光信息市值突破6000亿元</h3>
-                <p>在英伟达先进芯片被限制进入国内的背景下，国产算力芯片企业仍处在发展窗口期。2026年1月28日，海光信息市值突破6000亿元，成为A股算力板块领涨龙头。</p>
-                <div class="meta">来源: 周览财经 | 时间: 2026-02-02</div>
+                <span class="tag tag-hot">业绩</span>
+                <h3>超150家半导体公司业绩揭晓：营收"普增"但利润"喜忧参半"</h3>
+                <p>截至2026年2月28日，申万半导体行业173家上市公司中，已有152家披露了2025年业绩预告。披露收入数据的公司中超八成公司收入实现正增长，但利润端分化明显。"报喜"公司共计78家，74家公司净利润承压。臻镭科技以最高近6倍的净利润增幅暂居板块"预增王"，佰维存储、思特威等也表现亮眼。</p>
+                <div class="meta">来源: 时代财经 | 时间: 2026-03-01</div>
             </div>
             <div class="news-item">
-                <span class="tag">国产突破</span>
-                <h3>华为、联想加入Linux基金会AAIF，参与制定全球自主AI标准</h3>
-                <p>华为、联想作为首批中国企业，加入Linux Foundation旗下的AAIF（自主AI框架），与OpenAI、谷歌、微软同台制定全球自主AI标准。这意味着昇腾的芯片架构特性将融入全球技术规范。</p>
-                <div class="meta">来源: 36氪 | 时间: 2026-02-24</div>
+                <span class="tag">新股</span>
+                <h3>2026年3月新股打新指南：半导体硬科技领衔</h3>
+                <p>3月A股新股市场主线清晰，半导体、芯片等硬科技赛道成为核心看点。重点标的包括：盛合晶微（先进封装龙头，拟募资48亿元）、优迅股份（通信芯片设计）、昂瑞微（射频前端芯片）。科创板打新需开通权限（2年交易经验、20日日均资产50万元）。</p>
+                <div class="meta">来源: 凤凰网财经 | 时间: 2026-02-27</div>
             </div>
         </div>
 
         <div class="section">
-            <h2>📊 产业动态</h2>
+            <h2>💰 涨价潮详情</h2>
             <div class="news-item">
-                <span class="tag tag-hot">市场</span>
-                <h3>英伟达财报超预期却大跌5.5%，市值蒸发2500亿美元</h3>
-                <p>英伟达发布2026财年四季度财报，营收681亿美元、净利润430亿美元，数据中心业务同比增75%，全线超预期。但财报发布次日股价大跌5.46%，单日市值蒸发超2500亿美元。毛利率从75%降至71%低于预期，对台积电不可撤销采购义务飙升至952亿美元。</p>
-                <div class="meta">来源: 英伟达财报, 36氪 | 时间: 2026-02-25</div>
+                <span class="tag tag-hot">存储芯片</span>
+                <h3>国科微：存储产品最高涨幅80%</h3>
+                <p>国科微宣布自2026年1月起对多款合封KGD存储产品实施价格调整，最高涨幅达80%。公司表示，本次调价主要受存储芯片供应紧张、原材料成本大幅上升以及基板、框架、封测等环节费用持续上涨的影响。</p>
+                <div class="meta">来源: 国际电子商情 | 时间: 2026-01-20</div>
             </div>
             <div class="news-item">
-                <span class="tag">产能预警</span>
-                <h3>台积电CoWoS产能缺口扩大至15%，2026年半导体产能受限</h3>
-                <p>德勤报告指出，2026年半导体行业可能因产能限制而记住这一年。台积电CoWoS产能缺口扩大至15%，英伟达Blackwell芯片交货期被迫延长。</p>
-                <div class="meta">来源: 半导体行业观察</div>
+                <span class="tag">MCU</span>
+                <h3>中微半导：MCU产品涨幅15%-50%</h3>
+                <p>中微半导宣布对MCU、NOR Flash等产品进行价格调整，涨价幅度为15%至50%。作为2024年国内MCU出货量冠军，中微半导的调价直接影响消费电子、智能家电等下游市场。</p>
+                <div class="meta">来源: 国际电子商情 | 时间: 2026-01-27</div>
             </div>
             <div class="news-item">
-                <span class="tag">价格趋势</span>
-                <h3>国家发改委：存储芯片持续涨价并向下游传导</h3>
-                <p>国家发改委价格监测中心调研反映，截至今年1月，存储芯片两大主要产品DRAM和NAND闪存价格均创2016年有数据以来最高。AI基建推高存储成本，2026年中国手机市场迎来史上首次"全品类涨价潮"，3月后新品涨幅最低1000元。</p>
-                <div class="meta">来源: IT之家, 国家发改委 | 时间: 2026-03-01</div>
+                <span class="tag">功率器件</span>
+                <h3>士兰微：MOS类芯片涨价10%</h3>
+                <p>士兰微宣布对小信号二极管/三极管芯片、沟槽TMBS芯片、MOS类芯片价格上调10%，生效日期为2026年3月1日。此次涨价由全球金属市场价格波动剧烈，以及晶片生产所需关键贵金属价格显著上涨导致的晶圆制造成本攀升引起。</p>
+                <div class="meta">来源: 国际电子商情 | 时间: 2026-02-05</div>
             </div>
             <div class="news-item">
-                <span class="tag">先进封装</span>
-                <h3>2026年先进封装"快马加鞭"：台积电WMCM量产在即</h3>
-                <p>台积电WMCM（晶圆级多芯片模组）封装技术已进入量产倒计时，目标2026年底实现月产6万片晶圆，2027年产能翻倍至12万片。</p>
-                <div class="meta">来源: 新浪财经 | 时间: 2026-02-24</div>
+                <span class="tag">国际大厂</span>
+                <h3>ADI、英飞凌等国际大厂相继宣布涨价</h3>
+                <p>ADI宣布从2026年2月1日起调整产品价格，整体涨幅约15%，近1000款军规级MPN产品涨幅达30%。英飞凌宣布将于2026年4月1日起上调电源开关和IC产品价格，AI数据中心的部署推动了部分半导体产品需求激增。</p>
+                <div class="meta">来源: 国际电子商情 | 时间: 2026-02</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🏭 产业链动态</h2>
+            <div class="news-item">
+                <span class="tag tag-breaking">融资</span>
+                <h3>韬润半导体完成新一轮数亿元D轮融资</h3>
+                <p>上海韬润半导体完成新一轮数亿元D++轮融资，由熙诚金睿领投，深创投、高瓴创投、同创伟业等超额追加投资。本轮融资资金将用于高端模拟底层技术的持续迭代，以及下一代光通信DSP芯片等产品的后续研发。</p>
+                <div class="meta">来源: 新浪财经 | 时间: 2026-03-01</div>
+            </div>
+            <div class="news-item">
+                <span class="tag">定增</span>
+                <h3>精智达拟定增募资不超过29.6亿元加码半导体业务</h3>
+                <p>精智达披露2026年度向特定对象发行A股股票预案，拟募集资金总额不超过29.59亿元，投入半导体存储测试设备研发及产业化智造项目、高端芯片测试设备及前沿技术研发中心项目及补充流动资金。</p>
+                <div class="meta">来源: 新浪财经 | 时间: 2026-02-27</div>
+            </div>
+            <div class="news-item">
+                <span class="tag">国产突破</span>
+                <h3>摩尔线程2025年营收增至15亿元，涨超2倍</h3>
+                <p>国产GPU龙头企业摩尔线程公告，2025年营收增至15亿元，涨了2倍多，亏损同比收窄约37%。60岁的南京人张建中担任董事长兼CEO，曾供职英伟达15年，目前公司市值超2800亿元。</p>
+                <div class="meta">来源: 21世纪经济报道 | 时间: 2026-03-01</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📈 市场展望</h2>
+            <div class="warning">
+                <strong>⚠️ 2026年半导体产能受限</strong><br>
+                根据德勤预测，2026年人们记住的或许更多是产能限制，而非辉煌的技术发展。半导体存储器和用于服务器、PC和移动处理器的最先进逻辑工艺节点的产能已经出现瓶颈。
+            </div>
+            <div class="news-item">
+                <h3>🎯 AI需求主导增长</h3>
+                <p>全球半导体行业预计到2026年年销售额将达到9750亿美元，创历史新高，这主要得益于人工智能基础设施建设的蓬勃发展。高价值的人工智能芯片目前贡献了约一半的总收入，但其销量占比却不到0.2%。</p>
+            </div>
+            <div class="news-item">
+                <h3>📊 存储芯片领涨</h3>
+                <p>据TrendForce集邦咨询调研，2026年第一季度AI与数据中心需求持续加剧全球存储器供需失衡。预估整体Conventional DRAM合约价将从季增55%-60%上调至上涨90%-95%，NAND Flash合约价则从季增33%-38%上调至55%-60%。</p>
+            </div>
+            <div class="news-item">
+                <h3>🔮 长期展望</h3>
+                <p>即使此后增速放缓，到2036年，全球半导体年销售额仍有望达到2万亿美元。芯片市场高度依赖数据中心的人工智能芯片，预计到2026年，该市场将贡献近一半的行业收入。</p>
             </div>
         </div>
 
         <footer>
+            <p><a href="index.html" class="back">← 返回首页</a></p>
             <p>AI日报 | 每日更新全球科技前沿资讯</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">数据来源: 国际电子商情, 时代财经, 新浪财经, 德勤等</p>
+            <p style="margin-top: 5px; font-size: 0.85em; color: #555;">更新时间: 2026-03-01 18:03 CST</p>
         </footer>
     </div>
 </body>
