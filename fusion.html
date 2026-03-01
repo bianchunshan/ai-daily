@@ -16,8 +16,13 @@
         header h1 { font-size: 2.5em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
         .section { background: #151520; border-radius: 12px; padding: 25px; margin-bottom: 25px; border: 1px solid #2a2a3a; }
         .section h2 { color: #667eea; font-size: 1.5em; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        .empty-notice { text-align: center; padding: 60px 20px; color: #666; }
-        .empty-notice p { margin-top: 15px; }
+        .news-item { padding: 15px 0; border-bottom: 1px solid #2a2a3a; }
+        .news-item:last-child { border-bottom: none; }
+        .news-item h3 { color: #e0e0e0; font-size: 1.1em; margin-bottom: 8px; }
+        .news-item p { color: #888; font-size: 0.95em; line-height: 1.5; }
+        .news-item .meta { color: #667eea; font-size: 0.85em; margin-top: 8px; }
+        .tag { display: inline-block; padding: 4px 12px; background: rgba(102, 126, 234, 0.2); color: #667eea; border-radius: 20px; font-size: 0.8em; margin-right: 8px; }
+        .tag-hot { background: rgba(255, 107, 107, 0.2); color: #ff6b6b; }
         footer { text-align: center; padding: 30px; color: #666; border-top: 1px solid #2a2a3a; margin-top: 40px; }
     </style>
 </head>
@@ -29,19 +34,91 @@
             <a href="ai.html">人工智能</a>
             <a href="semiconductor.html">半导体</a>
             <a href="new-energy.html">新能源</a>
+            <a href="robotics.html">机器人</a>
+            <a href="quantum.html">量子计算</a>
+            <a href="biotech.html">脑机接口</a>
+            <a href="space.html">商业航天</a>
         </div>
 
         <header>
-            <h1>⚛️ 核聚变</h1>
-            <div style="color: #888;">可控核聚变与清洁能源终极方案</div>
+            <h1>⚛️ 可控核聚变</h1>
+            <div style="color: #888;">人造太阳与清洁能源终极方案</div>
         </header>
 
         <div class="section">
-            <h2>🔬 前沿进展</h2>
-            <div class="empty-notice">
-                <div style="font-size: 3em;">⚛️</div>
-                <p>该板块正在建设中，暂无今日资讯</p>
-                <p style="font-size: 0.9em; color: #555;">可控核聚变是人类能源的终极梦想，ITER等项目正在推进中</p>
+            <h2>🔥 融资热潮</h2>
+            <div class="news-item">
+                <span class="tag tag-hot">重磅</span>
+                <h3>星环聚能完成10亿元A轮融资，刷新国内纪录</h3>
+                <p>民营聚变企业上海星环聚能完成10亿元A轮融资，一举刷新国内同类企业单笔融资纪录。公司聚焦高温超导托卡马克技术路线，计划2027年实现聚变发电关键节点。</p>
+                <div class="meta">来源: 证券时报 | 时间: 2026-01-12</div>
+            </div>
+            <div class="news-item">
+                <span class="tag">融资</span>
+                <h3>中科清能完成近5亿元Pre-A++轮融资</h3>
+                <p>河南中科清能完成近5亿元Pre-A++轮融资，公司专注于低温技术与聚变装置研发。2026年以来可控核聚变领域融资消息接连不断，单笔融资规模屡创新高。</p>
+                <div class="meta">来源: 证券时报 | 时间: 2026-02</div>
+            </div>
+            <div class="news-item">
+                <span class="tag">投资</span>
+                <h3>阿里巴巴领投诺瓦聚变，海外巨头积极布局</h3>
+                <p>阿里巴巴领投国内核聚变初创企业诺瓦聚变的天使轮投资，目标直指为AI数据中心供给能源。英伟达、谷歌和比尔·盖茨共同为主导的核聚变公司CFS注入8.63亿美元。</p>
+                <div class="meta">来源: 证券时报 | 时间: 2026-02</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📜 政策支持</h2>
+            <div class="news-item">
+                <span class="tag tag-hot">政策</span>
+                <h3>"十五五"规划明确将核聚变能纳入未来产业</h3>
+                <p>2025年10月发布的"十五五"规划中，核聚变首次被列入"未来产业"核心清单，与氢能并列，明确为新的经济增长点。政策层面明确提出探索多元技术路线、典型应用场景及可行商业模式。</p>
+                <div class="meta">来源: 证券时报 | 时间: 2026-02</div>
+            </div>
+            <div class="news-item">
+                <span class="tag">法规</span>
+                <h3>《原子能法》正式施行，明确鼓励受控热核聚变</h3>
+                <p>2026年1月《中华人民共和国原子能法》正式施行，明确"鼓励和支持受控热核聚变"。国家能源局设立200亿元"聚变产业基金"，上海未来产业基金规模增至150亿元。</p>
+                <div class="meta">来源: 证券时报 | 时间: 2026-02</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔬 技术进展</h2>
+            <div class="news-item">
+                <span class="tag">突破</span>
+                <h3>EAST实现1亿摄氏度1066秒稳态运行</h3>
+                <p>2025年，全超导托卡马克核聚变实验装置（EAST）实现1亿摄氏度高温等离子体、1066秒稳态运行，首次在实验室模拟出未来聚变堆的运行环境。</p>
+                <div class="meta">来源: 中国科学院 | 时间: 2026-02</div>
+            </div>
+            <div class="news-item">
+                <span class="tag">突破</span>
+                <h3>中国环流三号实现原子核温度1.17亿度</h3>
+                <p>中国环流三号在国内首次实现原子核温度1.17亿度、电子温度1.6亿度，综合参数聚变三乘积实现大幅跃升。目前正在改造中，为2027年聚变能燃烧实验做准备。</p>
+                <div class="meta">来源: 核工业西南物理研究院 | 时间: 2026-02</div>
+            </div>
+            <div class="news-item">
+                <span class="tag">项目</span>
+                <h3>BEST项目计划2027年建成</h3>
+                <p>位于安徽合肥的BEST（聚变能紧凑型燃烧等离子体装置）项目计划于2027年建成，沿着"物理验证—工程突破—商业应用"的清晰路径稳步推进。2025年项目招标数量达到43个，招标预算金额达20.43亿元。</p>
+                <div class="meta">来源: 证券时报 | 时间: 2026-02</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⏰ 商业化时间表</h2>
+            <div class="news-item">
+                <span class="tag">预测</span>
+                <h3>业内预计2040年之前实现并网发电</h3>
+                <p>聚变工业协会（FIA）调查显示，在2040年之前实现并网发电已成为绝大多数商业聚变公司的共识，其中28家公司预计将在2030年—2035年实现并网。</p>
+                <div class="meta">来源: 证券时报 | 时间: 2026-02</div>
+            </div>
+            <div class="news-item">
+                <h3>未来十年发展三阶段</h3>
+                <p>2028年—2030年：多个头部项目将冲击聚变发电关键节点，行业从科学研究走向工程实现；<br>
+                2030年—2035年：头部企业将启动示范电站建设，行业从工程实现走向商业应用；<br>
+                2035年后：若示范阶段验证可行性，可控核聚变将迈向规模化推广，有望重构全球能源体系。</p>
+                <div class="meta">来源: 证券时报 | 时间: 2026-02</div>
             </div>
         </div>
 
