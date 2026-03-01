@@ -1,0 +1,92 @@
+{
+  "lastUpdate": "2026-03-01T23:33:00+08:00",
+  "nextUpdate": "2026-03-02T00:03:00+08:00",
+  "headlines": [
+    {
+      "category": "国际局势",
+      "title": "美以联合空袭伊朗，已致201人死亡、747人受伤",
+      "summary": "2026年2月28日，美国和以色列对伊朗发动联合军事打击，伊朗红新月会通报已造成201人死亡、747人受伤，波及24个省份。特朗普称哈梅内伊'已死'，伊朗方面予以否认。",
+      "source": "新华网",
+      "time": "2026-03-01",
+      "priority": "breaking"
+    },
+    {
+      "category": "国际局势",
+      "title": "联合国秘书长古特雷斯谴责中东军事冲突升级",
+      "summary": "联合国秘书长古特雷斯发表声明，称美以对伊朗动用武力及伊朗的报复行动破坏了国际和平与安全，呼吁各方立即停止敌对行动。",
+      "source": "联合国新闻",
+      "time": "2026-03-01",
+      "priority": "high"
+    },
+    {
+      "category": "人工智能",
+      "title": "Google和三星部署多步移动AI代理，领先苹果",
+      "summary": "Google宣布Gemini驱动的代理功能将在Pixel 10和三星Galaxy S26上推出，实现多步骤任务执行，领先于苹果的智能功能。",
+      "source": "MarketingProfs",
+      "time": "2026-02-27",
+      "priority": "high"
+    },
+    {
+      "category": "人工智能",
+      "title": "OpenAI完成1100亿美元融资，全球AI领域规模最大单笔融资",
+      "summary": "OpenAI宣布完成1100亿美元新融资，其中亚马逊投资500亿美元、英伟达投资300亿美元、软银投资300亿美元。OpenAI投前估值达7300亿美元。",
+      "source": "36氪",
+      "time": "2026-02-28",
+      "priority": "high"
+    },
+    {
+      "category": "半导体",
+      "title": "NVIDIA GTC 2026：Feynman处理器 reportedly采用台积电A16工艺",
+      "summary": "据Chosun Biz报道，NVIDIA即将推出的Feynman处理器 reportedly 采用台积电A16节点，三星和SK海力士将展示HBM4。",
+      "source": "TrendForce",
+      "time": "2026-02-25",
+      "priority": "high"
+    },
+    {
+      "category": "半导体",
+      "title": "NVIDIA将成为台积电最大客户，超越苹果",
+      "summary": "据分析师估计和黄仁勋本人表示，NVIDIA今年将成为台积电最大客户。苹果目前被认为是台积电最大客户。",
+      "source": "CNBC",
+      "time": "2026-01-26",
+      "priority": "high"
+    },
+    {
+      "category": "新能源",
+      "title": "中国科学家突破1000公里续航EV电池",
+      "summary": "中国科学家开发出新型EV电池，能量密度大幅提升，可实现超过1000公里（620英里）的续航里程。",
+      "source": "Electrek",
+      "time": "2026-02-27",
+      "priority": "high"
+    },
+    {
+      "category": "新能源",
+      "title": "零跑汽车2月交付28067辆，稳居新势力第一梯队",
+      "summary": "零跑汽车公布2月交付数据，全系交付达28067台。2025年累计交付约59.66万辆，2026年定下100万辆的交付目标。",
+      "source": "新浪财经",
+      "time": "2026-03-01",
+      "priority": "high"
+    }
+  ],
+  "categories": {
+    "world": {
+      "name": "国际局势",
+      "articles": 10,
+      "lastUpdate": "2026-03-01T23:33:00+08:00"
+    },
+    "ai": {
+      "name": "人工智能",
+      "articles": 14,
+      "lastUpdate": "2026-03-01T23:33:00+08:00"
+    },
+    "semiconductor": {
+      "name": "半导体",
+      "articles": 12,
+      "lastUpdate": "2026-03-01T23:33:00+08:00"
+    },
+    "newEnergy": {
+      "name": "新能源",
+      "articles": 11,
+      "lastUpdate": "2026-03-01T23:33:00+08:00"
+    }
+  }
+}
