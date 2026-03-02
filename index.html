@@ -1,184 +1,530 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>AI日报 - 2026年3月2日</title>
+    <title>AI日报 - 全球科技前沿资讯</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        accent: '#ec4899',
+                        dark: '#0f0f1a',
+                        darker: '#08080f',
+                        card: '#1a1a2e',
+                        'card-hover': '#252542'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #0a0a0f; color: #e0e0e0; line-height: 1.6; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        header { text-align: center; padding: 40px 0; border-bottom: 1px solid #2a2a3a; margin-bottom: 30px; }
-        header h1 { font-size: 2.5em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
-        header .date { color: #888; font-size: 1.1em; }
-        .section { background: #151520; border-radius: 12px; padding: 25px; margin-bottom: 25px; border: 1px solid #2a2a3a; }
-        .section h2 { color: #667eea; font-size: 1.5em; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        .section h2::before { content: ''; width: 4px; height: 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 2px; }
-        .news-item { padding: 15px 0; border-bottom: 1px solid #2a2a3a; }
-        .news-item:last-child { border-bottom: none; }
-        .news-item h3 { color: #e0e0e0; font-size: 1.1em; margin-bottom: 8px; }
-        .news-item p { color: #888; font-size: 0.95em; line-height: 1.5; }
-        .news-item .meta { color: #667eea; font-size: 0.85em; margin-top: 8px; }
-        .tag { display: inline-block; padding: 4px 12px; background: rgba(102, 126, 234, 0.2); color: #667eea; border-radius: 20px; font-size: 0.8em; margin-right: 8px; }
-        .tag-hot { background: rgba(255, 107, 107, 0.2); color: #ff6b6b; }
-        .tag-new { background: rgba(0, 200, 100, 0.2); color: #00c864; }
-        .tag-breaking { background: rgba(255, 165, 0, 0.2); color: #ffa500; }
-        .urgent { background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
-        .urgent h3 { color: white; margin-bottom: 10px; }
-        .breaking { background: linear-gradient(135deg, #ff4757 0%, #ff6348 100%); color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
-        .breaking h3 { color: white; margin-bottom: 10px; }
-        footer { text-align: center; padding: 30px; color: #666; border-top: 1px solid #2a2a3a; margin-top: 40px; }
-        .highlight { color: #ffd700; }
-        .update-time { text-align: center; color: #555; font-size: 0.9em; margin-top: 10px; }
-        .ticker { background: #1a1a2e; padding: 12px 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #ff6b6b; }
-        .ticker-content { display: flex; align-items: center; gap: 15px; overflow-x: auto; }
-        .ticker-item { white-space: nowrap; color: #e0e0e0; font-size: 0.9em; }
-        .ticker-label { background: #ff6b6b; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; font-weight: bold; }
-        .nav-bar { background: #151520; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; }
-        .nav-bar a { color: #667eea; text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav-bar a:hover { text-decoration: underline; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .card { background: #1a1a2e; padding: 20px; border-radius: 8px; border: 1px solid #2a2a3a; }
-        .card h3 { color: #667eea; margin-bottom: 10px; }
-        .card p { color: #888; font-size: 0.9em; }
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        * { font-family: 'Noto Sans SC', sans-serif; }
+        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass { background: rgba(26, 26, 46, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+        .news-card { transition: all 0.3s ease; }
+        .news-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2); }
+        .ticker { animation: scroll 30s linear infinite; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .loading { display: inline-block; width: 20px; height: 20px; border: 2px solid #fff; border-radius: 50%; border-top-color: transparent; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="nav-bar">
-            <a href="world.html">国际局势</a>
-            <a href="ai.html">人工智能</a>
-            <a href="semiconductor.html">半导体</a>
-            <a href="new-energy.html">新能源</a>
-            <a href="robotics.html">机器人</a>
-            <a href="quantum.html">量子计算</a>
-            <a href="biotech.html">脑机接口</a>
-            <a href="space.html">商业航天</a>
-            <a href="fusion.html">核聚变</a>
-        </div>
-
-        <header>
-            <h1>🚀 AI日报</h1>
-            <div class="date">2026年3月2日 星期一 | 北京时间 02:03</div>
-        </header>
-
-        <div class="ticker">
-            <div class="ticker-content">
-                <span class="ticker-label">实时</span>
-                <span class="ticker-item">🔴 美以联合空袭伊朗，已致201死747伤，冲突全面升级</span>
-                <span class="ticker-item">|</span>
-                <span class="ticker-item">🤖 中国AI核心产业规模突破1.2万亿元</span>
-                <span class="ticker-item">|</span>
-                <span class="ticker-item">💾 英伟达超越苹果成为台积电最大客户</span>
-                <span class="ticker-item">|</span>
-                <span class="ticker-item">🔋 2025年光伏新增装机3.17亿千瓦，同比增长14%</span>
+<body class="bg-darker text-gray-100 min-h-screen">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-robot text-3xl text-primary"></i>
+                    <div>
+                        <h1 class="text-xl font-bold gradient-text">AI日报</h1>
+                        <p class="text-xs text-gray-400" id="current-date"></p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex items-center gap-6">
+                    <button onclick="filterCategory('all')" class="nav-btn text-primary font-medium">首页</button>
+                    <button onclick="filterCategory('ai')" class="nav-btn text-gray-400 hover:text-white transition">AI</button>
+                    <button onclick="filterCategory('semiconductor')" class="nav-btn text-gray-400 hover:text-white transition">半导体</button>
+                    <button onclick="filterCategory('energy')" class="nav-btn text-gray-400 hover:text-white transition">新能源</button>
+                    <button onclick="filterCategory('robotics')" class="nav-btn text-gray-400 hover:text-white transition">机器人</button>
+                    <button onclick="filterCategory('quantum')" class="nav-btn text-gray-400 hover:text-white transition">量子</button>
+                    <button onclick="filterCategory('biotech')" class="nav-btn text-gray-400 hover:text-white transition">生物</button>
+                    <button onclick="filterCategory('space')" class="nav-btn text-gray-400 hover:text-white transition">航天</button>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleSearch()" class="p-2 hover:bg-gray-800 rounded-lg transition">
+                        <i class="fas fa-search text-gray-400"></i>
+                    </button>
+                    <button onclick="toggleTheme()" class="p-2 hover:bg-gray-800 rounded-lg transition">
+                        <i class="fas fa-sun text-yellow-400" id="theme-icon"></i>
+                    </button>
+                    <button onclick="toggleSubscribe()" class="bg-primary hover:bg-primary/80 px-4 py-2 rounded-lg text-sm font-medium transition">
+                        订阅
+                    </button>
+                </div>
             </div>
         </div>
+    </header>
 
-        <div class="breaking">
-            <h3>🔥 突发：美以联合空袭伊朗，已致201死747伤</h3>
-            <p>2026年2月28日，美国和以色列对伊朗发动联合军事打击。伊朗红新月会通报，袭击已造成201人死亡、747人受伤，波及24个省份。特朗普称哈梅内伊"已死"，伊朗方面予以否认。伊朗革命卫队宣布禁止任何船只通过霍尔木兹海峡，该海峡实际上已被关闭。这是继2025年6月"12日战争"后，美以与伊朗的又一次重大冲突，烈度或超上次。</p>
-        </div>
-
-        <div class="grid">
-            <div class="card">
-                <h3>🌍 国际局势</h3>
-                <p>• 美以联合空袭伊朗，已致201死747伤<br>• 冲突烈度或超"12日战争"<br>• 伊朗关闭霍尔木兹海峡<br>• 多国关闭领空，局势升级</p>
-                <a href="world.html" style="color: #667eea; font-size: 0.9em;">查看详情 →</a>
-            </div>
-            <div class="card">
-                <h3>🤖 人工智能</h3>
-                <p>• 中国AI核心产业规模突破1.2万亿元<br>• 全球AI 2026年演进新局展望<br>• 国产开源大模型下载量破100亿次<br>• 具身智能迈入应用时代</p>
-                <a href="ai.html" style="color: #667eea; font-size: 0.9em;">查看详情 →</a>
-            </div>
-            <div class="card">
-                <h3>💻 半导体</h3>
-                <p>• 半导体年报：营收普增利润分化<br>• 涨价潮席卷产业链<br>• 英伟达超越苹果成台积电最大客户<br>• 2nm制程产能被疯抢至2027年</p>
-                <a href="semiconductor.html" style="color: #667eea; font-size: 0.9em;">查看详情 →</a>
-            </div>
-            <div class="card">
-                <h3>🔋 新能源</h3>
-                <p>• 2月新能源车销量数据出炉<br>• 渗透率突破60%，出海加速<br>• 锂电池技术获首创性突破<br>• 1月新型储能装机同比翻倍</p>
-                <a href="new-energy.html" style="color: #667eea; font-size: 0.9em;">查看详情 →</a>
-            </div>
-            <div class="card">
-                <h3>🔮 量子计算</h3>
-                <p>• 全球首个开放下载量子操作系统<br>• 25起融资超25亿元<br>• IQM估值18亿美元即将上市<br>• 十五五规划未来产业首位</p>
-                <a href="quantum.html" style="color: #667eea; font-size: 0.9em;">查看详情 →</a>
-            </div>
-            <div class="card">
-                <h3>☀️ 核聚变</h3>
-                <p>• 星环聚能10亿元A轮融资创纪录<br>• 阿里领投诺瓦聚变<br>• 全球累计投资超97亿美元<br>• 预计2040年前并网发电</p>
-                <a href="fusion.html" style="color: #667eea; font-size: 0.9em;">查看详情 →</a>
+    <!-- Search Modal -->
+    <div id="search-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/80" onclick="toggleSearch()"></div>
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-full max-w-2xl px-4">
+            <div class="glass rounded-2xl p-6">
+                <div class="relative">
+                    <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <input type="text" id="search-input" placeholder="搜索新闻..." 
+                        class="w-full bg-gray-800/50 border border-gray-700 rounded-xl py-3 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-primary"
+                        onkeyup="searchNews(this.value)">
+                </div>
+                <div id="search-results" class="mt-4 max-h-96 overflow-y-auto"></div>
             </div>
         </div>
-
-        <div class="section" style="margin-top: 30px;">
-            <h2>📰 今日要闻</h2>            
-            <div class="news-item">
-                <span class="tag tag-breaking">突发</span>
-                <h3>美以联合空袭伊朗，已致201人死亡、747人受伤</h3>
-                <p>伊朗红新月会2月28日晚通报，美国和以色列的联合袭击已造成201人死亡、747人受伤。美以当天空袭了伊朗24个省份，位于伊朗南部米纳卜市的一所小学在美以军事行动中遭袭，已造成115人死亡。伊朗伊斯兰革命卫队当晚宣布，禁止任何船只通过霍尔木兹海峡。</p>
-                <div class="meta">来源: 新华网 | 时间: 2026-03-01</div>
-            </div>
-            <div class="news-item">
-                <span class="tag tag-breaking">国际</span>
-                <h3>特朗普称哈梅内伊"已死"，伊朗方面予以否认</h3>
-                <p>特朗普2月28日在社交媒体发文，称伊朗最高领袖哈梅内伊"已死"。伊朗伊斯兰共和国广播电视台报道，一名接近伊朗最高领袖办公室的消息人士表示，哈梅内伊正"坚定、沉着地指挥战场局势"。以色列总理内塔尼亚胡当晚发表讲话称，越来越多迹象显示哈梅内伊"已不在人世"。</p>
-                <div class="meta">来源: 新华网/中国新闻网 | 时间: 2026-03-01</div>
-            </div>
-            <div class="news-item">
-                <span class="tag tag-hot">AI</span>
-                <h3>2026年中国AI发展趋势前瞻：核心产业规模突破1.2万亿元</h3>
-                <p>据新华社报道，2026年中国人工智能企业数量超过6000家，AI核心产业规模预计突破1.2万亿元，同比增长近30%。国产开源大模型全球累计下载量突破100亿次，中国成为AI专利最大持有国。</p>
-                <div class="meta">来源: 新华网 | 时间: 2026-01-28</div>
-            </div>
-            <div class="news-item">
-                <span class="tag">半导体</span>
-                <h3>台积电最大客户正式易主！英伟达超越苹果位居第一</h3>
-                <p>晶圆代工龙头台积电最新出炉的2025年合并财报揭露关键客户结构变化，在AI浪潮推升下，英伟达正式超越苹果成为台积电最大客户。数据显示，英伟达2025年采购额猛增至233亿美元，占台积电总营收比重19%。台积电亚利桑那厂2025年转亏为盈，获利161亿元。</p>
-                <div class="meta">来源: EET-China | 时间: 2026-03-01</div>
-            </div>
-            <div class="news-item">
-                <span class="tag">新能源</span>
-                <h3>我国科学家取得锂电池核心技术首创性突破</h3>
-                <p>近日，由南开大学和上海空间电源研究所等单位科研人员组成的团队，取得了一项首创性的突破。通过全新的电解液技术，有望使现有锂电池在同等大小和重量的情况下，实现续航力的成倍提升，耐低温性能也明显增强。这一成果在国际学术期刊《自然》上发表。</p>
-                <div class="meta">来源: 新华网 | 时间: 2026-02-28</div>
-            </div>
-            <div class="news-item">
-                <span class="tag">新能源</span>
-                <h3>2025年全国光伏新增装机同比增长14%</h3>
-                <p>国家能源局发布数据显示，2025年，全国光伏新增装机3.17亿千瓦，同比增长14%，其中集中式光伏新增1.64亿千瓦，分布式光伏新增1.53亿千瓦。截至2025年12月，全国光伏发电装机容量达到12亿千瓦，同比增长35%。</p>
-                <div class="meta">来源: 国家能源局 | 时间: 2026-02-21</div>
-            </div>
-            <div class="news-item">
-                <span class="tag">新能源</span>
-                <h3>1月新型储能装机同比翻倍</h3>
-                <p>中关村储能产业技术联盟发布数据显示，2026年1月国内新型储能市场开年向好，新增投运装机规模达3.78GW/10.90GWh，同比分别增长62%、106%，市场深层结构较去年同期出现明显调整。</p>
-                <div class="meta">来源: 中关村储能产业技术联盟 | 时间: 2026-02-24</div>
-            </div>
-            <div class="news-item">
-                <span class="tag tag-hot">深度</span>
-                <h3>战火升级！烈度或超"12日战争"，本轮美伊冲突五大疑问待解</h3>
-                <p>本轮美以联合打击伊朗，冲突烈度可能超过此前的"12日战争"。专家分析指出，中东冲突已从代理人战争升级为国家级正面交战。目前五大核心问题待解：美以为何选择此时动手、此次行动意图达成哪些目标、报复不设红线烈度将超"12日战争"。</p>
-                <div class="meta">来源: 中国新闻网 | 时间: 2026-03-01 10:34</div>
-            </div>
-            <div class="news-item">
-                <span class="tag tag-hot">深度</span>
-                <h3>专家：中东冲突已从代理人战争升级为国家级正面交战</h3>
-                <p>专家分析指出，本轮美以联合打击伊朗标志着中东冲突已从代理人战争升级为国家级正面交战。美以此次行动目标直指政权核心及哈尔克岛等能源命脉，冲突已突破有限打击范畴，演变为一场旨在彻底摧毁伊朗军工体系的大规模协同作战。</p>
-                <div class="meta">来源: 21世纪经济报道 | 时间: 2026-03-01</div>
-            </div>
-        </div>
-
-        <footer>
-            <p>AI日报 | 每日更新全球科技前沿资讯</p>
-            <p style="margin-top: 10px; font-size: 0.9em;">数据来源: 新华网, 中国新闻网, 国家能源局, EET-China等权威媒体</p>
-            <p style="margin-top: 5px; font-size: 0.85em; color: #555;">更新时间: 2026-03-02 02:03 CST | 下次更新: 02:33</p>
-        </footer>
     </div>
+
+    <!-- Subscribe Modal -->
+    <div id="subscribe-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/80" onclick="toggleSubscribe()"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md px-4">
+            <div class="glass rounded-2xl p-8 text-center">
+                <i class="fas fa-envelope-open-text text-5xl text-primary mb-4"></i>
+                <h3 class="text-2xl font-bold mb-2">订阅 AI日报</h3>
+                <p class="text-gray-400 mb-6">每日推送最新科技资讯</p>
+                <input type="email" placeholder="输入您的邮箱" 
+                    class="w-full bg-gray-800/50 border border-gray-700 rounded-xl py-3 px-4 text-white placeholder-gray-500 focus:outline-none focus:border-primary mb-4">
+                <button onclick="subscribe()" class="w-full bg-primary hover:bg-primary/80 py-3 rounded-xl font-medium transition">
+                    立即订阅
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breaking News Ticker -->
+    <div class="bg-gradient-to-r from-red-600/20 via-orange-600/20 to-red-600/20 border-y border-red-500/30">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center gap-4 overflow-hidden">
+            <span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">突发</span>
+            <div class="flex-1 overflow-hidden">
+                <div class="ticker whitespace-nowrap flex gap-8">
+                    <span class="text-red-400">🔴 美以联合空袭伊朗，已致201死747伤</span>
+                    <span class="text-gray-500">|</span>
+                    <span class="text-gray-300">🤖 中国AI核心产业规模突破1.2万亿元</span>
+                    <span class="text-gray-500">|</span>
+                    <span class="text-gray-300">💾 英伟达超越苹果成为台积电最大客户</span>
+                    <span class="text-gray-500">|</span>
+                    <span class="text-gray-300">🔋 2025年光伏新增装机同比增长14%</span>
+                    <span class="text-gray-500">|</span>
+                    <span class="text-red-400">🔴 美以联合空袭伊朗，已致201死747伤</span>
+                    <span class="text-gray-500">|</span>
+                    <span class="text-gray-300">🤖 中国AI核心产业规模突破1.2万亿元</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative py-12 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="md:col-span-2">
+                    <div class="bg-gradient-to-br from-red-600 to-orange-600 rounded-2xl p-8 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                        <span class="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">突发新闻</span>
+                        <h2 class="text-3xl font-bold mt-4 mb-4">美以联合空袭伊朗</h2>
+                        <p class="text-white/90 text-lg mb-4">已致201人死亡、747人受伤，波及24个省份。伊朗关闭霍尔木兹海峡，冲突全面升级。</p>
+                        <div class="flex items-center gap-4 text-sm text-white/70">
+                            <span><i class="far fa-clock mr-1"></i> 2小时前</span>
+                            <span><i class="far fa-eye mr-1"></i> 12.5k 阅读</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-card rounded-xl p-5 border border-gray-800 hover:border-primary/50 transition cursor-pointer">
+                        <span class="text-primary text-xs font-bold">AI</span>
+                        <h3 class="font-semibold mt-1 mb-2">中国AI核心产业规模突破1.2万亿元</h3>
+                        <p class="text-gray-400 text-sm">同比增长近30%，国产开源大模型全球累计下载量突破100亿次</p>
+                    </div>
+                    <div class="bg-card rounded-xl p-5 border border-gray-800 hover:border-primary/50 transition cursor-pointer">
+                        <span class="text-secondary text-xs font-bold">半导体</span>
+                        <h3 class="font-semibold mt-1 mb-2">英伟达超越苹果成为台积电最大客户</h3>
+                        <p class="text-gray-400 text-sm">2025年采购额猛增至233亿美元，占台积电总营收比重19%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Grid -->
+    <section class="py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+                <button onclick="filterCategory('world')" class="category-btn bg-card hover:bg-card-hover rounded-xl p-4 text-center transition border border-gray-800 hover:border-primary/50">
+                    <i class="fas fa-globe text-2xl text-blue-400 mb-2"></i>
+                    <p class="text-sm font-medium">国际</p>
+                </button>
+                <button onclick="filterCategory('ai')" class="category-btn bg-card hover:bg-card-hover rounded-xl p-4 text-center transition border border-gray-800 hover:border-primary/50">
+                    <i class="fas fa-brain text-2xl text-purple-400 mb-2"></i>
+                    <p class="text-sm font-medium">AI</p>
+                </button>
+                <button onclick="filterCategory('semiconductor')" class="category-btn bg-card hover:bg-card-hover rounded-xl p-4 text-center transition border border-gray-800 hover:border-primary/50">
+                    <i class="fas fa-microchip text-2xl text-green-400 mb-2"></i>
+                    <p class="text-sm font-medium">半导体</p>
+                </button>
+                <button onclick="filterCategory('energy')" class="category-btn bg-card hover:bg-card-hover rounded-xl p-4 text-center transition border border-gray-800 hover:border-primary/50">
+                    <i class="fas fa-bolt text-2xl text-yellow-400 mb-2"></i>
+                    <p class="text-sm font-medium">新能源</p>
+                </button>
+                <button onclick="filterCategory('robotics')" class="category-btn bg-card hover:bg-card-hover rounded-xl p-4 text-center transition border border-gray-800 hover:border-primary/50">
+                    <i class="fas fa-robot text-2xl text-red-400 mb-2"></i>
+                    <p class="text-sm font-medium">机器人</p>
+                </button>
+                <button onclick="filterCategory('quantum')" class="category-btn bg-card hover:bg-card-hover rounded-xl p-4 text-center transition border border-gray-800 hover:border-primary/50">
+                    <i class="fas fa-atom text-2xl text-cyan-400 mb-2"></i>
+                    <p class="text-sm font-medium">量子</p>
+                </button>
+                <button onclick="filterCategory('biotech')" class="category-btn bg-card hover:bg-card-hover rounded-xl p-4 text-center transition border border-gray-800 hover:border-primary/50">
+                    <i class="fas fa-dna text-2xl text-pink-400 mb-2"></i>
+                    <p class="text-sm font-medium">生物</p>
+                </button>
+                <button onclick="filterCategory('space')" class="category-btn bg-card hover:bg-card-hover rounded-xl p-4 text-center transition border border-gray-800 hover:border-primary/50">
+                    <i class="fas fa-rocket text-2xl text-orange-400 mb-2"></i>
+                    <p class="text-sm font-medium">航天</p>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Feed -->
+    <section class="py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold" id="section-title">最新资讯</h2>
+                <div class="flex items-center gap-2">
+                    <button onclick="refreshNews()" class="p-2 hover:bg-gray-800 rounded-lg transition" title="刷新">
+                        <i class="fas fa-sync-alt text-gray-400" id="refresh-icon"></i>
+                    </button>
+                    <select onchange="sortNews(this.value)" class="bg-card border border-gray-700 rounded-lg px-3 py-2 text-sm">
+                        <option value="newest">最新发布</option>
+                        <option value="hot">最热阅读</option>
+                    </select>
+                </div>
+            </div>
+            <div id="news-container" class="space-y-4">
+                <!-- News items will be loaded here -->
+            </div>
+            <div class="text-center mt-8">
+                <button onclick="loadMore()" id="load-more-btn" class="bg-card hover:bg-card-hover border border-gray-700 px-6 py-3 rounded-xl transition">
+                    加载更多
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fas fa-robot text-2xl text-primary"></i>
+                        <span class="font-bold text-lg">AI日报</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">每日更新全球科技前沿资讯，聚焦AI、半导体、新能源等前沿领域。</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">分类</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition">人工智能</a></li>
+                        <li><a href="#" class="hover:text-primary transition">半导体</a></li>
+                        <li><a href="#" class="hover:text-primary transition">新能源</a></li>
+                        <li><a href="#" class="hover:text-primary transition">机器人</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">关于</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition">关于我们</a></li>
+                        <li><a href="#" class="hover:text-primary transition">联系方式</a></li>
+                        <li><a href="#" class="hover:text-primary transition">投稿指南</a></li>
+                        <li><a href="#" class="hover:text-primary transition">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">关注我们</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-card rounded-lg flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-weixin"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-card rounded-lg flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-weibo"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-card rounded-lg flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <p>© 2026 AI日报. 数据来源：新华网、中国新闻网等权威媒体</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 新闻数据
+        const newsData = [
+            {
+                id: 1,
+                title: "美以联合空袭伊朗，已致201人死亡、747人受伤",
+                summary: "伊朗红新月会2月28日晚通报，美国和以色列的联合袭击已造成201人死亡、747人受伤。美以当天空袭了伊朗24个省份，位于伊朗南部米纳卜市的一所小学在美以军事行动中遭袭。",
+                category: "world",
+                tag: "突发",
+                tagColor: "bg-red-500",
+                source: "新华网",
+                time: "2026-03-01",
+                views: 12500
+            },
+            {
+                id: 2,
+                title: "特朗普称哈梅内伊'已死'，伊朗方面予以否认",
+                summary: "特朗普2月28日在社交媒体发文，称伊朗最高领袖哈梅内伊'已死'。伊朗伊斯兰共和国广播电视台报道，一名接近伊朗最高领袖办公室的消息人士表示，哈梅内伊正'坚定、沉着地指挥战场局势'。",
+                category: "world",
+                tag: "国际",
+                tagColor: "bg-blue-500",
+                source: "新华网/中国新闻网",
+                time: "2026-03-01",
+                views: 8900
+            },
+            {
+                id: 3,
+                title: "2026年中国AI发展趋势前瞻：核心产业规模突破1.2万亿元",
+                summary: "据新华社报道，2026年中国人工智能企业数量超过6000家，AI核心产业规模预计突破1.2万亿元，同比增长近30%。国产开源大模型全球累计下载量突破100亿次。",
+                category: "ai",
+                tag: "AI",
+                tagColor: "bg-purple-500",
+                source: "新华网",
+                time: "2026-01-28",
+                views: 15600
+            },
+            {
+                id: 4,
+                title: "台积电最大客户正式易主！英伟达超越苹果位居第一",
+                summary: "晶圆代工龙头台积电最新出炉的2025年合并财报揭露关键客户结构变化，在AI浪潮推升下，英伟达正式超越苹果成为台积电最大客户。数据显示，英伟达2025年采购额猛增至233亿美元。",
+                category: "semiconductor",
+                tag: "半导体",
+                tagColor: "bg-green-500",
+                source: "EET-China",
+                time: "2026-03-01",
+                views: 11200
+            },
+            {
+                id: 5,
+                title: "我国科学家取得锂电池核心技术首创性突破",
+                summary: "近日，由南开大学和上海空间电源研究所等单位科研人员组成的团队，取得了一项首创性的突破。通过全新的电解液技术，有望使现有锂电池在同等大小和重量的情况下，实现续航力的成倍提升。",
+                category: "energy",
+                tag: "新能源",
+                tagColor: "bg-yellow-500",
+                source: "新华网",
+                time: "2026-02-28",
+                views: 9800
+            },
+            {
+                id: 6,
+                title: "2025年全国光伏新增装机同比增长14%",
+                summary: "国家能源局发布数据显示，2025年，全国光伏新增装机3.17亿千瓦，同比增长14%，其中集中式光伏新增1.64亿千瓦，分布式光伏新增1.53亿千瓦。",
+                category: "energy",
+                tag: "新能源",
+                tagColor: "bg-yellow-500",
+                source: "国家能源局",
+                time: "2026-02-21",
+                views: 7600
+            },
+            {
+                id: 7,
+                title: "1月新型储能装机同比翻倍",
+                summary: "中关村储能产业技术联盟发布数据显示，2026年1月国内新型储能市场开年向好，新增投运装机规模达3.78GW/10.90GWh，同比分别增长62%、106%。",
+                category: "energy",
+                tag: "新能源",
+                tagColor: "bg-yellow-500",
+                source: "中关村储能产业技术联盟",
+                time: "2026-02-24",
+                views: 5400
+            },
+            {
+                id: 8,
+                title: "战火升级！烈度或超'12日战争'，本轮美伊冲突五大疑问待解",
+                summary: "本轮美以联合打击伊朗，冲突烈度可能超过此前的'12日战争'。专家分析指出，中东冲突已从代理人战争升级为国家级正面交战。",
+                category: "world",
+                tag: "深度",
+                tagColor: "bg-orange-500",
+                source: "中国新闻网",
+                time: "2026-03-01",
+                views: 10300
+            }
+        ];
+
+        let currentCategory = 'all';
+        let displayedCount = 6;
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            updateDate();
+            renderNews();
+        });
+
+        function updateDate() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+            document.getElementById('current-date').textContent = now.toLocaleDateString('zh-CN', options);
+        }
+
+        function renderNews() {
+            const container = document.getElementById('news-container');
+            let filtered = currentCategory === 'all' 
+                ? newsData 
+                : newsData.filter(n => n.category === currentCategory);
+            
+            const toShow = filtered.slice(0, displayedCount);
+            
+            container.innerHTML = toShow.map(news => `
+                <article class="news-card bg-card rounded-xl p-6 border border-gray-800 fade-in">
+                    <div class="flex items-start gap-4">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="${news.tagColor} text-white text-xs font-bold px-2 py-1 rounded">${news.tag}</span>
+                                <span class="text-gray-500 text-sm">${news.source}</span>
+                                <span class="text-gray-600 text-sm">|</span>
+                                <span class="text-gray-500 text-sm">${news.time}</span>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2 hover:text-primary cursor-pointer transition">${news.title}</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-3">${news.summary}</p>
+                            <div class="flex items-center gap-4 text-sm text-gray-500">
+                                <span><i class="far fa-eye mr-1"></i> ${(news.views / 1000).toFixed(1)}k 阅读</span>
+                                <button class="hover:text-primary transition"><i class="far fa-share-square mr-1"></i> 分享</button>
+                                <button class="hover:text-primary transition"><i class="far fa-bookmark mr-1"></i> 收藏</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+
+            // 更新按钮状态
+            document.getElementById('load-more-btn').style.display = 
+                displayedCount >= filtered.length ? 'none' : 'inline-block';
+        }
+
+        function filterCategory(category) {
+            currentCategory = category;
+            displayedCount = 6;
+            
+            // 更新标题
+            const titles = {
+                'all': '最新资讯',
+                'world': '国际局势',
+                'ai': '人工智能',
+                'semiconductor': '半导体',
+                'energy': '新能源',
+                'robotics': '机器人',
+                'quantum': '量子计算',
+                'biotech': '生物科技',
+                'space': '商业航天'
+            };
+            document.getElementById('section-title').textContent = titles[category] || '最新资讯';
+            
+            renderNews();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function loadMore() {
+            displayedCount += 6;
+            renderNews();
+        }
+
+        function toggleSearch() {
+            const modal = document.getElementById('search-modal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                document.getElementById('search-input').focus();
+            }
+        }
+
+        function searchNews(query) {
+            if (!query) {
+                document.getElementById('search-results').innerHTML = '';
+                return;
+            }
+            
+            const results = newsData.filter(n => 
+                n.title.toLowerCase().includes(query.toLowerCase()) ||
+                n.summary.toLowerCase().includes(query.toLowerCase())
+            );
+            
+            document.getElementById('search-results').innerHTML = results.map(n => `
+                <div class="p-3 hover:bg-gray-800 rounded-lg cursor-pointer" onclick="toggleSearch()">
+                    <h4 class="font-medium text-sm">${n.title}</h4>
+                    <p class="text-gray-500 text-xs mt-1">${n.summary.substring(0, 60)}...</p>
+                </div>
+            `).join('') || '<p class="text-gray-500 text-center py-4">无搜索结果</p>';
+        }
+
+        function toggleSubscribe() {
+            document.getElementById('subscribe-modal').classList.toggle('hidden');
+        }
+
+        function subscribe() {
+            alert('订阅成功！感谢您的关注。');
+            toggleSubscribe();
+        }
+
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            const icon = document.getElementById('theme-icon');
+            if (document.documentElement.classList.contains('dark')) {
+                icon.className = 'fas fa-sun text-yellow-400';
+            } else {
+                icon.className = 'fas fa-moon text-gray-600';
+            }
+        }
+
+        function refreshNews() {
+            const icon = document.getElementById('refresh-icon');
+            icon.classList.add('fa-spin');
+            setTimeout(() => {
+                icon.classList.remove('fa-spin');
+                renderNews();
+            }, 1000);
+        }
+
+        function sortNews(sortBy) {
+            if (sortBy === 'hot') {
+                newsData.sort((a, b) => b.views - a.views);
+            } else {
+                newsData.sort((a, b) => new Date(b.time) - new Date(a.time));
+            }
+            renderNews();
+        }
+
+        // 键盘快捷键
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '/' && !e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                toggleSearch();
+            }
+            if (e.key === 'Escape') {
+                document.getElementById('search-modal').classList.add('hidden');
+                document.getElementById('subscribe-modal').classList.add('hidden');
+            }
+        });
+    </script>
 </body>
 </html>
