@@ -71,43 +71,43 @@
 
     <!-- Banner轮播 -->
     <div class="banner-container">
-        <div class="banner-slide active" style="background-image: url('https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=800');" onclick="location.href='world.html'">
+        <div class="banner-slide active" style="background-image: url('https://images.unsplash.com/photo-1518182170546-0766bc6f9213?w=800');" onclick="location.href='world.html'">
             <div class="banner-content">
-                <div class="banner-tag">战争</div>
-                <div class="banner-title">美以联合打击伊朗进入第三天，哈梅内伊遇害</div>
-                <div class="banner-desc">特朗普称军事行动可能持续四周，已有48名伊朗高层人员被击毙</div>
+                <div class="banner-tag">能源危机</div>
+                <div class="banner-title">卡塔尔能源遇袭停产，欧亚气价飙涨</div>
+                <div class="banner-desc">全球最大LNG生产商停产，霍尔木兹海峡通行几近清零</div>
             </div>
         </div>
         
-        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800');" onclick="location.href='ai.html'">
+        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=800');" onclick="location.href='world.html'">
             <div class="banner-content">
-                <div class="banner-tag">AI</div>
-                <div class="banner-title">2026年全球AI市场规模将突破9000亿美元</div>
-                <div class="banner-desc">中国AI核心产业规模突破1.2万亿元，成为AI专利最大拥有国</div>
+                <div class="banner-tag">战争</div>
+                <div class="banner-title">美以打击伊朗第四天，特朗普称"最猛烈打击即将到来"</div>
+                <div class="banner-desc">鲁比奥：下一阶段对伊朗的惩罚将比现在更加严厉，军事行动可能持续四周</div>
+            </div>
+        </div>
+        
+        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800');" onclick="location.href='ai.html'">
+            <div class="banner-content">
+                <div class="banner-tag">具身智能</div>
+                <div class="banner-title">中国人形机器人频频破圈，具身智能迈入应用时代</div>
+                <div class="banner-desc">2035年中国具身智能产业市场规模有望突破万亿元</div>
             </div>
         </div>
         
         <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=800');" onclick="location.href='semiconductor.html'">
             <div class="banner-content">
                 <div class="banner-tag">半导体</div>
-                <div class="banner-title">2026年全球半导体营收将突破1万亿美元</div>
-                <div class="banner-desc">AI驱动增长但内存短缺引发结构性挤出效应</div>
+                <div class="banner-title">A股半导体涨价潮来袭，最高涨幅达80%</div>
+                <div class="banner-desc">涨价从存储扩散至功率器件、晶圆代工、封测等多个环节</div>
             </div>
         </div>
         
-        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800');" onclick="location.href='new-energy.html'">
+        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800');" onclick="location.href='new-energy.html'">
             <div class="banner-content">
-                <div class="banner-tag">新能源</div>
-                <div class="banner-title">我国建成全球最大的可再生能源体系</div>
-                <div class="banner-desc">风电光伏合计装机历史性超过火电，每用10度电就有近4度是绿电</div>
-            </div>
-        </div>
-        
-        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1563089145-599997674d42?w=800');" onclick="location.href='robotics.html'">
-            <div class="banner-content">
-                <div class="banner-tag">机器人</div>
-                <div class="banner-title">美的'美拉'人形机器人全球首秀</div>
-                <div class="banner-desc">正式进军家庭场景，2026年将加速场景落地</div>
+                <div class="banner-tag">新能源车</div>
+                <div class="banner-title">比亚迪击败特斯拉夺得2025年BEV销冠</div>
+                <div class="banner-desc">2026年全球新能源车销量预估2340万辆，成长幅度缩减至14%</div>
             </div>
         </div>
         
@@ -198,30 +198,34 @@
         let currentNewsIndex = 0;
         const newsPerPage = 10;
         let allNews = [
-            {"id": "w1", "title": "【突发】美以联合打击伊朗进入第三天，哈梅内伊遇害", "category": "国际局势", "tag": "战争", "time": "3月3日", "views": "128万"},
-            {"id": "w2", "title": "伊朗禁航霍尔木兹海峡，大量油轮滞留波斯湾扰动油市", "category": "国际局势", "tag": "能源", "time": "3月1日", "views": "95万"},
-            {"id": "a1", "title": "2026人工智能发展趋势：全球市场规模将突破9000亿美元", "category": "人工智能", "tag": "重磅", "time": "2月27日", "views": "85万"},
-            {"id": "a2", "title": "2026年中国AI发展趋势前瞻：从'聊天'走向'做事'", "category": "人工智能", "tag": "趋势", "time": "1月28日", "views": "72万"},
-            {"id": "s1", "title": "2026年半导体行业展望：增长但极不均匀，AI驱动与内存短缺并存", "category": "半导体", "tag": "重磅", "time": "3月3日", "views": "78万"},
-            {"id": "s2", "title": "超150家半导体公司业绩揭晓，涨价潮为2026再添变量", "category": "半导体", "tag": "财报", "time": "3月1日", "views": "65万"},
-            {"id": "e1", "title": "我国建成全球最大的可再生能源体系，每用10度电就有近4度是绿电", "category": "新能源", "tag": "重磅", "time": "3月2日", "views": "92万"},
-            {"id": "e2", "title": "2026年新能源发电展望：光伏、风电现状及趋势", "category": "新能源", "tag": "趋势", "time": "2025年8月", "views": "68万"},
-            {"id": "a3", "title": "展望全球人工智能2026年演进新局：智能体日益普及", "category": "人工智能", "tag": "预测", "time": "1月20日", "views": "58万"},
-            {"id": "w3", "title": "美伊70余载恩怨博弈：从1953年政变到2026年战争", "category": "国际局势", "tag": "历史", "time": "3月2日", "views": "67万"},
-            {"id": "s3", "title": "全球半导体最新展望：2026年销售额将达9750亿美元", "category": "半导体", "tag": "预测", "time": "2月18日", "views": "52万"},
-            {"id": "e3", "title": "新型储能装机历史性突破1亿千瓦大关，占全球比重超40%", "category": "新能源", "tag": "储能", "time": "3月1日", "views": "54万"},
-            {"id": "a4", "title": "港府拨款5000万推出全民AI培训，提升就业竞争力", "category": "人工智能", "tag": "政策", "time": "2月25日", "views": "43万"},
-            {"id": "w4", "title": "战火升级！本轮美伊冲突五大疑问待解", "category": "国际局势", "tag": "分析", "time": "3月1日", "views": "82万"},
-            {"id": "s4", "title": "Omdia：2026年全球半导体营收将突破1万亿美元大关", "category": "半导体", "tag": "里程碑", "time": "1月", "views": "48万"},
-            {"id": "e4", "title": "光伏反内卷成效几何？终端为何涨价难？", "category": "新能源", "tag": "分析", "time": "2月21日", "views": "47万"},
-            {"id": "a5", "title": "小鹏汽车：完全自动驾驶有望在三年内实现", "category": "人工智能", "tag": "自动驾驶", "time": "3月3日", "views": "62万"},
-            {"id": "w5", "title": "中东战火冲击中国汽车出海，影响波及欧洲市场", "category": "国际局势", "tag": "贸易", "time": "3月3日", "views": "45万"},
-            {"id": "s5", "title": "美光18亿美元收购力积电铜锣晶圆厂", "category": "半导体", "tag": "并购", "time": "1月17日", "views": "41万"},
-            {"id": "e5", "title": "匈牙利计划建设499MW风电项目，2030年投入运营", "category": "新能源", "tag": "海外", "time": "3月1日", "views": "31万"},
+            {"id": "w0", "title": "【最新】卡塔尔能源遇袭停产，欧亚气价飙涨，霍尔木兹海峡通行几近清零", "category": "国际局势", "tag": "能源危机", "time": "3月3日", "views": "312万"},
+            {"id": "w1", "title": "【突发】美以联合打击伊朗进入第四天，特朗普称'最猛烈打击即将到来'", "category": "国际局势", "tag": "战争", "time": "3月4日", "views": "256万"},
+            {"id": "w2", "title": "伊朗油轮运费创历史新高，霍尔木兹海峡航运几乎停滞", "category": "国际局势", "tag": "能源危机", "time": "3月3日", "views": "189万"},
+            {"id": "w3", "title": "美国驻利雅得大使馆遭无人机袭击，中东14国发布撤侨令", "category": "国际局势", "tag": "外交危机", "time": "3月3日", "views": "165万"},
+            {"id": "a0", "title": "【最新】中国人形机器人频频破圈，具身智能迈入应用时代", "category": "人工智能", "tag": "重磅", "time": "2月28日", "views": "198万"},
+            {"id": "a1", "title": "【重磅】特朗普政府禁止Anthropic向政府提供AI服务，OpenAI接手五角大楼合同", "category": "人工智能", "tag": "政策", "time": "3月3日", "views": "156万"},
+            {"id": "a2", "title": "OpenAI融资1100亿美元，月度AI资本达1400亿美元", "category": "人工智能", "tag": "资本", "time": "3月2日", "views": "128万"},
+            {"id": "a3", "title": "MCP协议成AI基础设施新标准，OpenAI微软谷歌全面采纳", "category": "人工智能", "tag": "技术", "time": "3月2日", "views": "98万"},
+            {"id": "s0", "title": "【最新】A股半导体涨价潮来袭，最高涨幅达80%，AI成核心推手", "category": "半导体", "tag": "涨价", "time": "3月3日", "views": "245万"},
+            {"id": "s1", "title": "【重磅】2026年全球半导体销售额将达9750亿美元，AI芯片占半壁江山", "category": "半导体", "tag": "预测", "time": "3月3日", "views": "156万"},
+            {"id": "s2", "title": "WSTS：2026年全球半导体市场增长超25%，逼近1万亿美元", "category": "半导体", "tag": "数据", "time": "3月2日", "views": "128万"},
+            {"id": "s3", "title": "内存短缺危机持续，DDR4/DDR5价格预计进一步上涨", "category": "半导体", "tag": "涨价", "time": "3月2日", "views": "98万"},
+            {"id": "e0", "title": "【最新】比亚迪击败特斯拉夺得2025年BEV销冠，2026年全球新能源车销量预估2340万辆", "category": "新能源", "tag": "重磅", "time": "3月3日", "views": "287万"},
+            {"id": "e1", "title": "【重磅】美国2026年将新增24.3GW电池储能，太阳能43.4GW", "category": "新能源", "tag": "数据", "time": "3月3日", "views": "156万"},
+            {"id": "e2", "title": "太阳能、风能和储能将占2026年美国新增发电容量99%", "category": "新能源", "tag": "趋势", "time": "3月2日", "views": "128万"},
+            {"id": "e3", "title": "2026年最新家用储能电池对比：特斯拉、LG、CNTE等7款新品", "category": "新能源", "tag": "产品", "time": "3月1日", "views": "98万"},
+            {"id": "a4", "title": "AI数据中心能源危机：成为2026年数字建设最大制约因素", "category": "人工智能", "tag": "能源", "time": "3月1日", "views": "87万"},
+            {"id": "w4", "title": "韩国军工股暴涨，韩华航空涨超20%", "category": "国际局势", "tag": "军工", "time": "3月3日", "views": "98万"},
+            {"id": "s4", "title": "NVIDIA发布Rubin平台，六款新芯片定义下一代AI超算", "category": "半导体", "tag": "新品", "time": "1月", "views": "87万"},
+            {"id": "e4", "title": "香港电池展亚洲2026：推动亚太EV和储能增长", "category": "新能源", "tag": "展会", "time": "3月", "views": "76万"},
+            {"id": "a5", "title": "OpenAI目标2026年营收300亿美元，Anthropic目标150亿美元", "category": "人工智能", "tag": "商业", "time": "3月1日", "views": "76万"},
+            {"id": "w5", "title": "以色列向黎巴嫩增派部队，授权占领更多控制区", "category": "国际局势", "tag": "军事", "time": "3月3日", "views": "87万"},
+            {"id": "s5", "title": "日本Rapidus瞄准2nm芯片量产，挑战台积电三星", "category": "半导体", "tag": "制程", "time": "1月", "views": "76万"},
+            {"id": "e5", "title": "ProLogium与达方能源推出固态电池解决方案", "category": "新能源", "tag": "技术", "time": "1月", "views": "87万"},
         ];
         
         // Banner 中的资讯ID（不在列表中显示）
-        const bannerNewsIds = ["w1", "a1", "s1", "e1"];
+        const bannerNewsIds = ["w0", "w1", "a0", "s0", "e0"];
         
         function renderNews() {
             const newsList = document.getElementById('news-list');
