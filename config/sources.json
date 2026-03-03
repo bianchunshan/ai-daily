@@ -1,0 +1,182 @@
+{
+  "name": "前沿科技日报 - 可靠信息源配置",
+  "version": "1.0",
+  "update_time": "2026-03-04",
+  
+  "sources": {
+    "官方权威": {
+      "新华社": {
+        "url": "http://www.xinhuanet.com",
+        "rss": "http://www.xinhuanet.com/rss/",
+        "priority": 1,
+        "categories": ["国际局势", "政策"]
+      },
+      "央视新闻": {
+        "url": "https://www.cctv.com",
+        "priority": 1,
+        "categories": ["国际局势", "国内要闻"]
+      },
+      "国家能源局": {
+        "url": "http://www.nea.gov.cn",
+        "priority": 1,
+        "categories": ["新能源", "政策"]
+      },
+      "工信部": {
+        "url": "https://www.miit.gov.cn",
+        "priority": 1,
+        "categories": ["半导体", "人工智能", "政策"]
+      }
+    },
+    
+    "财经媒体": {
+      "财新网": {
+        "url": "https://www.caixin.com",
+        "rss": "https://caixin.com/search/rss.xml",
+        "priority": 2,
+        "categories": ["财经", "科技", "国际局势"],
+        "note": "付费内容需订阅"
+      },
+      "新浪财经": {
+        "url": "https://finance.sina.com.cn",
+        "rss": "https://rss.sina.com.cn/tech/rollnews.xml",
+        "priority": 2,
+        "categories": ["财经", "科技", "股票"]
+      },
+      "华尔街见闻": {
+        "url": "https://wallstreetcn.com",
+        "rss": "https://wallstreetcn.com/rss.xml",
+        "priority": 2,
+        "categories": ["国际财经", "宏观", "市场"]
+      },
+      "第一财经": {
+        "url": "https://www.yicai.com",
+        "priority": 2,
+        "categories": ["财经", "产业"]
+      }
+    },
+    
+    "科技媒体": {
+      "36氪": {
+        "url": "https://36kr.com",
+        "rss": "https://36kr.com/feed",
+        "priority": 2,
+        "categories": ["人工智能", "创投", "互联网"]
+      },
+      "虎嗅": {
+        "url": "https://www.huxiu.com",
+        "rss": "https://www.huxiu.com/rss/0.xml",
+        "priority": 2,
+        "categories": ["商业", "科技", "互联网"]
+      },
+      "钛媒体": {
+        "url": "https://www.tmtpost.com",
+        "rss": "https://www.tmtpost.com/rss.xml",
+        "priority": 2,
+        "categories": ["TMT", "科技", "金融"]
+      },
+      "极客公园": {
+        "url": "https://www.geekpark.net",
+        "rss": "https://www.geekpark.net/rss",
+        "priority": 3,
+        "categories": ["科技", "产品", "互联网"]
+      },
+      "雷锋网": {
+        "url": "https://www.leiphone.com",
+        "rss": "https://www.leiphone.com/feed",
+        "priority": 2,
+        "categories": ["人工智能", "智能硬件"]
+      }
+    },
+    
+    "行业垂直": {
+      "EET-China": {
+        "url": "https://www.eet-china.com",
+        "priority": 2,
+        "categories": ["半导体", "电子"]
+      },
+      "集微网": {
+        "url": "https://www.jiwei.com",
+        "priority": 2,
+        "categories": ["半导体", "芯片"]
+      },
+      "高工锂电": {
+        "url": "https://www.gg-lb.com",
+        "priority": 2,
+        "categories": ["新能源", "锂电池"]
+      },
+      "OFweek": {
+        "url": "https://www.ofweek.com",
+        "priority": 3,
+        "categories": ["新能源", "光伏"]
+      }
+    },
+    
+    "公司官方": {
+      "OpenAI": {
+        "url": "https://openai.com",
+        "rss": "https://openai.com/blog/rss.xml",
+        "priority": 1,
+        "categories": ["人工智能"]
+      },
+      "NVIDIA": {
+        "url": "https://nvidia.com",
+        "priority": 1,
+        "categories": ["人工智能", "半导体"]
+      },
+      "Google AI": {
+        "url": "https://ai.google",
+        "priority": 1,
+        "categories": ["人工智能"]
+      },
+      "特斯拉": {
+        "url": "https://www.tesla.com",
+        "priority": 2,
+        "categories": ["新能源", "自动驾驶"]
+      }
+    },
+    
+    "国际源": {
+      "Reuters": {
+        "url": "https://www.reuters.com",
+        "priority": 1,
+        "categories": ["国际局势", "财经"]
+      },
+      "Bloomberg": {
+        "url": "https://www.bloomberg.com",
+        "priority": 1,
+        "categories": ["国际财经", "科技"]
+      },
+      "TechCrunch": {
+        "url": "https://techcrunch.com",
+        "priority": 2,
+        "categories": ["科技", "创投"]
+      },
+      "The Verge": {
+        "url": "https://www.theverge.com",
+        "priority": 2,
+        "categories": ["科技", "产品"]
+      }
+    }
+  },
+  
+  "quality_rules": {
+    "验证要求": [
+      "信息必须有明确来源",
+      "财经数据需交叉验证",
+      "突发新闻需多方确认",
+      "公司公告优先官方渠道"
+    ],
+    "排除内容": [
+      "自媒体未经验证的消息",
+      "论坛/社交媒体的传言",
+      "无明确来源的'独家'",
+      "明显夸大的标题党"
+    ],
+    "更新频率": {
+      "突发新闻": "实时",
+      "市场动态": "每小时",
+      "深度分析": "每日",
+      "行业报告": "每周"
+    }
+  }
+}

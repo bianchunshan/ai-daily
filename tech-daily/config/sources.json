@@ -1,0 +1,77 @@
+{
+  "sources": [
+    {
+      "id": "sina-tech",
+      "name": "新浪财经科技",
+      "type": "rss",
+      "url": "https://rss.sina.com.cn/tech/rollnews.xml",
+      "category": "综合科技",
+      "enabled": true
+    },
+    {
+      "id": "36kr",
+      "name": "36氪",
+      "type": "rss",
+      "url": "https://36kr.com/feed",
+      "category": "创业投资",
+      "enabled": true
+    },
+    {
+      "id": "caixin",
+      "name": "财新网",
+      "type": "rss",
+      "url": "https://caixin.com/search/rss.xml",
+      "category": "财经新闻",
+      "enabled": true
+    },
+    {
+      "id": "wallstreetcn",
+      "name": "华尔街见闻",
+      "type": "rss",
+      "url": "https://wallstreetcn.com/rss.xml",
+      "category": "财经资讯",
+      "enabled": true
+    },
+    {
+      "id": "huxiu",
+      "name": "虎嗅网",
+      "type": "rss",
+      "url": "https://www.huxiu.com/rss/0.xml",
+      "category": "商业科技",
+      "enabled": true
+    },
+    {
+      "id": "tmtpost",
+      "name": "钛媒体",
+      "type": "rss",
+      "url": "https://www.tmtpost.com/rss.xml",
+      "category": "TMT资讯",
+      "enabled": true
+    },
+    {
+      "id": "pingwest",
+      "name": "品玩",
+      "type": "rss",
+      "url": "https://www.pingwest.com/feed",
+      "category": "科技新闻",
+      "enabled": true
+    },
+    {
+      "id": "geekpark",
+      "name": "极客公园",
+      "type": "rss",
+      "url": "https://www.geekpark.net/rss",
+      "category": "极客资讯",
+      "enabled": true
+    }
+  ],
+  "categories": {
+    "人工智能": ["AI", "人工智能", "机器学习", "深度学习", "ChatGPT", "大模型", "LLM", "神经网络"],
+    "半导体": ["芯片", "半导体", "台积电", "中芯", "光刻机", "GPU", "CPU", "集成电路"],
+    "新能源": ["新能源", "电动车", "特斯拉", "比亚迪", "锂电池", "光伏", "储能", "宁德时代"],
+    "互联网": ["互联网", "腾讯", "阿里", "字节", "美团", "拼多多", "京东", "百度"],
+    "创业投资": ["融资", "投资", "创投", "IPO", "上市", "独角兽", "估值", "VC", "PE"],
+    "消费电子": ["手机", "iPhone", "华为", "小米", "OPPO", "vivo", "苹果", "三星"],
+    "金融科技": ["金融科技", "数字货币", "区块链", "比特币", "支付", "央行", "数字人民币"]
+  }
+}

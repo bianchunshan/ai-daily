@@ -2,17 +2,14 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#d43030">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>前沿科技日报</title>
+    <link rel="stylesheet" href="mobile-optimize.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif; background: #f4f5f6; line-height: 1.6; }
-        
-        /* 顶部导航 */
-        .header { background: #d43030; color: #fff; padding: 12px 15px; position: sticky; top: 0; z-index: 100; }
-        .nav { display: flex; overflow-x: auto; gap: 20px; padding: 10px 15px; background: #fff; border-bottom: 1px solid #e8e8e8; }
-        .nav a { color: #666; text-decoration: none; font-size: 14px; white-space: nowrap; }
-        .nav a.active { color: #d43030; font-weight: bold; }
         
         /* Banner轮播 */
         .banner-container { position: relative; height: 220px; overflow: hidden; }
@@ -20,31 +17,25 @@
         .banner-slide.active { opacity: 1; }
         .banner-slide::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, transparent 100%); z-index: 1; }
         .banner-content { position: relative; z-index: 2; }
-        .banner-tag { display: inline-block; background: #d43030; padding: 4px 12px; border-radius: 4px; font-size: 12px; margin-bottom: 10px; }
+        .banner-tag { display: inline-block; background: var(--primary-color); padding: 4px 12px; border-radius: 4px; font-size: 12px; margin-bottom: 10px; }
         .banner-title { font-size: 18px; font-weight: bold; margin-bottom: 8px; }
         .banner-desc { font-size: 14px; opacity: 0.9; }
         .banner-dots { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 3; }
-        .banner-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; }
-        .banner-dot.active { background: #fff; }
-        .banner-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); border: none; color: #fff; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 18px; z-index: 3; }
+        .banner-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: all 0.3s; }
+        .banner-dot.active { background: #fff; width: 20px; border-radius: 4px; }
+        .banner-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); border: none; color: #fff; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 18px; z-index: 3; display: none; }
         .banner-arrow.prev { left: 10px; }
         .banner-arrow.next { right: 10px; }
         
         /* 资讯列表 */
-        .news-list { background: #fff; }
-        .news-item { padding: 15px; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
-        .news-item:hover { background: #f8f8f8; }
-        .news-title { font-size: 16px; color: #333; margin-bottom: 8px; line-height: 1.5; }
-        .news-title:hover { color: #d43030; }
-        .news-meta { font-size: 12px; color: #999; }
-        .tag { color: #d43030; margin-right: 8px; font-weight: bold; }
+        .news-list { background: var(--card-bg); }
         
         /* 加载更多 */
-        .load-more { text-align: center; padding: 20px; background: #fff; }
-        .load-more-btn { padding: 10px 30px; background: #d43030; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        .load-more { text-align: center; padding: 25px; background: var(--card-bg); }
         
-        /* 底部 */
-        .footer { background: #333; color: #999; text-align: center; padding: 20px; margin-top: 20px; font-size: 12px; }
+        @media (min-width: 768px) {
+            .banner-arrow { display: block; }
+        }
     </style>
 </head>
 <body>
@@ -53,11 +44,11 @@
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div style="font-size: 18px; font-weight: bold;">前沿科技日报</div>
             <div id="auth-section">
-                <button id="login-btn" style="background: #fff; color: #d43030; border: none; padding: 6px 16px; border-radius: 4px; font-size: 14px; cursor: pointer; margin-right: 8px;">登录</button>
-                <button id="register-btn" style="background: transparent; color: #fff; border: 1px solid #fff; padding: 6px 16px; border-radius: 4px; font-size: 14px; cursor: pointer;">注册</button>
+                <button id="login-btn" style="background: #fff; color: var(--primary-color); border: none; padding: 8px 16px; border-radius: 6px; font-size: 14px; cursor: pointer; margin-right: 8px; min-height: 36px;">登录</button>
+                <button id="register-btn" style="background: transparent; color: #fff; border: 1px solid #fff; padding: 8px 16px; border-radius: 6px; font-size: 14px; cursor: pointer; min-height: 36px;">注册</button>
                 <div id="user-menu" style="display: none;">
                     <span id="user-name" style="margin-right: 10px;"></span>
-                    <button id="logout-btn" style="background: transparent; color: #fff; border: 1px solid #fff; padding: 4px 12px; border-radius: 4px; font-size: 12px; cursor: pointer;">退出</button>
+                    <button id="logout-btn" style="background: transparent; color: #fff; border: 1px solid #fff; padding: 6px 12px; border-radius: 4px; font-size: 12px; cursor: pointer; min-height: 32px;">退出</button>
                 </div>
             </div>
         </div>
@@ -120,15 +111,15 @@
             </div>
         </div>
         
-        <button class="banner-arrow prev" onclick="prevSlide()">‹</button>
-        <button class="banner-arrow next" onclick="nextSlide()">›</button>
+        <button class="banner-arrow prev" onclick="window.TechDaily.BannerSwipe.prevSlide()">‹</button>
+        <button class="banner-arrow next" onclick="window.TechDaily.BannerSwipe.nextSlide()">›</button>
         
         <div class="banner-dots">
-            <div class="banner-dot active" onclick="showSlide(0)"></div>
-            <div class="banner-dot" onclick="showSlide(1)"></div>
-            <div class="banner-dot" onclick="showSlide(2)"></div>
-            <div class="banner-dot" onclick="showSlide(3)"></div>
-            <div class="banner-dot" onclick="showSlide(4)"></div>
+            <div class="banner-dot active" onclick="window.TechDaily.BannerSwipe.showSlide(0)"></div>
+            <div class="banner-dot" onclick="window.TechDaily.BannerSwipe.showSlide(1)"></div>
+            <div class="banner-dot" onclick="window.TechDaily.BannerSwipe.showSlide(2)"></div>
+            <div class="banner-dot" onclick="window.TechDaily.BannerSwipe.showSlide(3)"></div>
+            <div class="banner-dot" onclick="window.TechDaily.BannerSwipe.showSlide(4)"></div>
         </div>
     </div>
 
@@ -145,30 +136,64 @@
         <p>前沿科技日报 · 全球科技投资情报 · 每日更新</p>
     </div>
 
+    <!-- 底部固定导航栏 -->
+    <div class="bottom-nav">
+        <a href="index.html" class="bottom-nav-item active">
+            <span style="font-size: 22px;">🏠</span>
+            <span>首页</span>
+        </a>
+        <a href="ai.html" class="bottom-nav-item">
+            <span style="font-size: 22px;">📑</span>
+            <span>分类</span>
+        </a>
+        <a href="#" class="bottom-nav-item" id="settings-btn">
+            <span style="font-size: 22px;">⚙️</span>
+            <span>设置</span>
+        </a>
+    </div>
+
+    <!-- 设置面板 -->
+    <div class="settings-panel" id="settings-panel">
+        <div class="settings-content">
+            <div class="settings-header">
+                <span class="settings-title">⚙️ 设置</span>
+                <button class="settings-close" id="settings-close">✕</button>
+            </div>
+            
+            <div class="settings-section">
+                <div class="settings-section-title">显示模式</div>
+                <div class="theme-toggle">
+                    <span class="theme-toggle-label">夜间模式</span>
+                    <label class="switch">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <div class="settings-section-title">字体大小</div>
+                <div class="font-size-options">
+                    <button class="font-size-btn small" data-size="small">小</button>
+                    <button class="font-size-btn medium" data-size="medium">中</button>
+                    <button class="font-size-btn large" data-size="large">大</button>
+                    <button class="font-size-btn xlarge" data-size="xlarge">特大</button>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <div class="settings-section-title">关于</div>
+                <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.8;">
+                    前沿科技日报<br>
+                    全球科技投资情报 · 每日更新<br><br>
+                    版本: 2.0
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="mobile-optimize.js"></script>
     <script>
-        // Banner轮播
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.banner-slide');
-        const dots = document.querySelectorAll('.banner-dot');
-        
-        function showSlide(index) {
-            slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
-            dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-            currentSlide = index;
-        }
-        
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-        
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
-        }
-        
-        setInterval(nextSlide, 5000);
-        
         // 加载资讯
         let currentNewsIndex = 0;
         const newsPerPage = 10;
@@ -282,6 +307,4 @@
         });
     </script>
 </body>
-</html><!-- cache-bust: 1772282787 -->
-<!-- cache-bust: 1772282808 -->
-
+</html>

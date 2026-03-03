@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+&lt;html lang="zh-CN"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;前沿科技日报&lt;/title&gt;
+  &lt;style&gt;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f5f5f5;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+    
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+    
+    header p {
+      opacity: 0.9;
+    }
+    
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 2em;
+      font-weight: bold;
+    }
+    
+    .stat-label {
+      font-size: 0.9em;
+      opacity: 0.8;
+    }
+    
+    .category-nav {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .category-nav h3 {
+      margin-bottom: 15px;
+      color: #667eea;
+    }
+    
+    .category-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .category-link {
+      display: inline-block;
+      padding: 8px 16px;
+      background: #f0f0f0;
+      color: #333;
+      text-decoration: none;
+      border-radius: 20px;
+      transition: all 0.3s;
+    }
+    
+    .category-link:hover {
+      background: #667eea;
+      color: white;
+    }
+    
+    .latest-section {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .latest-section h2 {
+      color: #667eea;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #667eea;
+    }
+    
+    .news-item {
+      padding: 20px 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .news-item:last-child {
+      border-bottom: none;
+    }
+    
+    .news-item h3, .news-item h4 {
+      margin-bottom: 10px;
+    }
+    
+    .news-item a {
+      color: #333;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .news-item a:hover {
+      color: #667eea;
+    }
+    
+    .news-meta {
+      color: #999;
+      font-size: 0.9em;
+      margin-bottom: 10px;
+    }
+    
+    .news-meta .source {
+      margin-right: 15px;
+      color: #667eea;
+    }
+    
+    .news-summary {
+      color: #666;
+      line-height: 1.8;
+    }
+    
+    .news-tags {
+      margin-top: 10px;
+    }
+    
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      background: #e3f2fd;
+      color: #1976d2;
+      font-size: 0.8em;
+      border-radius: 12px;
+      margin-right: 8px;
+    }
+    
+    .category-section {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .category-title {
+      color: #667eea;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #667eea;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #999;
+      background: white;
+      border-radius: 10px;
+    }
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8em;
+      }
+      
+      .container {
+        padding: 10px;
+      }
+      
+      .latest-section, .category-section {
+        padding: 20px;
+      }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;header&gt;
+      &lt;h1&gt;前沿科技日报&lt;/h1&gt;
+      &lt;p&gt;聚合最新科技资讯，洞察行业趋势&lt;/p&gt;
+      &lt;div class="stats"&gt;
+        &lt;div class="stat-item"&gt;
+          &lt;div class="stat-value"&gt;62&lt;/div&gt;
+          &lt;div class="stat-label"&gt;今日文章&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="stat-item"&gt;
+          &lt;div class="stat-value"&gt;8&lt;/div&gt;
+          &lt;div class="stat-label"&gt;分类&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="stat-item"&gt;
+          &lt;div class="stat-label"&gt;更新时间&lt;/div&gt;
+          &lt;div class="stat-value" style="font-size: 1em;"&gt;2026/03/04 00:45&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+    
+    &lt;nav class="category-nav"&gt;
+      &lt;h3&gt;📑 分类导航&lt;/h3&gt;
+      &lt;div class="category-links"&gt;
+        &lt;a href="#综合科技" class="category-link"&gt;综合科技&lt;/a&gt;&lt;a href="#互联网" class="category-link"&gt;互联网&lt;/a&gt;&lt;a href="#创业投资" class="category-link"&gt;创业投资&lt;/a&gt;&lt;a href="#新能源" class="category-link"&gt;新能源&lt;/a&gt;&lt;a href="#消费电子" class="category-link"&gt;消费电子&lt;/a&gt;&lt;a href="#金融科技" class="category-link"&gt;金融科技&lt;/a&gt;&lt;a href="#人工智能" class="category-link"&gt;人工智能&lt;/a&gt;&lt;a href="#半导体" class="category-link"&gt;半导体&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/nav&gt;
+    
+    &lt;section class="latest-section"&gt;
+      &lt;h2&gt;🔥 最新资讯&lt;/h2&gt;
+      
+    &lt;article class="news-item"&gt;
+      &lt;h3&gt;&lt;a href="https://www.tmtpost.com/7891224.html" target="_blank"&gt;五连亏、补税2000万、高负债夹击：艾迪药业12.77亿的破局豪赌&lt;/a&gt;&lt;/h3&gt;
+      &lt;p class="news-meta"&gt;
+        &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+        &lt;span class="time"&gt;2026/03/03 22:08&lt;/span&gt;
+      &lt;/p&gt;
+      &lt;p class="news-summary"&gt;成则海阔天空，败则伤筋动骨。&lt;/p&gt;
+      &lt;div class="news-tags"&gt;
+        &lt;span class="tag"&gt;综合科技&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/article&gt;
+  
+    &lt;article class="news-item"&gt;
+      &lt;h3&gt;&lt;a href="https://36kr.com/newsflashes/3707218656309383?f=rss" target="_blank"&gt;百度App接入OpenClaw 2周，超2成用户调用于投资理财分析&lt;/a&gt;&lt;/h3&gt;
+      &lt;p class="news-meta"&gt;
+        &lt;span class="source"&gt;36氪&lt;/span&gt;
+        &lt;span class="time"&gt;2026/03/03 20:57&lt;/span&gt;
+      &lt;/p&gt;
+      &lt;p class="news-summary"&gt;36氪获悉，3月3日，据内部人士透露，百度App接入OpenClaw 2周时间内，超2成用户用其来处理投资理财任务，4成用户在百度App部署OpenClaw后用于整理资讯及分析报告。&lt;/p&gt;
+      &lt;div class="news-tags"&gt;
+        &lt;span class="tag"&gt;互联网&lt;/span&gt;&lt;span class="tag"&gt;创业投资&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/article&gt;
+  
+    &lt;article class="news-item"&gt;
+      &lt;h3&gt;&lt;a href="https://36kr.com/newsflashes/3707216387977605?f=rss" target="_blank"&gt;佑驾创新：与宁德时代（上海）智能科技有限公司达成战略合作&lt;/a&gt;&lt;/h3&gt;
+      &lt;p class="news-meta"&gt;
+        &lt;span class="source"&gt;36氪&lt;/span&gt;
+        &lt;span class="time"&gt;2026/03/03 20:55&lt;/span&gt;
+      &lt;/p&gt;
+      &lt;p class="news-summary"&gt;36氪获悉，佑驾创新公告，公司近期与宁德时代新能源科技股份有限公司的附属公司宁德时代（上海）智能科技有限公司正式签署战略合作协议。双方将本着优势互补、资源共享、互利共赢、共同发展的原则，建立长期、稳定、紧密的战略合作伙伴关系，共同开拓具有全球竞争力的智能化、电动化解决方案，推动在海内外市场实现技术与商业的双重突破。&lt;/p&gt;
+      &lt;div class="news-tags"&gt;
+        &lt;span class="tag"&gt;新能源&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/article&gt;
+  
+    &lt;article class="news-item"&gt;
+      &lt;h3&gt;&lt;a href="https://36kr.com/newsflashes/3707211702808962?f=rss" target="_blank"&gt;英国预算责任办公室：预计2026年GDP增长1.1%，不及此前预期&lt;/a&gt;&lt;/h3&gt;
+      &lt;p class="news-meta"&gt;
+        &lt;span class="source"&gt;36氪&lt;/span&gt;
+        &lt;span class="time"&gt;2026/03/03 20:50&lt;/span&gt;
+      &lt;/p&gt;
+      &lt;p class="news-summary"&gt;英国预算责任办公室预计2026年GDP增长1.1%，此前预期为增长1.4%；预计2027年GDP增长1.6%；此前预期为增长1.5%。（财联社）&lt;/p&gt;
+      &lt;div class="news-tags"&gt;
+        &lt;span class="tag"&gt;综合科技&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/article&gt;
+  
+    &lt;article class="news-item"&gt;
+      &lt;h3&gt;&lt;a href="https://36kr.com/newsflashes/3707210373312901?f=rss" target="_blank"&gt;热门中概股美股盘前普跌，小鹏汽车跌超5%&lt;/a&gt;&lt;/h3&gt;
+      &lt;p class="news-meta"&gt;
+        &lt;span class="source"&gt;36氪&lt;/span&gt;
+        &lt;span class="time"&gt;2026/03/03 20:49&lt;/span&gt;
+      &lt;/p&gt;
+      &lt;p class="news-summary"&gt;36氪获悉，热门中概股美股盘前普跌，截至发稿，小鹏汽车跌超5%，理想汽车、阿里巴巴、京东、百度、富途控股跌超3%，哔哩哔哩、蔚来跌超2%,拼多多、网易、微博跌超1%。&lt;/p&gt;
+      &lt;div class="news-tags"&gt;
+        &lt;span class="tag"&gt;互联网&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/article&gt;
+  
+    &lt;article class="news-item"&gt;
+      &lt;h3&gt;&lt;a href="https://36kr.com/newsflashes/3707208445964680?f=rss" target="_blank"&gt;美股大型科技股盘前普跌，英特尔跌超3%&lt;/a&gt;&lt;/h3&gt;
+      &lt;p class="news-meta"&gt;
+        &lt;span class="source"&gt;36氪&lt;/span&gt;
+        &lt;span class="time"&gt;2026/03/03 20:47&lt;/span&gt;
+      &lt;/p&gt;
+      &lt;p class="news-summary"&gt;36氪获悉，美股大型科技股盘前普跌，截至发稿，英特尔跌超3%，英伟达、亚马逊、谷歌、奈飞跌超2%，特斯拉、微软、Meta跌超1%，苹果跌0.54%。&lt;/p&gt;
+      &lt;div class="news-tags"&gt;
+        &lt;span class="tag"&gt;新能源&lt;/span&gt;&lt;span class="tag"&gt;消费电子&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/article&gt;
+  
+    &lt;article class="news-item"&gt;
+      &lt;h3&gt;&lt;a href="https://36kr.com/newsflashes/3707206263255425?f=rss" target="_blank"&gt;ST京蓝：公司股票核查结束，将于3月4日复牌&lt;/a&gt;&lt;/h3&gt;
+      &lt;p class="news-meta"&gt;
+        &lt;span class="source"&gt;36氪&lt;/span&gt;
+        &lt;span class="time"&gt;2026/03/03 20:45&lt;/span&gt;
+      &lt;/p&gt;
+      &lt;p class="news-summary"&gt;36氪获悉，ST京蓝公告，此前公告，公司股票自2026年2月27日开市起停牌核查。停牌期间，公司就股价波动的相关事项进行了核查。鉴于相关自查工作已完成，公司股票将于2026年3月4日（星期三）开市起复牌。&lt;/p&gt;
+      &lt;div class="news-tags"&gt;
+        &lt;span class="tag"&gt;综合科技&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/article&gt;
+  
+    &lt;article class="news-item"&gt;
+      &lt;h3&gt;&lt;a href="https://36kr.com/newsflashes/3707202851549314?f=rss" target="_blank"&gt;华安证券：控股股东拟1亿元至2亿元增持公司可转债并转股&lt;/a&gt;&lt;/h3&gt;
+      &lt;p class="news-meta"&gt;
+        &lt;span class="source"&gt;36氪&lt;/span&gt;
+        &lt;span class="time"&gt;2026/03/03 20:41&lt;/span&gt;
+      &lt;/p&gt;
+      &lt;p class="news-summary"&gt;36氪获悉，华安证券公告，公司控股股东安徽国控集团计划在3月4日—3月6日，通过集中竞价或大宗交易购买华安转债并在公司可转债转股期间内转股的方式增持公司股份，累计购买金额不低于1亿元，不超过2亿元，此次购买可转债并完成转股后增持公司A股股份的比例与前次已实施完成的增持计划累计不超过公司总股本的2%。&lt;/p&gt;
+      &lt;div class="news-tags"&gt;
+        &lt;span class="tag"&gt;综合科技&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/article&gt;
+  
+    &lt;article class="news-item"&gt;
+      &lt;h3&gt;&lt;a href="https://36kr.com/newsflashes/3707192645496969?f=rss" target="_blank"&gt;杉杉股份：若控股股东重整成功，公司实控人将变更为安徽省国资委&lt;/a&gt;&lt;/h3&gt;
+      &lt;p class="news-meta"&gt;
+        &lt;span class="source"&gt;36氪&lt;/span&gt;
+        &lt;span class="time"&gt;2026/03/03 20:31&lt;/span&gt;
+      &lt;/p&gt;
+      &lt;p class="news-summary"&gt;36氪获悉，杉杉股份发布公告，公司控股股东杉杉集团及其全资子公司朋泽贸易的重整计划草案已提交债权人会议表决，合并破产重整案第四次债权人会议于3月2日召开。若重整成功，公司的控制权将发生变更，公司控股股东将变更为安徽皖维集团有限责任公司，实际控制人将变更为安徽省国资委。但重整计划尚需相关会议审议表决通过并获得法院批准，结果存在不确定性。公司生产经营正常，未受重大影响。&lt;/p&gt;
+      &lt;div class="news-tags"&gt;
+        &lt;span class="tag"&gt;综合科技&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/article&gt;
+  
+    &lt;article class="news-item"&gt;
+      &lt;h3&gt;&lt;a href="https://36kr.com/newsflashes/3707185206489220?f=rss" target="_blank"&gt;新加坡据悉拟评估将其发展为实物黄金交易枢纽的可行性&lt;/a&gt;&lt;/h3&gt;
+      &lt;p class="news-meta"&gt;
+        &lt;span class="source"&gt;36氪&lt;/span&gt;
+        &lt;span class="time"&gt;2026/03/03 20:23&lt;/span&gt;
+      &lt;/p&gt;
+      &lt;p class="news-summary"&gt;据报道，新加坡金融管理局(MAS)与包括两大黄金做市商瑞银、摩通等多家金融机构会谈，评估把新加坡发展为实物黄金交易枢纽的可行性。知情人士透露，新加坡有意发展成为黄金贸易及仓储枢纽，并获央行及家族办公室等机构支持。而新交所亦正评估市场对新黄金合约的需求。相关规划仍处于初步阶段，不排除未来或有调整。（财联社）&lt;/p&gt;
+      &lt;div class="news-tags"&gt;
+        &lt;span class="tag"&gt;金融科技&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/article&gt;
+  
+    &lt;/section&gt;
+    
+    
+      &lt;section id="综合科技" class="category-section"&gt;
+        &lt;h2 class="category-title"&gt;综合科技&lt;/h2&gt;
+        &lt;div class="news-list"&gt;
+          
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7891224.html" target="_blank"&gt;五连亏、补税2000万、高负债夹击：艾迪药业12.77亿的破局豪赌&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 22:08&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;成则海阔天空，败则伤筋动骨。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/newsflashes/3707211702808962?f=rss" target="_blank"&gt;英国预算责任办公室：预计2026年GDP增长1.1%，不及此前预期&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 20:50&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;英国预算责任办公室预计2026年GDP增长1.1%，此前预期为增长1.4%；预计2027年GDP增长1.6%；此前预期为增长1.5%。（财联社）&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/newsflashes/3707206263255425?f=rss" target="_blank"&gt;ST京蓝：公司股票核查结束，将于3月4日复牌&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 20:45&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;36氪获悉，ST京蓝公告，此前公告，公司股票自2026年2月27日开市起停牌核查。停牌期间，公司就股价波动的相关事项进行了核查。鉴于相关自查工作已完成，公司股票将于2026年3月4日（星期三）开市起复牌。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/newsflashes/3707202851549314?f=rss" target="_blank"&gt;华安证券：控股股东拟1亿元至2亿元增持公司可转债并转股&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 20:41&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;36氪获悉，华安证券公告，公司控股股东安徽国控集团计划在3月4日—3月6日，通过集中竞价或大宗交易购买华安转债并在公司可转债转股期间内转股的方式增持公司股份，累计购买金额不低于1亿元，不超过2亿元，此次购买可转债并完成转股后增持公司A股股份的比例与前次已实施完成的增持计划累计不超过公司总股本的2%。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/newsflashes/3707192645496969?f=rss" target="_blank"&gt;杉杉股份：若控股股东重整成功，公司实控人将变更为安徽省国资委&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 20:31&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;36氪获悉，杉杉股份发布公告，公司控股股东杉杉集团及其全资子公司朋泽贸易的重整计划草案已提交债权人会议表决，合并破产重整案第四次债权人会议于3月2日召开。若重整成功，公司的控制权将发生变更，公司控股股东将变更为安徽皖维集团有限责任公司，实际控制人将变更为安徽省国资委。但重整计划尚需相关会议审议表决通过并获得法院批准，结果存在不确定性。公司生产经营正常，未受重大影响。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7898483.html" target="_blank"&gt;平价易主+宽松对赌+借壳幻灭，法兰泰克复牌跌5.6% ｜并购一线&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 19:23&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;无锡国资去泡沫化接盘。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7898263.html" target="_blank"&gt;春晚之后，机器人忙着“走穴”接活&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 18:45&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;机器人租赁，能跑出下一个“滴滴”吗？&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7898151.html" target="_blank"&gt;暴增3500倍，这些美妆品类，正闷声收割年轻人&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 17:35&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;主流品类卖不动，边缘品类逆袭。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://www.huxiu.com/article/4838156.html?f=wangzhan" target="_blank"&gt;一年千亿，短剧生意比电影都大了？&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;虎嗅网&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 17:00&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;短剧火到一年千亿，比电影还赚钱，七亿用户上头。一集短剧3分钟，没有一分钟是浪费的，全是算计。
+下载虎嗅APP，第一时间获取深度独到的商业科技资讯，连接更多创新人群与线下活动&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://www.huxiu.com/article/4837825.html?f=wangzhan" target="_blank"&gt;百年松下集团，把彩电业务交给了中国&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;虎嗅网&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 09:53&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;百年松下，将彩电业务交到中国手中。创维官宣与松下合作，全面负责全球松下品牌电视的生产、销售和渠道拓展。2026年起，松下将北美和欧洲电视销售业务移交给创维，未来仅专注日本本土和高端机型。
+下载虎嗅APP，第一时间获取深度独到的商业科技资讯，连接更多创新人群与线下活动&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://www.huxiu.com/article/4837789.html?f=wangzhan" target="_blank"&gt;除夕夜与王兴兴的访谈：揭秘春晚幕后，与宇树这一年&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;虎嗅网&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/02 19:00&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;除夕夜的夜晚，宇树刚刚完成了马年春晚的表演节目《武BOT》。这是宇树第三次登上中国春晚舞台，25台宇树机器人组成一个集群，和中国最顶尖的武术学校，塔沟武校的人类小演员们，一起完成了一场震撼的表演。这场表演被全球媒体称为，展现了人形机器人运控的巅峰。这场表演，不仅展现了全球最强的运控能力，也超越了宇树自己。
+
+
+自2025年蛇年春晚爆红以后，宇树站在行业之巅，承受了不小的压力。
+
+
+我在除夕夜当晚，...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://www.huxiu.com/article/4838211.html?f=wangzhan" target="_blank"&gt;伊朗战争：美国的终极野心将如何影响资本市场？&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;虎嗅网&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/02 16:28&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;风浪越大、鱼越贵？还是不立危墙之下？这确实是个问题。估计本周的资本市场，是相当紧张刺激的了。
+下载虎嗅APP，第一时间获取深度独到的商业科技资讯，连接更多创新人群与线下活动&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3705502776652168?f=rss" target="_blank"&gt;成都六类人才可享租房补贴，最高补贴比例达100%&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/02 16:21&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;2月28日，成都市住房和城乡建设局等四部门联合发布《成都市人才优租行动实施细则》，针对符合条件的六类市级人才，给予相应的人才补贴，补贴比例从50%到100%不等，而补贴面积最高为50平方米。
+该《细则》自2026年4月1日起实施，有效期5年。
+从人才惠及范围看，首先是在成都市行政区域范围租住保障性租赁住房（不含纳入保障性租赁住房管理的居民自有住房）的市级A、B、C、D、E类人才。
+另外，还有人才认...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://go.rss.sina.com.cn/redirect.php?url=https://tech.sina.com.cn/roll/2018-09-23/doc-ifxeuwwr7454098.shtml" target="_blank"&gt;
+				女乘客遭顺风车司机侮辱 对方放话：把你衣服都扒光
+			&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;新浪财经科技&lt;/span&gt;
+          &lt;span class="time"&gt;2018/09/23 16:02&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;原标题：沈阳女乘客遭顺风车司机侮辱骚扰！对方放话：把你衣服都扒光
+　　来源：辽沈晚报 金飞
+　　辽沈晚报9月22日消息，最近一段时间
+　　顺风车频频出事层出不穷的新闻
+　　让网友们愤慨不已
+　　但沈阳姑娘小李（化名）万万没想到
+　　自己选择叫顺风车的那一刻
+　　成为....&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://go.rss.sina.com.cn/redirect.php?url=https://tech.sina.com.cn/i/2018-09-23/doc-ihkmwytn6915894.shtml" target="_blank"&gt;
+				中国电竞亚运夺冠“十日谈” 沉迷游戏≠电竞
+			&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;新浪财经科技&lt;/span&gt;
+          &lt;span class="time"&gt;2018/09/23 15:12&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;领奖台上的AOV中国队。 亚洲电子体育联合会 图
+　　原标题：中国电竞亚运夺冠“十日谈”
+　　作者：沈文迪 实习生 黄霁洁
+　　“Nice、nice，一波一波了，推推推推，赢了赢了！nice！”
+　　这些嘈杂的呐喊声被记录在了比赛语音系统的最后。当敌方“水晶”破裂的瞬间，刘明杰扔掉....&lt;/p&gt;
+      &lt;/article&gt;
+    
+        &lt;/div&gt;
+      &lt;/section&gt;
+    
+      &lt;section id="互联网" class="category-section"&gt;
+        &lt;h2 class="category-title"&gt;互联网&lt;/h2&gt;
+        &lt;div class="news-list"&gt;
+          
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/newsflashes/3707218656309383?f=rss" target="_blank"&gt;百度App接入OpenClaw 2周，超2成用户调用于投资理财分析&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 20:57&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;36氪获悉，3月3日，据内部人士透露，百度App接入OpenClaw 2周时间内，超2成用户用其来处理投资理财任务，4成用户在百度App部署OpenClaw后用于整理资讯及分析报告。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/newsflashes/3707210373312901?f=rss" target="_blank"&gt;热门中概股美股盘前普跌，小鹏汽车跌超5%&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 20:49&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;36氪获悉，热门中概股美股盘前普跌，截至发稿，小鹏汽车跌超5%，理想汽车、阿里巴巴、京东、百度、富途控股跌超3%，哔哩哔哩、蔚来跌超2%,拼多多、网易、微博跌超1%。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7898418.html" target="_blank"&gt;字节领航、Kimi 爆发：红包大战落幕，AI行业变天&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 19:14&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;长期来看，持有人工智能建设资产，基本面比宏观流动性冲击更重要。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7898028.html" target="_blank"&gt;从夸克到千问：阿里AI“重修族谱”&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 19:14&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;千问需要更多的“夸克、口碑、饿了么”。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3707029227499651?f=rss" target="_blank"&gt;氪星晚报｜全国首个跨境电商出口“前置监管仓”投用；亚马逊云服务称仍在努力恢复阿联酋网络服务；2026年全国消费促进月启动&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 17:57&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;大公司：
+亚马逊花逾4亿美元购美知名高校校区用于AI建设
+美国乔治·华盛顿大学2日说，美国亚马逊公司斥资4.27亿美元，收购该校弗吉尼亚科学与技术校区，以加快人工智能（AI）基础设施建设。
+红果短剧已为多款小说相关软件登记著作权
+36氪获悉，3月3日，爱企查App显示，红果短剧关联公司北京笔墨留香科技有限公司成已为“小说快应用”“笔墨留香”“红果官网”网站进行备案。值得一提的是，该公司已为“最看小...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7898191.html" target="_blank"&gt;成为主角的百度 AI，能支棱起来吗？&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 17:35&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;李彦宏变得更决绝了。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3706592101691525?f=rss" target="_blank"&gt;前小米高管创业机器人，用“爆品逻辑”做工业通用具身智能&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 10:25&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;文｜富充
+编辑｜苏建勋
+小雨智造创始人乔忠良身上，有着“小米系”具身智能创业者的典型特质：善于寻找落地场景，商业化思路很务实。
+2023年2月成立起，小雨智造就瞄准“工业通用具身智能”的目标。焊接机器人作为“沿途下蛋”的第一款产品，在2025年第四季度进入客户产线。
+2010年，北航计算机系硕士毕业后，乔忠良加入创业阶段的小米，成为小米首位应届生；离职时，他已经担任小米MIUI研发负责人5年，创下...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3705907852800136?f=rss" target="_blank"&gt;「PureblueAI清蓝」完成数千万元天使轮融资，发布首款AI口碑营销数字员工&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 09:00&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;作者 | 邓咏仪
+编辑 | 苏建勋
+36氪获悉，国内AI营销技术服务公司「PureblueAI清蓝」正式宣布完成数千万元人民币天使轮融资。本轮融资由祥峰中国（Vertex China）领投，老股东英诺基金及一村淞灵、36氪跟投。
+本轮融资资金，将主要用于新一代产品开发与技术迭代、全行业生态拓展及业务布局，同时将持续携手投资方与生态伙伴，打造 AI 口碑营销领域的标杆性解决方案，助力更多企业在 AI...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3706462657245318?f=rss" target="_blank"&gt;8点1氪丨椰树集团再陷擦边营销风波被约谈；电影难看20分钟内可退款40%，一影院试行“观影后悔权”；中欧航线票价暴涨&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 08:11&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;今日热点导览
+伊朗称霍尔木兹海峡已关闭： “不会让一滴石油流出”
+雷军：小米机器人已在汽车工厂实习，未来5年大批人形机器人进厂
+亚马逊在阿联酋数据中心遭撞击起火
+多家金店暂停投资金条销售
+北京银行贵金属业务出现BUG
+BOSS直聘称网传伊朗急招炮兵照片系P图
+TOP3大新闻
+海口市监局回应椰树低俗广告，已约谈企业
+近日，海南椰树集团因工厂参观区内悬挂涉嫌低俗内容的宣传广告，再次被推上舆论风口浪尖。...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3705917499601285?f=rss" target="_blank"&gt;专访资深公关品牌专家吴猛:情绪传播时代企业公关的情感叙事与长效信任构建&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/02 22:54&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;公关专家吴猛
+在媒介化社会深度演进、社交媒体重构传播生态的当下，情绪传播已成为当前舆论场的一个核心表征，传统以事实为核心的公关范式开始向“事实与情绪并重”的方向发展。情绪传播时代，企业公关如何重构情感叙事、搭建与公众的情感共振桥梁、实现品牌信任的长效构建？带着这些问题，我们专访了资深公关品牌专家吴猛。
+
+  
+吴猛拥有丰富的公共关系和品牌管理经验，并先后在联想集团、蓝色光标、京东集团担任高级管理职...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://www.huxiu.com/article/4837962.html?f=wangzhan" target="_blank"&gt;遗忘，就是对暴力的重复&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;虎嗅网&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/02 20:00&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;互联网上流行一句话：“除了病痛，一切痛苦都是价值观带来的。” 仿佛只要换个心态，痛苦就会消失。但这句治愈系的鸡汤背后，隐藏着极其残酷的权力逻辑。如果痛苦只是“想多了”，那为什么有些痛会让我们感受到真实的心碎和身体的震颤？ 
+
+
+本节目是【情感政治系列】的Part1——痛苦篇。痛的真相：痛苦不是为了让我们“感同身受”，而是为了划清“自我”与“世界”的边界。共情陷阱：为什么“我懂你”有时是一场居高临下...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3705604996952453?f=rss" target="_blank"&gt;氪星晚报｜马斯克称第二代星链卫星将提供5G速度的太空互联网服务；调整住宿税，日本京都预计增收132亿日元；卢伟冰：小米今年即将发布全新的机器人产品&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/02 17:47&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;大公司：
+智元机器人等在安徽成立华智天成科技新公司
+36氪获悉，爱企查App显示，近日，安徽华智天成科技有限公司成立，法定代表人为肖智成，注册资本约1176万元人民币，经营范围包括计算机软硬件及辅助设备零售、计算机软硬件及辅助设备批发、软件销售、通信设备销售等。股东信息显示，该公司由智元机器人关联公司智元创新科技股份有限公司、天水华天电子集团股份有限公司等共同持股。
+海螺新型建材有限公司在肥东成立...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://go.rss.sina.com.cn/redirect.php?url=https://tech.sina.com.cn/i/2018-09-23/doc-ifxeuwwr7438222.shtml" target="_blank"&gt;
+				多人网上开赌场获利20万:每局赌注1毛输赢高达4千
+			&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;新浪财经科技&lt;/span&gt;
+          &lt;span class="time"&gt;2018/09/23 15:03&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;原标题：网上开设赌场非法获利20余万元 8名犯罪嫌疑人被刑拘
+　　9月22日，封面新闻记者从西昌市公安局获悉。今年7月，凉山州公安局、西昌市公安局网安部门成功侦破一起利用互联网开设赌场的案件。该团伙通过建微信群拉人在App“牛总管”上进行赌博，并对赢家进行抽成，累计非....&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://go.rss.sina.com.cn/redirect.php?url=https://tech.sina.com.cn/i/2018-09-23/doc-ihkmwytn6810289.shtml" target="_blank"&gt;
+				区块链是互联网技术补丁 需推动与实体经济深度融合
+			&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;新浪财经科技&lt;/span&gt;
+          &lt;span class="time"&gt;2018/09/23 14:12&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;原标题：中国信通院魏凯：区块链是互联网技术补丁，需推动区块链与实体经济深度融合
+　　作者：链得得潘璇
+　　2018年5月，中国信息通信研究院工信部信息中心正式发布《2018年中国区块链产业发展白皮书》，数据显示，我国以区块链为主营业务的公司达456家。
+　　2018年9月，在....&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://go.rss.sina.com.cn/redirect.php?url=https://tech.sina.com.cn/i/2018-09-23/doc-ihkmwytn6656954.shtml" target="_blank"&gt;
+				赚了10亿美金，陌陌却不是阿里投资的成功案例？
+			&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;新浪财经科技&lt;/span&gt;
+          &lt;span class="time"&gt;2018/09/23 12:38&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;原标题：赚了10亿美金，陌陌却不是阿里的成功案例？| 前操盘手回忆（五）
+　　虎嗅注：本文是《阿里投资：一个昔日操盘者的回忆和思考》的第五篇。在前面的章节里，张鸿平讲述了阿里投天宇朗通、投陌陌、投快的的故事。一个急需解答的问题或许是，作为产业资本，到底该如何衡....&lt;/p&gt;
+      &lt;/article&gt;
+    
+        &lt;/div&gt;
+      &lt;/section&gt;
+    
+      &lt;section id="创业投资" class="category-section"&gt;
+        &lt;h2 class="category-title"&gt;创业投资&lt;/h2&gt;
+        &lt;div class="news-list"&gt;
+          
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/newsflashes/3707218656309383?f=rss" target="_blank"&gt;百度App接入OpenClaw 2周，超2成用户调用于投资理财分析&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 20:57&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;36氪获悉，3月3日，据内部人士透露，百度App接入OpenClaw 2周时间内，超2成用户用其来处理投资理财任务，4成用户在百度App部署OpenClaw后用于整理资讯及分析报告。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7898487.html" target="_blank"&gt;五和博澳冲刺港股：40亿估值，买的是管线还是确定性？&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 19:14&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;叙事标签，还是机制壁垒？&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7898344.html" target="_blank"&gt;Bigger than bigger，汽车公司开启SUV之战&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 18:45&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;仅2026年前两个月，就有至少11款大型SUV车型出现在工信部公告中，4月开始的北京车展将拉开SUV密集上市的大幕。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7898398.html" target="_blank"&gt;姜哲源喊出“刚跑了十米”后，宁德时代投了10个亿，但C端故事可能还是个陷阱&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 18:45&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;松延动力获宁德时代投资，押注工业机器人，消费级市场仍存挑战。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7898346.html" target="_blank"&gt;OpenClaw爆火60天：中国产业AI落地的“又一次集体进化”&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 18:45&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;Agent奔向跨体系协同时代。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7898277.html" target="_blank"&gt;OpenClaw 越红火，MiniMax 们越开心&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 18:45&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;“我们坚决不做移动端的通用个人助手。”闫俊杰说。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://www.huxiu.com/article/4837439.html?f=wangzhan" target="_blank"&gt;全网狂吹，永久投资组合，能持续赚吗?&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;虎嗅网&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 18:00&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;有这么一个神仙策略，据说只要无脑买入，从此不用预测行情，也不用钻研技术，更不用担心股灾，无论股市怎么走它都能稳如泰山，让你闭着眼也能穿越牛熊，在躺平中持续盈利，你心动了吗？
+下载虎嗅APP，第一时间获取深度独到的商业科技资讯，连接更多创新人群与线下活动&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3707029227499651?f=rss" target="_blank"&gt;氪星晚报｜全国首个跨境电商出口“前置监管仓”投用；亚马逊云服务称仍在努力恢复阿联酋网络服务；2026年全国消费促进月启动&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 17:57&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;大公司：
+亚马逊花逾4亿美元购美知名高校校区用于AI建设
+美国乔治·华盛顿大学2日说，美国亚马逊公司斥资4.27亿美元，收购该校弗吉尼亚科学与技术校区，以加快人工智能（AI）基础设施建设。
+红果短剧已为多款小说相关软件登记著作权
+36氪获悉，3月3日，爱企查App显示，红果短剧关联公司北京笔墨留香科技有限公司成已为“小说快应用”“笔墨留香”“红果官网”网站进行备案。值得一提的是，该公司已为“最看小...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7898278.html" target="_blank"&gt;China&#039;s Dumpling Chain Restaurant Goes for IPO in Hong Kong, the First Dumpling Stock&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 17:56&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;Yuanji Foods has submitted a listing application to the Hong Kong Stock Exchange, and its operating metrics show a mix of scaling up and mounting profit pressure. Although revenue kept rising from 202...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7897839.html" target="_blank"&gt;盯上“减肥焦虑”，一年卖超16亿元，抖音爆款要IPO&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 17:29&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;被流量催熟。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://www.huxiu.com/article/4838597.html?f=wangzhan" target="_blank"&gt;让财务官当CEO，利润全球第一的丰田也缺钱了？&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;虎嗅网&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 17:15&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;出品|虎嗅汽车组
+作者|邢书博
+头图|丰田官网
+ 
+暴跌43%。
+ 
+3月1日消息，丰田在2026财年第三季度（2025年10-12月）的净利润为1.26万亿日元，较2025财年同期减少0.93万亿日元，同比减少43%，几近腰斩。
+ 
+丰田宣布从2026年4月1日起，丰田首席财务官近健太（Kenta Kon）接替佐藤恒治（Koji Sato）担任丰田公司CEO，佐藤恒治改任丰田汽车副会长和新设立的...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3706592101691525?f=rss" target="_blank"&gt;前小米高管创业机器人，用“爆品逻辑”做工业通用具身智能&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 10:25&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;文｜富充
+编辑｜苏建勋
+小雨智造创始人乔忠良身上，有着“小米系”具身智能创业者的典型特质：善于寻找落地场景，商业化思路很务实。
+2023年2月成立起，小雨智造就瞄准“工业通用具身智能”的目标。焊接机器人作为“沿途下蛋”的第一款产品，在2025年第四季度进入客户产线。
+2010年，北航计算机系硕士毕业后，乔忠良加入创业阶段的小米，成为小米首位应届生；离职时，他已经担任小米MIUI研发负责人5年，创下...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3697641252646531?f=rss" target="_blank"&gt;一条内裤的“远征”： 巴迪高试图用“0手触”撬动一次性内裤的信任缺口 |  早期项目&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 10:16&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;近两年，一次性内裤在国内市场进入高速增长期。
+在旅行出游频繁、“懒人经济”持续升温的背景下，这一原本存在感不高的品类，正从边缘产品走向大众消费的视野。除户外、差旅等高频使用场景外，一次性内裤也逐渐渗透至产后恢复、医疗护理等领域，需求不断外扩，带动纺织服饰、母婴等赛道品牌加速入场，形成一股新的消费热潮。相关数据显示，2022—2024年，我国一次性内裤市场增速超过200%，整体规模已迈入百亿行列。
+...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3705907852800136?f=rss" target="_blank"&gt;「PureblueAI清蓝」完成数千万元天使轮融资，发布首款AI口碑营销数字员工&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 09:00&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;作者 | 邓咏仪
+编辑 | 苏建勋
+36氪获悉，国内AI营销技术服务公司「PureblueAI清蓝」正式宣布完成数千万元人民币天使轮融资。本轮融资由祥峰中国（Vertex China）领投，老股东英诺基金及一村淞灵、36氪跟投。
+本轮融资资金，将主要用于新一代产品开发与技术迭代、全行业生态拓展及业务布局，同时将持续携手投资方与生态伙伴，打造 AI 口碑营销领域的标杆性解决方案，助力更多企业在 AI...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3706462657245318?f=rss" target="_blank"&gt;8点1氪丨椰树集团再陷擦边营销风波被约谈；电影难看20分钟内可退款40%，一影院试行“观影后悔权”；中欧航线票价暴涨&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 08:11&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;今日热点导览
+伊朗称霍尔木兹海峡已关闭： “不会让一滴石油流出”
+雷军：小米机器人已在汽车工厂实习，未来5年大批人形机器人进厂
+亚马逊在阿联酋数据中心遭撞击起火
+多家金店暂停投资金条销售
+北京银行贵金属业务出现BUG
+BOSS直聘称网传伊朗急招炮兵照片系P图
+TOP3大新闻
+海口市监局回应椰树低俗广告，已约谈企业
+近日，海南椰树集团因工厂参观区内悬挂涉嫌低俗内容的宣传广告，再次被推上舆论风口浪尖。...&lt;/p&gt;
+      &lt;/article&gt;
+    
+        &lt;/div&gt;
+      &lt;/section&gt;
+    
+      &lt;section id="新能源" class="category-section"&gt;
+        &lt;h2 class="category-title"&gt;新能源&lt;/h2&gt;
+        &lt;div class="news-list"&gt;
+          
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/newsflashes/3707216387977605?f=rss" target="_blank"&gt;佑驾创新：与宁德时代（上海）智能科技有限公司达成战略合作&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 20:55&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;36氪获悉，佑驾创新公告，公司近期与宁德时代新能源科技股份有限公司的附属公司宁德时代（上海）智能科技有限公司正式签署战略合作协议。双方将本着优势互补、资源共享、互利共赢、共同发展的原则，建立长期、稳定、紧密的战略合作伙伴关系，共同开拓具有全球竞争力的智能化、电动化解决方案，推动在海内外市场实现技术与商业的双重突破。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/newsflashes/3707208445964680?f=rss" target="_blank"&gt;美股大型科技股盘前普跌，英特尔跌超3%&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 20:47&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;36氪获悉，美股大型科技股盘前普跌，截至发稿，英特尔跌超3%，英伟达、亚马逊、谷歌、奈飞跌超2%，特斯拉、微软、Meta跌超1%，苹果跌0.54%。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7897523.html" target="_blank"&gt;中东光伏项目短期内交付受阻；欧盟将废除小额包裹免税政策；Lazada子公司在新加坡推出前置仓即时零售 ｜一周出海参考&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 19:17&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;一文预览一周出海热点。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7898398.html" target="_blank"&gt;姜哲源喊出“刚跑了十米”后，宁德时代投了10个亿，但C端故事可能还是个陷阱&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 18:45&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;松延动力获宁德时代投资，押注工业机器人，消费级市场仍存挑战。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3707029227499651?f=rss" target="_blank"&gt;氪星晚报｜全国首个跨境电商出口“前置监管仓”投用；亚马逊云服务称仍在努力恢复阿联酋网络服务；2026年全国消费促进月启动&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 17:57&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;大公司：
+亚马逊花逾4亿美元购美知名高校校区用于AI建设
+美国乔治·华盛顿大学2日说，美国亚马逊公司斥资4.27亿美元，收购该校弗吉尼亚科学与技术校区，以加快人工智能（AI）基础设施建设。
+红果短剧已为多款小说相关软件登记著作权
+36氪获悉，3月3日，爱企查App显示，红果短剧关联公司北京笔墨留香科技有限公司成已为“小说快应用”“笔墨留香”“红果官网”网站进行备案。值得一提的是，该公司已为“最看小...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://www.huxiu.com/article/4838597.html?f=wangzhan" target="_blank"&gt;让财务官当CEO，利润全球第一的丰田也缺钱了？&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;虎嗅网&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 17:15&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;出品|虎嗅汽车组
+作者|邢书博
+头图|丰田官网
+ 
+暴跌43%。
+ 
+3月1日消息，丰田在2026财年第三季度（2025年10-12月）的净利润为1.26万亿日元，较2025财年同期减少0.93万亿日元，同比减少43%，几近腰斩。
+ 
+丰田宣布从2026年4月1日起，丰田首席财务官近健太（Kenta Kon）接替佐藤恒治（Koji Sato）担任丰田公司CEO，佐藤恒治改任丰田汽车副会长和新设立的...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3706592101691525?f=rss" target="_blank"&gt;前小米高管创业机器人，用“爆品逻辑”做工业通用具身智能&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 10:25&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;文｜富充
+编辑｜苏建勋
+小雨智造创始人乔忠良身上，有着“小米系”具身智能创业者的典型特质：善于寻找落地场景，商业化思路很务实。
+2023年2月成立起，小雨智造就瞄准“工业通用具身智能”的目标。焊接机器人作为“沿途下蛋”的第一款产品，在2025年第四季度进入客户产线。
+2010年，北航计算机系硕士毕业后，乔忠良加入创业阶段的小米，成为小米首位应届生；离职时，他已经担任小米MIUI研发负责人5年，创下...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3706462657245318?f=rss" target="_blank"&gt;8点1氪丨椰树集团再陷擦边营销风波被约谈；电影难看20分钟内可退款40%，一影院试行“观影后悔权”；中欧航线票价暴涨&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 08:11&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;今日热点导览
+伊朗称霍尔木兹海峡已关闭： “不会让一滴石油流出”
+雷军：小米机器人已在汽车工厂实习，未来5年大批人形机器人进厂
+亚马逊在阿联酋数据中心遭撞击起火
+多家金店暂停投资金条销售
+北京银行贵金属业务出现BUG
+BOSS直聘称网传伊朗急招炮兵照片系P图
+TOP3大新闻
+海口市监局回应椰树低俗广告，已约谈企业
+近日，海南椰树集团因工厂参观区内悬挂涉嫌低俗内容的宣传广告，再次被推上舆论风口浪尖。...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://www.huxiu.com/article/4838234.html?f=wangzhan" target="_blank"&gt;小米舞超跑，意在“欧公子”？&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;虎嗅网&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/02 15:29&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;出品|虎嗅汽车组
+作者|王亚骏
+头图|视觉中国
+
+
+小米汽车，将自己的业务触角伸展到了新的领域。
+
+
+3月1日，小米发布了旗下首款概念超跑Xiaomi Vision Gran Turismo。3月2日至5日，这款车会在巴塞罗那世界移动通信大会（MWC）上亮相。
+
+
+
+MWC上的Xiaomi Vision Gran Turismo；图源：虎嗅拍摄
+
+
+一家车企推出超跑的目的并不难猜，主要是为了秀技术...&lt;/p&gt;
+      &lt;/article&gt;
+    
+        &lt;/div&gt;
+      &lt;/section&gt;
+    
+      &lt;section id="消费电子" class="category-section"&gt;
+        &lt;h2 class="category-title"&gt;消费电子&lt;/h2&gt;
+        &lt;div class="news-list"&gt;
+          
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/newsflashes/3707208445964680?f=rss" target="_blank"&gt;美股大型科技股盘前普跌，英特尔跌超3%&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 20:47&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;36氪获悉，美股大型科技股盘前普跌，截至发稿，英特尔跌超3%，英伟达、亚马逊、谷歌、奈飞跌超2%，特斯拉、微软、Meta跌超1%，苹果跌0.54%。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/newsflashes/3707184590664067?f=rss" target="_blank"&gt;华为杨超斌：全球日均Token消耗量快速增长，过去两年增长近300倍&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 20:23&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;36氪获悉，在MWC26 巴塞罗那期间，华为ICT BG CEO杨超斌发表主题演讲。杨超斌表示，全球日均Token消耗量快速增长，过去两年增长近300倍，引爆文生视频、智能购物等AI应用；全球行业中已有超3000万个AI Agent协同工作，深入生产、制造、金融等行业。这给移动产业带来前所未有的新机遇，也对网络能力提出新的要求：为支撑AI多模态的端云数据交互，网络需从过去以下行为主，迈向上下行超大...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7898350.html" target="_blank"&gt;AI手机路上，荣耀“背叛”豆包&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 18:45&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;打造Robot Phone，荣耀充满无奈与妥协。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3707029227499651?f=rss" target="_blank"&gt;氪星晚报｜全国首个跨境电商出口“前置监管仓”投用；亚马逊云服务称仍在努力恢复阿联酋网络服务；2026年全国消费促进月启动&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 17:57&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;大公司：
+亚马逊花逾4亿美元购美知名高校校区用于AI建设
+美国乔治·华盛顿大学2日说，美国亚马逊公司斥资4.27亿美元，收购该校弗吉尼亚科学与技术校区，以加快人工智能（AI）基础设施建设。
+红果短剧已为多款小说相关软件登记著作权
+36氪获悉，3月3日，爱企查App显示，红果短剧关联公司北京笔墨留香科技有限公司成已为“小说快应用”“笔墨留香”“红果官网”网站进行备案。值得一提的是，该公司已为“最看小...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3705512345170309?f=rss" target="_blank"&gt;黄金频段争夺战打响，华为发布U6GHz完整产品矩阵丨MWC 2026&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 13:25&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;作者丨邱晓芬
+编辑丨苏建勋
+在2026世界移动通信大会（MWC 2026）中偌大的1号馆里，华为几乎占据了一半以上的位置。这么大的空间和篇幅，华为想重点传递的关键词是U6GHz。
+为了实现6G这一遥远的蓝图，近期，全球已掀起了一场U6GHz（6.425-7.125 GHz）的探索热潮，阿联酋、巴西及欧洲等多国各大运营商近期纷纷完成了相应的万兆体验速率验证。
+简单理解，U6GHz就像是一个“黄金频段...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3705522207289479?f=rss" target="_blank"&gt;荣耀“转型”：发布Robot Phone和首款人形机器人丨MWC 2026&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 13:24&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;作者丨邱晓芬
+编辑丨苏建勋
+在2026世界移动通信大会（MWC 2026）上，荣耀发布的人形机器人、Robot Phone吸引了大量观众的目光。
+在Robot Phone上，荣耀打破了过去“黑色方块”的设计，将微型相机和云台系统塞进了手机里。
+据介绍，Robot Phone最大的技术挑战之一在于，如何在有限的手机空间中塞进机械臂和电机，这意味着，其上的微型电机必须同时满足高强度和轻量化。
+为此，荣...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3706592101691525?f=rss" target="_blank"&gt;前小米高管创业机器人，用“爆品逻辑”做工业通用具身智能&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 10:25&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;文｜富充
+编辑｜苏建勋
+小雨智造创始人乔忠良身上，有着“小米系”具身智能创业者的典型特质：善于寻找落地场景，商业化思路很务实。
+2023年2月成立起，小雨智造就瞄准“工业通用具身智能”的目标。焊接机器人作为“沿途下蛋”的第一款产品，在2025年第四季度进入客户产线。
+2010年，北航计算机系硕士毕业后，乔忠良加入创业阶段的小米，成为小米首位应届生；离职时，他已经担任小米MIUI研发负责人5年，创下...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3706462657245318?f=rss" target="_blank"&gt;8点1氪丨椰树集团再陷擦边营销风波被约谈；电影难看20分钟内可退款40%，一影院试行“观影后悔权”；中欧航线票价暴涨&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 08:11&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;今日热点导览
+伊朗称霍尔木兹海峡已关闭： “不会让一滴石油流出”
+雷军：小米机器人已在汽车工厂实习，未来5年大批人形机器人进厂
+亚马逊在阿联酋数据中心遭撞击起火
+多家金店暂停投资金条销售
+北京银行贵金属业务出现BUG
+BOSS直聘称网传伊朗急招炮兵照片系P图
+TOP3大新闻
+海口市监局回应椰树低俗广告，已约谈企业
+近日，海南椰树集团因工厂参观区内悬挂涉嫌低俗内容的宣传广告，再次被推上舆论风口浪尖。...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3705604996952453?f=rss" target="_blank"&gt;氪星晚报｜马斯克称第二代星链卫星将提供5G速度的太空互联网服务；调整住宿税，日本京都预计增收132亿日元；卢伟冰：小米今年即将发布全新的机器人产品&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/02 17:47&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;大公司：
+智元机器人等在安徽成立华智天成科技新公司
+36氪获悉，爱企查App显示，近日，安徽华智天成科技有限公司成立，法定代表人为肖智成，注册资本约1176万元人民币，经营范围包括计算机软硬件及辅助设备零售、计算机软硬件及辅助设备批发、软件销售、通信设备销售等。股东信息显示，该公司由智元机器人关联公司智元创新科技股份有限公司、天水华天电子集团股份有限公司等共同持股。
+海螺新型建材有限公司在肥东成立...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://www.huxiu.com/article/4838234.html?f=wangzhan" target="_blank"&gt;小米舞超跑，意在“欧公子”？&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;虎嗅网&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/02 15:29&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;出品|虎嗅汽车组
+作者|王亚骏
+头图|视觉中国
+
+
+小米汽车，将自己的业务触角伸展到了新的领域。
+
+
+3月1日，小米发布了旗下首款概念超跑Xiaomi Vision Gran Turismo。3月2日至5日，这款车会在巴塞罗那世界移动通信大会（MWC）上亮相。
+
+
+
+MWC上的Xiaomi Vision Gran Turismo；图源：虎嗅拍摄
+
+
+一家车企推出超跑的目的并不难猜，主要是为了秀技术...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://go.rss.sina.com.cn/redirect.php?url=https://tech.sina.com.cn/t/2018-09-23/doc-ihkmwytn6791142.shtml" target="_blank"&gt;
+				国内创业者们如何看待今年的新款iPhone ？
+			&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;新浪财经科技&lt;/span&gt;
+          &lt;span class="time"&gt;2018/09/23 14:02&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;原标题：12000+的iPhone你会买吗？
+　　来源：寻找中国创客 统筹：薛星星 编辑：苏琦　　
+　　苹果已经成功地将一款消费级电子产品打造成轻奢品，最新发售的 iPhone XS 系列最高配价格已经上探到12799元，是北京市去年月平均工资的1.5倍。有人高呼，今年的苹果一块“肾”已经....&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://go.rss.sina.com.cn/redirect.php?url=https://tech.sina.com.cn/i/2018-09-23/doc-ihkmwytn6552006.shtml" target="_blank"&gt;
+				手机商&quot;暗战&quot;:供应链汇顶科技供货违约遭OPPO&quot;拉黑&quot;
+			&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;新浪财经科技&lt;/span&gt;
+          &lt;span class="time"&gt;2018/09/23 11:36&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;作者：周昊
+　　深圳市汇顶科技股份有限公司（以下简称“汇顶科技”）作为目前最大的屏下指纹供应商之一，在今年受到了多家厂商的青睐。
+　　《中国经营报》记者注意到，由于受其他客户压力影响，汇顶科技因未能按承诺向OPPO供货，被OPPO列入供应商禁用名单，禁止期限为5年。....&lt;/p&gt;
+      &lt;/article&gt;
+    
+        &lt;/div&gt;
+      &lt;/section&gt;
+    
+      &lt;section id="金融科技" class="category-section"&gt;
+        &lt;h2 class="category-title"&gt;金融科技&lt;/h2&gt;
+        &lt;div class="news-list"&gt;
+          
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/newsflashes/3707185206489220?f=rss" target="_blank"&gt;新加坡据悉拟评估将其发展为实物黄金交易枢纽的可行性&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 20:23&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;据报道，新加坡金融管理局(MAS)与包括两大黄金做市商瑞银、摩通等多家金融机构会谈，评估把新加坡发展为实物黄金交易枢纽的可行性。知情人士透露，新加坡有意发展成为黄金贸易及仓储枢纽，并获央行及家族办公室等机构支持。而新交所亦正评估市场对新黄金合约的需求。相关规划仍处于初步阶段，不排除未来或有调整。（财联社）&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3706462657245318?f=rss" target="_blank"&gt;8点1氪丨椰树集团再陷擦边营销风波被约谈；电影难看20分钟内可退款40%，一影院试行“观影后悔权”；中欧航线票价暴涨&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 08:11&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;今日热点导览
+伊朗称霍尔木兹海峡已关闭： “不会让一滴石油流出”
+雷军：小米机器人已在汽车工厂实习，未来5年大批人形机器人进厂
+亚马逊在阿联酋数据中心遭撞击起火
+多家金店暂停投资金条销售
+北京银行贵金属业务出现BUG
+BOSS直聘称网传伊朗急招炮兵照片系P图
+TOP3大新闻
+海口市监局回应椰树低俗广告，已约谈企业
+近日，海南椰树集团因工厂参观区内悬挂涉嫌低俗内容的宣传广告，再次被推上舆论风口浪尖。...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://go.rss.sina.com.cn/redirect.php?url=https://tech.sina.com.cn/i/2018-09-23/doc-ihkmwytn6810289.shtml" target="_blank"&gt;
+				区块链是互联网技术补丁 需推动与实体经济深度融合
+			&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;新浪财经科技&lt;/span&gt;
+          &lt;span class="time"&gt;2018/09/23 14:12&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;原标题：中国信通院魏凯：区块链是互联网技术补丁，需推动区块链与实体经济深度融合
+　　作者：链得得潘璇
+　　2018年5月，中国信息通信研究院工信部信息中心正式发布《2018年中国区块链产业发展白皮书》，数据显示，我国以区块链为主营业务的公司达456家。
+　　2018年9月，在....&lt;/p&gt;
+      &lt;/article&gt;
+    
+        &lt;/div&gt;
+      &lt;/section&gt;
+    
+      &lt;section id="人工智能" class="category-section"&gt;
+        &lt;h2 class="category-title"&gt;人工智能&lt;/h2&gt;
+        &lt;div class="news-list"&gt;
+          
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/newsflashes/3707184590664067?f=rss" target="_blank"&gt;华为杨超斌：全球日均Token消耗量快速增长，过去两年增长近300倍&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 20:23&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;36氪获悉，在MWC26 巴塞罗那期间，华为ICT BG CEO杨超斌发表主题演讲。杨超斌表示，全球日均Token消耗量快速增长，过去两年增长近300倍，引爆文生视频、智能购物等AI应用；全球行业中已有超3000万个AI Agent协同工作，深入生产、制造、金融等行业。这给移动产业带来前所未有的新机遇，也对网络能力提出新的要求：为支撑AI多模态的端云数据交互，网络需从过去以下行为主，迈向上下行超大...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7898418.html" target="_blank"&gt;字节领航、Kimi 爆发：红包大战落幕，AI行业变天&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 19:14&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;长期来看，持有人工智能建设资产，基本面比宏观流动性冲击更重要。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7898028.html" target="_blank"&gt;从夸克到千问：阿里AI“重修族谱”&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 19:14&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;千问需要更多的“夸克、口碑、饿了么”。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7898350.html" target="_blank"&gt;AI手机路上，荣耀“背叛”豆包&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 18:45&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;打造Robot Phone，荣耀充满无奈与妥协。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7898346.html" target="_blank"&gt;OpenClaw爆火60天：中国产业AI落地的“又一次集体进化”&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 18:45&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;Agent奔向跨体系协同时代。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7896355.html" target="_blank"&gt;大模型开始偏爱引用YouTube了？&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 18:42&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;对大模型来说，YouTube赢在了对机器友好的工业化标准上。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://www.huxiu.com/article/4837484.html?f=wangzhan" target="_blank"&gt;史上最忙AI春节档：海量新品，如何才能不焦虑？&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;虎嗅网&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 18:30&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;刚刚过去的春节档，应该有很多人跟我一样本来可以开心休息的，结果被各种国内外AI新产品新功能各种刷屏，焦虑不断、心力憔悴，难道普通人真的跟不上AI的发展节奏了吗？
+
+
+枪仔帮你把春节期间的AI信息差，一期视频都给你补上，来看一下史上最忙AI春节档，都发生了什么？
+下载虎嗅APP，第一时间获取深度独到的商业科技资讯，连接更多创新人群与线下活动&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3707029227499651?f=rss" target="_blank"&gt;氪星晚报｜全国首个跨境电商出口“前置监管仓”投用；亚马逊云服务称仍在努力恢复阿联酋网络服务；2026年全国消费促进月启动&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 17:57&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;大公司：
+亚马逊花逾4亿美元购美知名高校校区用于AI建设
+美国乔治·华盛顿大学2日说，美国亚马逊公司斥资4.27亿美元，收购该校弗吉尼亚科学与技术校区，以加快人工智能（AI）基础设施建设。
+红果短剧已为多款小说相关软件登记著作权
+36氪获悉，3月3日，爱企查App显示，红果短剧关联公司北京笔墨留香科技有限公司成已为“小说快应用”“笔墨留香”“红果官网”网站进行备案。值得一提的是，该公司已为“最看小...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7898278.html" target="_blank"&gt;China&#039;s Dumpling Chain Restaurant Goes for IPO in Hong Kong, the First Dumpling Stock&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 17:56&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;Yuanji Foods has submitted a listing application to the Hong Kong Stock Exchange, and its operating metrics show a mix of scaling up and mounting profit pressure. Although revenue kept rising from 202...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://www.tmtpost.com/7898191.html" target="_blank"&gt;成为主角的百度 AI，能支棱起来吗？&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;钛媒体&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 17:35&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;李彦宏变得更决绝了。&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://www.huxiu.com/article/4838597.html?f=wangzhan" target="_blank"&gt;让财务官当CEO，利润全球第一的丰田也缺钱了？&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;虎嗅网&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 17:15&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;出品|虎嗅汽车组
+作者|邢书博
+头图|丰田官网
+ 
+暴跌43%。
+ 
+3月1日消息，丰田在2026财年第三季度（2025年10-12月）的净利润为1.26万亿日元，较2025财年同期减少0.93万亿日元，同比减少43%，几近腰斩。
+ 
+丰田宣布从2026年4月1日起，丰田首席财务官近健太（Kenta Kon）接替佐藤恒治（Koji Sato）担任丰田公司CEO，佐藤恒治改任丰田汽车副会长和新设立的...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3705512345170309?f=rss" target="_blank"&gt;黄金频段争夺战打响，华为发布U6GHz完整产品矩阵丨MWC 2026&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 13:25&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;作者丨邱晓芬
+编辑丨苏建勋
+在2026世界移动通信大会（MWC 2026）中偌大的1号馆里，华为几乎占据了一半以上的位置。这么大的空间和篇幅，华为想重点传递的关键词是U6GHz。
+为了实现6G这一遥远的蓝图，近期，全球已掀起了一场U6GHz（6.425-7.125 GHz）的探索热潮，阿联酋、巴西及欧洲等多国各大运营商近期纷纷完成了相应的万兆体验速率验证。
+简单理解，U6GHz就像是一个“黄金频段...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3705522207289479?f=rss" target="_blank"&gt;荣耀“转型”：发布Robot Phone和首款人形机器人丨MWC 2026&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 13:24&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;作者丨邱晓芬
+编辑丨苏建勋
+在2026世界移动通信大会（MWC 2026）上，荣耀发布的人形机器人、Robot Phone吸引了大量观众的目光。
+在Robot Phone上，荣耀打破了过去“黑色方块”的设计，将微型相机和云台系统塞进了手机里。
+据介绍，Robot Phone最大的技术挑战之一在于，如何在有限的手机空间中塞进机械臂和电机，这意味着，其上的微型电机必须同时满足高强度和轻量化。
+为此，荣...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3706592101691525?f=rss" target="_blank"&gt;前小米高管创业机器人，用“爆品逻辑”做工业通用具身智能&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 10:25&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;文｜富充
+编辑｜苏建勋
+小雨智造创始人乔忠良身上，有着“小米系”具身智能创业者的典型特质：善于寻找落地场景，商业化思路很务实。
+2023年2月成立起，小雨智造就瞄准“工业通用具身智能”的目标。焊接机器人作为“沿途下蛋”的第一款产品，在2025年第四季度进入客户产线。
+2010年，北航计算机系硕士毕业后，乔忠良加入创业阶段的小米，成为小米首位应届生；离职时，他已经担任小米MIUI研发负责人5年，创下...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3697641252646531?f=rss" target="_blank"&gt;一条内裤的“远征”： 巴迪高试图用“0手触”撬动一次性内裤的信任缺口 |  早期项目&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 10:16&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;近两年，一次性内裤在国内市场进入高速增长期。
+在旅行出游频繁、“懒人经济”持续升温的背景下，这一原本存在感不高的品类，正从边缘产品走向大众消费的视野。除户外、差旅等高频使用场景外，一次性内裤也逐渐渗透至产后恢复、医疗护理等领域，需求不断外扩，带动纺织服饰、母婴等赛道品牌加速入场，形成一股新的消费热潮。相关数据显示，2022—2024年，我国一次性内裤市场增速超过200%，整体规模已迈入百亿行列。
+...&lt;/p&gt;
+      &lt;/article&gt;
+    
+        &lt;/div&gt;
+      &lt;/section&gt;
+    
+      &lt;section id="半导体" class="category-section"&gt;
+        &lt;h2 class="category-title"&gt;半导体&lt;/h2&gt;
+        &lt;div class="news-list"&gt;
+          
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3707029227499651?f=rss" target="_blank"&gt;氪星晚报｜全国首个跨境电商出口“前置监管仓”投用；亚马逊云服务称仍在努力恢复阿联酋网络服务；2026年全国消费促进月启动&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 17:57&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;大公司：
+亚马逊花逾4亿美元购美知名高校校区用于AI建设
+美国乔治·华盛顿大学2日说，美国亚马逊公司斥资4.27亿美元，收购该校弗吉尼亚科学与技术校区，以加快人工智能（AI）基础设施建设。
+红果短剧已为多款小说相关软件登记著作权
+36氪获悉，3月3日，爱企查App显示，红果短剧关联公司北京笔墨留香科技有限公司成已为“小说快应用”“笔墨留香”“红果官网”网站进行备案。值得一提的是，该公司已为“最看小...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3706462657245318?f=rss" target="_blank"&gt;8点1氪丨椰树集团再陷擦边营销风波被约谈；电影难看20分钟内可退款40%，一影院试行“观影后悔权”；中欧航线票价暴涨&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/03 08:11&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;今日热点导览
+伊朗称霍尔木兹海峡已关闭： “不会让一滴石油流出”
+雷军：小米机器人已在汽车工厂实习，未来5年大批人形机器人进厂
+亚马逊在阿联酋数据中心遭撞击起火
+多家金店暂停投资金条销售
+北京银行贵金属业务出现BUG
+BOSS直聘称网传伊朗急招炮兵照片系P图
+TOP3大新闻
+海口市监局回应椰树低俗广告，已约谈企业
+近日，海南椰树集团因工厂参观区内悬挂涉嫌低俗内容的宣传广告，再次被推上舆论风口浪尖。...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="https://36kr.com/p/3705604996952453?f=rss" target="_blank"&gt;氪星晚报｜马斯克称第二代星链卫星将提供5G速度的太空互联网服务；调整住宿税，日本京都预计增收132亿日元；卢伟冰：小米今年即将发布全新的机器人产品&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;36氪&lt;/span&gt;
+          &lt;span class="time"&gt;2026/03/02 17:47&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;大公司：
+智元机器人等在安徽成立华智天成科技新公司
+36氪获悉，爱企查App显示，近日，安徽华智天成科技有限公司成立，法定代表人为肖智成，注册资本约1176万元人民币，经营范围包括计算机软硬件及辅助设备零售、计算机软硬件及辅助设备批发、软件销售、通信设备销售等。股东信息显示，该公司由智元机器人关联公司智元创新科技股份有限公司、天水华天电子集团股份有限公司等共同持股。
+海螺新型建材有限公司在肥东成立...&lt;/p&gt;
+      &lt;/article&gt;
+    
+      &lt;article class="news-item"&gt;
+        &lt;h4&gt;&lt;a href="http://go.rss.sina.com.cn/redirect.php?url=https://tech.sina.com.cn/i/2018-09-23/doc-ifxeuwwr7419616.shtml" target="_blank"&gt;
+				地平线CEO余凯：边缘计算是自动驾驶的技术基石
+			&lt;/a&gt;&lt;/h4&gt;
+        &lt;p class="news-meta"&gt;
+          &lt;span class="source"&gt;新浪财经科技&lt;/span&gt;
+          &lt;span class="time"&gt;2018/09/23 13:54&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class="news-summary"&gt;作者：权小星
+　　随着人工智能行业的发展，以及应用场景的铺开，人工智能在加速融入到人们的生活、生产流程，而且随着人工智能产品的更新换代、智能计算场景的多样化，在对于人工智能硬件、算法及芯片的要求提高的同时，人工智能的主要攻坚方向也从云端向边缘侧迁移。
+　　可....&lt;/p&gt;
+      &lt;/article&gt;
+    
+        &lt;/div&gt;
+      &lt;/section&gt;
+    
+    
+    &lt;footer&gt;
+      &lt;p&gt;前沿科技日报 - 自动生成于 2026/03/04 00:45&lt;/p&gt;
+      &lt;p&gt;数据来源：新浪财经、36氪、财新、华尔街见闻等&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;

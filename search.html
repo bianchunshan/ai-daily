@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索 - 前沿科技日报</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif; background: #f4f5f6; line-height: 1.6; }
+        
+        /* 顶部导航 */
+        .header { background: #d43030; color: #fff; padding: 12px 15px; position: sticky; top: 0; z-index: 100; }
+        .nav { display: flex; overflow-x: auto; gap: 20px; padding: 10px 15px; background: #fff; border-bottom: 1px solid #e8e8e8; }
+        .nav a { color: #666; text-decoration: none; font-size: 14px; white-space: nowrap; }
+        .nav a.active { color: #d43030; font-weight: bold; }
+        
+        /* 搜索区域 */
+        .search-section { background: #fff; padding: 30px 15px; border-bottom: 1px solid #e8e8e8; }
+        .search-container { max-width: 700px; margin: 0 auto; }
+        .search-title { text-align: center; font-size: 24px; color: #333; margin-bottom: 20px; }
+        .search-box { display: flex; gap: 10px; margin-bottom: 15px; }
+        .search-input { flex: 1; padding: 12px 16px; border: 2px solid #d43030; border-radius: 4px; font-size: 16px; outline: none; }
+        .search-input:focus { border-color: #b02020; }
+        .search-btn { padding: 12px 30px; background: #d43030; color: #fff; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; }
+        .search-btn:hover { background: #b02020; }
+        
+        /* 搜索选项 */
+        .search-options { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        .search-option { display: flex; align-items: center; gap: 5px; }
+        .search-option input[type="checkbox"] { width: 16px; height: 16px; cursor: pointer; }
+        .search-option label { cursor: pointer; color: #666; font-size: 14px; }
+        
+        /* 分类筛选 */
+        .category-filter { background: #fff; padding: 15px; border-bottom: 1px solid #e8e8e8; }
+        .category-title { font-size: 14px; color: #999; margin-bottom: 10px; }
+        .category-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+        .category-tag { padding: 6px 14px; background: #f4f5f6; border-radius: 16px; font-size: 13px; color: #666; cursor: pointer; transition: all 0.2s; }
+        .category-tag:hover { background: #e8e8e8; }
+        .category-tag.active { background: #d43030; color: #fff; }
+        
+        /* 搜索结果 */
+        .results-section { background: #fff; min-height: 300px; }
+        .results-header { padding: 15px; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center; }
+        .results-count { font-size: 14px; color: #666; }
+        .results-count span { color: #d43030; font-weight: bold; }
+        
+        /* 高亮样式 */
+        .highlight { background: #fff3cd; color: #d43030; padding: 0 2px; border-radius: 2px; font-weight: bold; }
+        
+        /* 搜索结果项 */
+        .result-item { padding: 15px; border-bottom: 1px solid #f0f0f0; cursor: pointer; transition: background 0.2s; }
+        .result-item:hover { background: #f8f8f8; }
+        .result-title { font-size: 16px; color: #333; margin-bottom: 8px; line-height: 1.5; }
+        .result-title:hover { color: #d43030; }
+        .result-desc { font-size: 14px; color: #666; margin-bottom: 8px; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .result-meta { font-size: 12px; color: #999; display: flex; gap: 10px; align-items: center; }
+        .result-tag { color: #d43030; font-weight: bold; }
+        .result-category { background: #f0f0f0; padding: 2px 8px; border-radius: 4px; }
+        
+        /* 空结果 */
+        .no-results { text-align: center; padding: 60px 20px; }
+        .no-results-icon { font-size: 60px; margin-bottom: 15px; }
+        .no-results-text { font-size: 16px; color: #999; }
+        .no-results-tips { font-size: 14px; color: #bbb; margin-top: 10px; }
+        
+        /* 加载更多 */
+        .load-more { text-align: center; padding: 20px; }
+        .load-more-btn { padding: 10px 30px; background: #d43030; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        .load-more-btn:disabled { background: #ccc; cursor: not-allowed; }
+        .load-more-btn.hidden { display: none; }
+        
+        /* 底部 */
+        .footer { background: #333; color: #999; text-align: center; padding: 20px; margin-top: 20px; font-size: 12px; }
+        
+        /* 热门搜索 */
+        .hot-searches { margin-top: 20px; }
+        .hot-title { font-size: 14px; color: #999; margin-bottom: 10px; }
+        .hot-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+        .hot-tag { padding: 6px 12px; background: #fff5f5; border: 1px solid #ffd0d0; border-radius: 4px; font-size: 13px; color: #d43030; cursor: pointer; }
+        .hot-tag:hover { background: #ffe0e0; }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <div class="header">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 18px; font-weight: bold;">前沿科技日报</div>
+            <div id="auth-section">
+                <button id="login-btn" style="background: #fff; color: #d43030; border: none; padding: 6px 16px; border-radius: 4px; font-size: 14px; cursor: pointer; margin-right: 8px;">登录</button>
+                <button id="register-btn" style="background: transparent; color: #fff; border: 1px solid #fff; padding: 6px 16px; border-radius: 4px; font-size: 14px; cursor: pointer;">注册</button>
+                <div id="user-menu" style="display: none;">
+                    <span id="user-name" style="margin-right: 10px;"></span>
+                    <button id="logout-btn" style="background: transparent; color: #fff; border: 1px solid #fff; padding: 4px 12px; border-radius: 4px; font-size: 12px; cursor: pointer;">退出</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="nav">
+        <a href="index.html">首页</a>
+        <a href="world.html">国际局势</a>
+        <a href="ai.html">人工智能</a>
+        <a href="semiconductor.html">半导体</a>
+        <a href="new-energy.html">新能源</a>
+        <a href="biotech.html">生物医药</a>
+        <a href="robotics.html">机器人</a>
+        <a href="space.html">商业航天</a>
+        <a href="fusion.html">核聚变</a>
+        <a href="quantum.html">量子计算</a>
+        <a href="crypto.html">数字货币</a>
+        <a href="game.html">游戏</a>
+        <a href="search.html" class="active" style="margin-left: auto; display: flex; align-items: center; gap: 5px;">🔍 搜索</a>
+    </div>
+
+    <!-- 搜索区域 -->
+    <div class="search-section">
+        <div class="search-container">
+            <h1 class="search-title">🔍 搜索资讯</h1>
+            <div class="search-box">
+                <input type="text" class="search-input" id="searchInput" placeholder="输入关键词搜索..." autocomplete="off">
+                <button class="search-btn" onclick="performSearch()">搜索</button>
+            </div>
+            <div class="search-options">
+                <div class="search-option">
+                    <input type="checkbox" id="searchTitle" checked>
+                    <label for="searchTitle">搜索标题</label>
+                </div>
+                <div class="search-option">
+                    <input type="checkbox" id="searchContent" checked>
+                    <label for="searchContent">搜索内容</label>
+                </div>
+                <div class="search-option">
+                    <input type="checkbox" id="searchTag" checked>
+                    <label for="searchTag">搜索标签</label>
+                </div>
+            </div>
+            <div class="hot-searches">
+                <div class="hot-title">🔥 热门搜索</div>
+                <div class="hot-tags" id="hotTags"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 分类筛选 -->
+    <div class="category-filter">
+        <div class="category-title">📂 按板块筛选</div>
+        <div class="category-tags" id="categoryTags">
+            <span class="category-tag active" data-category="all">全部</span>
+            <span class="category-tag" data-category="国际局势">国际局势</span>
+            <span class="category-tag" data-category="人工智能">人工智能</span>
+            <span class="category-tag" data-category="半导体">半导体</span>
+            <span class="category-tag" data-category="新能源">新能源</span>
+            <span class="category-tag" data-category="生物医药">生物医药</span>
+            <span class="category-tag" data-category="机器人">机器人</span>
+            <span class="category-tag" data-category="商业航天">商业航天</span>
+            <span class="category-tag" data-category="核聚变">核聚变</span>
+            <span class="category-tag" data-category="量子计算">量子计算</span>
+            <span class="category-tag" data-category="数字货币">数字货币</span>
+            <span class="category-tag" data-category="游戏">游戏</span>
+        </div>
+    </div>
+
+    <!-- 搜索结果 -->
+    <div class="results-section">
+        <div class="results-header">
+            <div class="results-count" id="resultsCount">请输入关键词开始搜索</div>
+        </div>
+        <div id="resultsList"></div>
+        <div class="load-more">
+            <button class="load-more-btn hidden" id="loadMoreBtn" onclick="loadMoreResults()">加载更多</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>前沿科技日报 · 全球科技投资情报 · 每日更新</p>
+    </div>
+
+    <script>
+        // 搜索索引数据 - 从前端JS构建
+        const searchIndex = [
+            {"id": "w1", "title": "美以联合打击伊朗进入第三天，哈梅内伊遇害", "category": "国际局势", "tag": "战争", "time": "3月3日", "views": "128万", "content": "特朗普称军事行动可能持续四周，已有48名伊朗高层人员被击毙。美以联合打击伊朗进入第三天，局势持续紧张。"},
+            {"id": "w2", "title": "伊朗禁航霍尔木兹海峡，大量油轮滞留波斯湾扰动油市", "category": "国际局势", "tag": "能源", "time": "3月1日", "views": "95万", "content": "伊朗宣布禁航霍尔木兹海峡，导致大量油轮滞留波斯湾，国际油价大幅波动，全球能源市场受到冲击。"},
+            {"id": "w3", "title": "美伊70余载恩怨博弈：从1953年政变到2026年战争", "category": "国际局势", "tag": "历史", "time": "3月2日", "views": "67万", "content": "回顾美伊两国70余年的恩怨情仇，从1953年政变到2026年战争，两国关系经历了怎样的跌宕起伏。"},
+            {"id": "w4", "title": "战火升级！本轮美伊冲突五大疑问待解", "category": "国际局势", "tag": "分析", "time": "3月1日", "views": "82万", "content": "美伊冲突持续升级，本轮冲突的五大核心疑问：战争何时结束？伊朗会如何反击？国际社会如何反应？"},
+            {"id": "w5", "title": "中东战火冲击中国汽车出海，影响波及欧洲市场", "category": "国际局势", "tag": "贸易", "time": "3月3日", "views": "45万", "content": "中东战火对中国汽车出口造成冲击，影响波及欧洲市场，车企如何应对这一地缘政治风险。"},
+            {"id": "a1", "title": "2026人工智能发展趋势：全球市场规模将突破9000亿美元", "category": "人工智能", "tag": "重磅", "time": "2月27日", "views": "85万", "content": "2026年全球AI市场规模将突破9000亿美元，中国AI核心产业规模突破1.2万亿元，成为AI专利最大拥有国。"},
+            {"id": "a2", "title": "2026年中国AI发展趋势前瞻：从'聊天'走向'做事'", "category": "人工智能", "tag": "趋势", "time": "1月28日", "views": "72万", "content": "中国AI发展从对话式应用向实际生产力工具转变，智能体技术日益成熟，AI开始真正'做事'。"},
+            {"id": "a3", "title": "展望全球人工智能2026年演进新局：智能体日益普及", "category": "人工智能", "tag": "预测", "time": "1月20日", "views": "58万", "content": "2026年AI智能体将更加普及，从简单的问答助手发展为能够自主执行复杂任务的智能系统。"},
+            {"id": "a4", "title": "港府拨款5000万推出全民AI培训，提升就业竞争力", "category": "人工智能", "tag": "政策", "time": "2月25日", "views": "43万", "content": "香港特区政府拨款5000万港元推出全民AI培训计划，帮助市民掌握AI技能，提升就业竞争力。"},
+            {"id": "a5", "title": "小鹏汽车：完全自动驾驶有望在三年内实现", "category": "人工智能", "tag": "自动驾驶", "time": "3月3日", "views": "62万", "content": "小鹏汽车表示，完全自动驾驶技术有望在三年内实现，L4级自动驾驶即将进入商业化阶段。"},
+            {"id": "s1", "title": "2026年半导体行业展望：增长但极不均匀，AI驱动与内存短缺并存", "category": "半导体", "tag": "重磅", "time": "3月3日", "views": "78万", "content": "2026年全球半导体营收将突破1万亿美元，AI芯片需求激增，但内存短缺问题依然严峻。"},
+            {"id": "s2", "title": "超150家半导体公司业绩揭晓，涨价潮为2026再添变量", "category": "半导体", "tag": "财报", "time": "3月1日", "views": "65万", "content": "超过150家半导体公司发布财报，行业涨价潮持续，为2026年半导体市场增添更多不确定性。"},
+            {"id": "s3", "title": "全球半导体最新展望：2026年销售额将达9750亿美元", "category": "半导体", "tag": "预测", "time": "2月18日", "views": "52万", "content": "根据最新预测，2026年全球半导体销售额将达到9750亿美元，AI和高性能计算是主要增长动力。"},
+            {"id": "s4", "title": "Omdia：2026年全球半导体营收将突破1万亿美元大关", "category": "半导体", "tag": "里程碑", "time": "1月", "views": "48万", "content": "Omdia研究报告指出，2026年全球半导体营收将突破1万亿美元大关，创历史新高。"},
+            {"id": "s5", "title": "美光18亿美元收购力积电铜锣晶圆厂", "category": "半导体", "tag": "并购", "time": "1月17日", "views": "41万", "content": "美光科技宣布以18亿美元收购力积电铜锣晶圆厂，扩大其在亚洲的产能布局。"},
+            {"id": "e1", "title": "我国建成全球最大的可再生能源体系，每用10度电就有近4度是绿电", "category": "新能源", "tag": "重磅", "time": "3月2日", "views": "92万", "content": "我国风电光伏合计装机历史性超过火电，建成全球最大的可再生能源体系，绿色电力占比大幅提升。"},
+            {"id": "e2", "title": "2026年新能源发电展望：光伏、风电现状及趋势", "category": "新能源", "tag": "趋势", "time": "2025年8月", "views": "68万", "content": "2026年新能源发电行业展望，光伏和风电技术持续进步，成本进一步下降，装机规模持续扩大。"},
+            {"id": "e3", "title": "新型储能装机历史性突破1亿千瓦大关，占全球比重超40%", "category": "新能源", "tag": "储能", "time": "3月1日", "views": "54万", "content": "我国新型储能装机容量突破1亿千瓦，占全球比重超过40%，储能产业进入快速发展期。"},
+            {"id": "e4", "title": "光伏反内卷成效几何？终端为何涨价难？", "category": "新能源", "tag": "分析", "time": "2月21日", "views": "47万", "content": "光伏行业反内卷措施成效分析，产业链价格持续低迷，终端涨价面临诸多困难。"},
+            {"id": "e5", "title": "匈牙利计划建设499MW风电项目，2030年投入运营", "category": "新能源", "tag": "海外", "time": "3月1日", "views": "31万", "content": "匈牙利宣布计划建设499MW风电项目，预计2030年投入运营，加速能源转型。"},
+            {"id": "b1", "title": "CRISPR基因编辑疗法获FDA批准，开启精准医疗新时代", "category": "生物医药", "tag": "突破", "time": "3月2日", "views": "76万", "content": "基于CRISPR技术的基因编辑疗法获得FDA批准，标志着精准医疗进入全新发展阶段。"},
+            {"id": "b2", "title": "mRNA癌症疫苗临床试验取得重大进展", "category": "生物医药", "tag": "临床", "time": "2月28日", "views": "68万", "content": "mRNA癌症疫苗在临床试验中取得重大进展，多种癌症类型显示出良好的治疗效果。"},
+            {"id": "b3", "title": "AI药物研发平台将新药开发周期缩短至2年", "category": "生物医药", "tag": "AI制药", "time": "2月25日", "views": "55万", "content": "人工智能药物研发平台的应用，将传统新药开发周期从10年缩短至2年，大幅降低研发成本。"},
+            {"id": "r1", "title": "美的'美拉'人形机器人全球首秀，正式进军家庭场景", "category": "机器人", "tag": "重磅", "time": "3月3日", "views": "88万", "content": "美的集团发布'美拉'人形机器人，正式进军家庭服务场景，2026年将加速场景落地。"},
+            {"id": "r2", "title": "特斯拉Optimus人形机器人量产在即，售价预计2万美元", "category": "机器人", "tag": "量产", "time": "2月20日", "views": "72万", "content": "特斯拉Optimus人形机器人即将进入量产阶段，预计售价2万美元，将率先应用于工厂场景。"},
+            {"id": "r3", "title": "波士顿动力Atlas机器人实现完全自主导航", "category": "机器人", "tag": "技术", "time": "2月15日", "views": "61万", "content": "波士顿动力Atlas机器人实现完全自主导航，无需人工干预即可完成复杂环境任务。"},
+            {"id": "sp1", "title": "SpaceX星舰第七次试飞成功，火星计划稳步推进", "category": "商业航天", "tag": "试飞", "time": "3月1日", "views": "95万", "content": "SpaceX星舰第七次轨道试飞取得成功，火星殖民计划稳步推进，人类登陆火星指日可待。"},
+            {"id": "sp2", "title": "中国商业航天发射次数创历史新高", "category": "商业航天", "tag": "里程碑", "time": "2月28日", "views": "78万", "content": "2026年中国商业航天发射次数创历史新高，民营航天企业成为重要力量。"},
+            {"id": "sp3", "title": "卫星互联网星座部署加速，全球覆盖指日可待", "category": "商业航天", "tag": "卫星", "time": "2月22日", "views": "66万", "content": "全球卫星互联网星座部署加速，低轨卫星网络即将实现全球无缝覆盖。"},
+            {"id": "f1", "title": "ITER核聚变装置实现能量净输出里程碑", "category": "核聚变", "tag": "突破", "time": "3月2日", "views": "82万", "content": "ITER国际热核聚变实验堆实现能量净输出，核聚变商业化进程迈出关键一步。"},
+            {"id": "f2", "title": "中国'人造太阳'创世界纪录，运行时间突破千秒", "category": "核聚变", "tag": "纪录", "time": "2月26日", "views": "74万", "content": "中国全超导托卡马克核聚变实验装置创造新的世界纪录，等离子体运行时间突破千秒。"},
+            {"id": "q1", "title": "IBM发布1000量子比特处理器，量子优势触手可及", "category": "量子计算", "tag": "突破", "time": "3月1日", "views": "71万", "content": "IBM发布新一代1000量子比特处理器，量子计算实用化进程大幅加速。"},
+            {"id": "q2", "title": "中国量子计算机'九章三号'实现新突破", "category": "量子计算", "tag": "国产", "time": "2月24日", "views": "63万", "content": "中国'九章三号'光量子计算原型机实现新突破，在特定任务上持续保持量子优势。"},
+            {"id": "c1", "title": "比特币突破10万美元，加密货币市场迎来新牛市", "category": "数字货币", "tag": "行情", "time": "3月3日", "views": "89万", "content": "比特币价格突破10万美元大关，加密货币市场迎来新一轮牛市，机构资金持续流入。"},
+            {"id": "c2", "title": "央行数字货币试点扩大，数字人民币应用场景丰富", "category": "数字货币", "tag": "政策", "time": "2月27日", "views": "67万", "content": "数字人民币试点范围进一步扩大，应用场景不断丰富，跨境支付取得新进展。"},
+            {"id": "g1", "title": "《黑神话：悟空》全球销量突破3000万份", "category": "游戏", "tag": "销量", "time": "3月2日", "views": "105万", "content": "国产3A大作《黑神话：悟空》全球销量突破3000万份，创造中国游戏新纪录。"},
+            {"id": "g2", "title": "AI生成游戏内容技术成熟，游戏开发效率提升10倍", "category": "游戏", "tag": "AI", "time": "2月25日", "views": "58万", "content": "AI生成游戏内容技术日趋成熟，游戏开发效率提升10倍，独立游戏迎来黄金时代。"}
+        ];
+
+        // 热门搜索词
+        const hotSearches = ['人工智能', '半导体', '新能源', '伊朗', '机器人', '核聚变', '量子计算', '比特币'];
+
+        // 搜索状态
+        let currentQuery = '';
+        let currentCategory = 'all';
+        let searchResults = [];
+        let currentPage = 0;
+        const resultsPerPage = 10;
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            renderHotTags();
+            setupCategoryFilters();
+            setupSearchInput();
+            
+            // 检查URL参数
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q');
+            const category = urlParams.get('category');
+            
+            if (query) {
+                document.getElementById('searchInput').value = query;
+                currentQuery = query;
+            }
+            if (category) {
+                currentCategory = category;
+                updateCategoryUI();
+            }
+            if (query) {
+                performSearch();
+            }
+        });
+
+        // 渲染热门标签
+        function renderHotTags() {
+            const container = document.getElementById('hotTags');
+            container.innerHTML = hotSearches.map(tag => 
+                `<span class="hot-tag" onclick="searchHot('${tag}')">${tag}</span>`
+            ).join('');
+        }
+
+        // 热门搜索点击
+        function searchHot(keyword) {
+            document.getElementById('searchInput').value = keyword;
+            currentQuery = keyword;
+            performSearch();
+        }
+
+        // 设置分类筛选
+        function setupCategoryFilters() {
+            const tags = document.querySelectorAll('.category-tag');
+            tags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    tags.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    currentCategory = this.dataset.category;
+                    if (currentQuery) {
+                        performSearch();
+                    }
+                });
+            });
+        }
+
+        // 更新分类UI
+        function updateCategoryUI() {
+            const tags = document.querySelectorAll('.category-tag');
+            tags.forEach(tag => {
+                tag.classList.toggle('active', tag.dataset.category === currentCategory);
+            });
+        }
+
+        // 设置搜索输入
+        function setupSearchInput() {
+            const input = document.getElementById('searchInput');
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        }
+
+        // 执行搜索
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (!query && currentCategory === 'all') {
+                document.getElementById('resultsCount').textContent = '请输入关键词开始搜索';
+                document.getElementById('resultsList').innerHTML = '';
+                document.getElementById('loadMoreBtn').classList.add('hidden');
+                return;
+            }
+
+            currentQuery = query;
+            currentPage = 0;
+            
+            // 获取搜索选项
+            const searchTitle = document.getElementById('searchTitle').checked;
+            const searchContent = document.getElementById('searchContent').checked;
+            const searchTag = document.getElementById('searchTag').checked;
+
+            // 执行搜索
+            searchResults = searchIndex.filter(item => {
+                // 分类筛选
+                if (currentCategory !== 'all' && item.category !== currentCategory) {
+                    return false;
+                }
+
+                if (!query) return true;
+
+                // 关键词搜索
+                const lowerQuery = query.toLowerCase();
+                const matchTitle = searchTitle && item.title.toLowerCase().includes(lowerQuery);
+                const matchContent = searchContent && item.content && item.content.toLowerCase().includes(lowerQuery);
+                const matchTag = searchTag && item.tag && item.tag.toLowerCase().includes(lowerQuery);
+
+                return matchTitle || matchContent || matchTag;
+            });
+
+            // 排序：标题匹配优先
+            if (query) {
+                searchResults.sort((a, b) => {
+                    const aTitleMatch = a.title.toLowerCase().includes(query.toLowerCase());
+                    const bTitleMatch = b.title.toLowerCase().includes(query.toLowerCase());
+                    if (aTitleMatch && !bTitleMatch) return -1;
+                    if (!aTitleMatch && bTitleMatch) return 1;
+                    return 0;
+                });
+            }
+
+            // 更新结果计数
+            document.getElementById('resultsCount').innerHTML = 
+                query ? `找到 <span>${searchResults.length}</span> 条相关结果` : `共 <span>${searchResults.length}</span> 条资讯`;
+
+            // 渲染结果
+            renderResults();
+        }
+
+        // 高亮关键词
+        function highlightText(text, query) {
+            if (!query || !text) return text;
+            const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+            return text.replace(regex, '<span class="highlight">$1</span>');
+        }
+
+        // 转义正则特殊字符
+        function escapeRegex(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+
+        // 渲染搜索结果
+        function renderResults() {
+            const container = document.getElementById('resultsList');
+            const start = 0;
+            const end = (currentPage + 1) * resultsPerPage;
+            const resultsToShow = searchResults.slice(start, end);
+
+            if (resultsToShow.length === 0) {
+                container.innerHTML = `
+                    <div class="no-results">
+                        <div class="no-results-icon">🔍</div>
+                        <div class="no-results-text">未找到相关结果</div>
+                        <div class="no-results-tips">尝试更换关键词或调整搜索选项</div>
+                    </div>
+                `;
+                document.getElementById('loadMoreBtn').classList.add('hidden');
+                return;
+            }
+
+            container.innerHTML = resultsToShow.map(item => `
+                <div class="result-item" onclick="location.href='news-detail.html?id=${item.id}'">
+                    <div class="result-title">
+                        ${item.tag ? `<span class="result-tag">${item.tag}</span>` : ''}
+                        ${highlightText(item.title, currentQuery)}
+                    </div>
+                    ${item.content ? `<div class="result-desc">${highlightText(item.content, currentQuery)}</div>` : ''}
+                    <div class="result-meta">
+                        <span class="result-category">${item.category}</span>
+                        <span>${item.time}</span>
+                        <span>👁 ${item.views}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            // 更新加载更多按钮
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            if (end < searchResults.length) {
+                loadMoreBtn.classList.remove('hidden');
+                loadMoreBtn.textContent = `加载更多 (${searchResults.length - end} 条)`;
+            } else {
+                loadMoreBtn.classList.add('hidden');
+            }
+        }
+
+        // 加载更多结果
+        function loadMoreResults() {
+            currentPage++;
+            const container = document.getElementById('resultsList');
+            const start = currentPage * resultsPerPage;
+            const end = start + resultsPerPage;
+            const resultsToAdd = searchResults.slice(start, end);
+
+            const newHtml = resultsToAdd.map(item => `
+                <div class="result-item" onclick="location.href='news-detail.html?id=${item.id}'">
+                    <div class="result-title">
+                        ${item.tag ? `<span class="result-tag">${item.tag}</span>` : ''}
+                        ${highlightText(item.title, currentQuery)}
+                    </div>
+                    ${item.content ? `<div class="result-desc">${highlightText(item.content, currentQuery)}</div>` : ''}
+                    <div class="result-meta">
+                        <span class="result-category">${item.category}</span>
+                        <span>${item.time}</span>
+                        <span>👁 ${item.views}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            container.insertAdjacentHTML('beforeend', newHtml);
+
+            // 更新按钮状态
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            if (end >= searchResults.length) {
+                loadMoreBtn.classList.add('hidden');
+            } else {
+                loadMoreBtn.textContent = `加载更多 (${searchResults.length - end} 条)`;
+            }
+        }
+    </script>
+</body>
+</html>

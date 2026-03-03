@@ -1,0 +1,25 @@
+{
+  "name": "tech-daily-automation",
+  "version": "1.0.0",
+  "description": "前沿科技日报自动化内容更新系统",
+  "main": "src/index.js",
+  "scripts": {
+    "crawl": "node src/crawler.js",
+    "process": "node src/processor.js",
+    "generate": "node src/generator.js",
+    "deploy": "node src/deploy.js",
+    "full": "npm run crawl && npm run process && npm run generate && npm run deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["tech", "news", "automation", "scraper"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12",
+    "rss-parser": "^3.13.0",
+    "fs-extra": "^11.1.1",
+    "simple-git": "^3.20.0",
+    "dotenv": "^16.3.1"
+  }
+}

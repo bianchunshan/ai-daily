@@ -1,0 +1,17 @@
+{
+  "feishu": {
+    "webhook": "",
+    "enabled": true
+  },
+  "push_settings": {
+    "breaking_news": true,
+    "daily_digest": true,
+    "digest_time": "08:00",
+    "categories": ["人工智能", "半导体", "新能源", "国际局势"]
+  },
+  "templates": {
+    "breaking": "🔥 突发：{title}\n\n{summary}\n\n来源：{source} | {time}",
+    "daily": "📰 {date} 科技早报\n\n{items}",
+    "item": "• [{category}] {title}"
+  }
+}

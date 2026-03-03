@@ -1,0 +1,53 @@
+name: Tech Daily Auto Update
+
+on:
+  schedule:
+    # 每小时运行一次
+    - cron: '0 * * * *'
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: tech-daily/package-lock.json
+    
+    - name: Install dependencies
+      working-directory: ./tech-daily
+      run: npm ci
+    
+    - name: Run crawler
+      working-directory: ./tech-daily
+      run: npm run crawl
+    
+    - name: Process data
+      working-directory: ./tech-daily
+      run: npm run process
+    
+    - name: Generate HTML
+      working-directory: ./tech-daily
+      run: npm run generate
+    
+    - name: Deploy to GitHub Pages
+      working-directory: ./tech-daily
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_REPO: ${{ github.repository }}
+      run: npm run deploy
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: output
+        path: tech-daily/output/
+        retention-days: 7
