@@ -105,7 +105,21 @@
     <script>
         let currentNewsIndex = 0;
         const newsPerPage = 10;
-        let allNews = [{"id": "w1", "title": "【突发】美以联合打击伊朗进入第三天，哈梅内伊遇害", "category": "国际局势", "tag": "战争", "time": "3月3日", "views": "128万", "content": "3月2日，美以对伊朗的联合军事打击进入第三天。伊朗最高领袖哈梅内伊遇害、大量伊朗领导层人物被清除后，美以并未收手。特朗普表示军事行动可能持续四周，已有48名伊朗高层人员被击毙。", "sources": [{"name": "上观新闻", "url": "https://iis.fudan.edu.cn/c1/26/c6893a770342/page.htm"}]}, {"id": "w2", "title": "伊朗禁航霍尔木兹海峡，大量油轮滞留波斯湾扰动油市", "category": "国际局势", "tag": "能源", "time": "3月1日", "views": "95万", "content": "能源分析机构Vortexa指出，霍尔木兹海峡是局势升级的核心压力点。当地时间2月28日，美国和以色列对伊朗多地发动'先发制人的打击'后，伊朗宣布禁航霍尔木兹海峡，全球石油运输量30%受影响。", "sources": [{"name": "财新网", "url": "https://www.caixin.com/2026-03-01/102418077.html"}]}, {"id": "w3", "title": "美伊70余载恩怨博弈：从1953年政变到2026年战争", "category": "国际局势", "tag": "历史", "time": "3月2日", "views": "67万", "content": "新华社回顾美伊关系演变：1953年美国策动政变推翻伊朗民选首相，2025年6月美国对伊朗核设施发动'午夜之锤'打击，2026年2月28日美以联合打击伊朗，哈梅内伊身亡。", "sources": [{"name": "新华网", "url": "https://www.news.cn/world/20260302/e86fc26733b3469997bf725895b22d77/c.html"}]}, {"id": "w4", "title": "战火升级！本轮美伊冲突五大疑问待解", "category": "国际局势", "tag": "分析", "time": "3月1日", "views": "82万", "content": "与去年的'12日战争'相比，本轮冲突规模几何、将持续多久？美以此次动手意图达成哪些目标？美伊核谈判还有重启可能吗？中东局势会否陷入失控的螺旋？", "sources": [{"name": "中国新闻网", "url": "https://www.chinanews.com.cn/gj/2026/03-01/10578620.shtml"}]}, {"id": "w5", "title": "中东战火冲击中国汽车出海，影响波及欧洲市场", "category": "国际局势", "tag": "贸易", "time": "3月3日", "views": "45万", "content": "美以伊战火之下，中东作为中国汽车出口的关键市场受冲击。国有车企伊朗业务已停滞，到欧洲航线只能绕行好望角，时间要多出10到15天。", "sources": [{"name": "财新网", "url": "https://companies.caixin.com/2026-03-03/102418983.html"}]}, {"id": "w6", "title": "2026年中东局势展望：冲突仍是主线，形势不容乐观", "category": "国际局势", "tag": "展望", "time": "1月16日", "views": "56万", "content": "2025年中东地区多类冲突持续交织，安全局势动荡难以止息。巴以双方达成脆弱停火，伊朗全境爆发大规模民众抗议，美以多次释放动武威胁。", "sources": [{"name": "新华网", "url": "https://www.news.cn/world/20260116/69665461532148da9a1ad561339ee8b2/c.html"}]}, {"id": "w7", "title": "中东多国正被卷入美国与伊朗的战争", "category": "国际局势", "tag": "扩散", "time": "3月2日", "views": "73万", "content": "据伊朗红新月会数据，自美以联合打击开始以来，伊朗境内已有至少555人死亡。德黑兰在整个地区展开报复性打击，袭击了沙特、卡塔尔、科威特、阿联酋和巴林等国的美国军事基地。", "sources": [{"name": "网易", "url": "https://www.163.com/dy/article/KN1P67UN05568W0A.html"}]}];
+        let allNews = [];
+        
+        // 从JSON文件加载数据
+        fetch('world-news-data.json')
+            .then(response => response.json())
+            .then(data => {
+                allNews = data['国际局势'] || [];
+                renderNews();
+            })
+            .catch(err => {
+                console.error('加载数据失败:', err);
+                // 使用备用数据
+                allNews = [{"id": "w1", "title": "【突发】美以联合打击伊朗进入第三天，哈梅内伊遇害身亡", "category": "国际局势", "tag": "战争", "time": "刚刚", "views": "128.5万", "content": "2026年2月28日，美国和以色列对伊朗发动大规模军事打击，伊朗最高领袖哈梅内伊在袭击中身亡。伊朗随即启动'真实承诺-4'行动进行报复，特朗普称军事行动可能持续四到五周。", "sources": [{"name": "新华社", "url": "https://www.news.cn"}]}, {"id": "w2", "title": "伊朗封锁霍尔木兹海峡，全球石油运输受阻", "category": "国际局势", "tag": "能源危机", "time": "2小时前", "views": "95.3万", "content": "伊朗伊斯兰革命卫队海军宣布封锁霍尔木兹海峡，禁止所有船只通过。该海峡承担全球20%-30%的原油运输。", "sources": [{"name": "财新网", "url": "https://www.caixin.com"}]}, {"id": "w3", "title": "沙特以色列罕见结盟，共同施压美国对伊朗动武", "category": "国际局势", "tag": "地缘政治", "time": "5小时前", "views": "87.2万", "content": "2026年3月2日，沙特公开放话与以色列站一边，要求美国对伊朗动手。伊朗红新月会统计，空袭已造成至少555人死亡。", "sources": [{"name": "网易", "url": "https://www.163.com"}]}, {"id": "w4", "title": "印尼总统普拉博沃提议斡旋中东局势", "category": "国际局势", "tag": "外交", "time": "8小时前", "views": "45.6万", "content": "印度尼西亚总统普拉博沃表示已做好准备前往伊朗进行调解。伊朗驻印尼大使馆对此表示赞赏。", "sources": [{"name": "网易", "url": "https://www.163.com"}]}, {"id": "w5", "title": "英国允许美军使用其军事基地打击伊朗导弹设施", "category": "国际局势", "tag": "军事", "time": "12小时前", "views": "62.1万", "content": "英国已同意美国请求，允许美军使用其军事基地打击伊朗导弹设施。作为回应，伊朗向位于塞浦路斯的一处英国空军基地发射了无人机。", "sources": [{"name": "网易", "url": "https://www.163.com"}]}];
+                renderNews();
+            });
         
         function renderNews() {
             const newsList = document.getElementById('news-list');
