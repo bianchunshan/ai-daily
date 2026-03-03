@@ -89,22 +89,18 @@
         <p>前沿科技日报 · 全球科技投资情报 · 每日更新</p>
     </div>
 
+    <!-- 统一数据源 -->
+    <script src="data/news-data.js"></script>
+    
     <script>
         // 获取URL参数
         const urlParams = new URLSearchParams(window.location.search);
         const newsId = urlParams.get('id');
         
-        // 从 JSON 文件加载资讯数据
-        async function loadNewsData() {
-            try {
-                const response = await fetch('news-data.json');
-                const data = await response.json();
-                // news-data.json 格式: { "news": [...] }
-                return data.news || [];
-            } catch (error) {
-                console.error('加载资讯数据失败:', error);
-                return [];
-            }
+        // 从统一数据源加载资讯
+        function loadNewsData() {
+            // NEWS_DATA 来自 news-data.js
+            return Promise.resolve(getAllNews());
         }
         
         // 页面加载时显示资讯
