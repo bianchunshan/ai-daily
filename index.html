@@ -80,43 +80,43 @@
 
     <!-- Banner轮播 -->
     <div class="banner-container">
-        <div class="banner-slide active" style="background-image: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800');" onclick="location.href='news-detail.html?id=1'">
+        <div class="banner-slide active" style="background-image: url('https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=800');" onclick="location.href='world.html'">
             <div class="banner-content">
-                <div class="banner-tag">重磅</div>
-                <div class="banner-title">英伟达Q4营收681亿美元暴增73%</div>
-                <div class="banner-desc">股价却大跌5.5%，市值一夜蒸发2500亿美元</div>
+                <div class="banner-tag">战争</div>
+                <div class="banner-title">美以联合打击伊朗进入第三天，哈梅内伊遇害</div>
+                <div class="banner-desc">特朗普称军事行动可能持续四周，已有48名伊朗高层人员被击毙</div>
             </div>
         </div>
         
-        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800');" onclick="location.href='news-detail.html?id=2'">
+        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800');" onclick="location.href='ai.html'">
             <div class="banner-content">
-                <div class="banner-tag"></div>
-                <div class="banner-title">OpenAI完成1100亿美元融资</div>
-                <div class="banner-desc">估值达8400亿美元，亚马逊英伟达软银领投</div>
+                <div class="banner-tag">AI</div>
+                <div class="banner-title">2026年全球AI市场规模将突破9000亿美元</div>
+                <div class="banner-desc">中国AI核心产业规模突破1.2万亿元，成为AI专利最大拥有国</div>
             </div>
         </div>
         
-        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800');" onclick="location.href='news-detail.html?id=3'">
+        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=800');" onclick="location.href='semiconductor.html'">
             <div class="banner-content">
-                <div class="banner-tag">市场</div>
-                <div class="banner-title">Meta与AMD达成600-1000亿美元协议</div>
-                <div class="banner-desc">为期五年的超级采购协议，AI芯片市场巨变</div>
+                <div class="banner-tag">半导体</div>
+                <div class="banner-title">2026年全球半导体营收将突破1万亿美元</div>
+                <div class="banner-desc">AI驱动增长但内存短缺引发结构性挤出效应</div>
             </div>
         </div>
         
-        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800');" onclick="location.href='news-detail.html?id=4'">
+        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800');" onclick="location.href='new-energy.html'">
             <div class="banner-content">
-                <div class="banner-tag">财报</div>
-                <div class="banner-title">苹果Q1营收1437亿美元创新高</div>
-                <div class="banner-desc">iPhone营收852亿美元同比大增23%</div>
+                <div class="banner-tag">新能源</div>
+                <div class="banner-title">我国建成全球最大的可再生能源体系</div>
+                <div class="banner-desc">风电光伏合计装机历史性超过火电，每用10度电就有近4度是绿电</div>
             </div>
         </div>
         
-        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1563089145-599997674d42?w=800');" onclick="location.href='news-detail.html?id=5'">
+        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1563089145-599997674d42?w=800');" onclick="location.href='robotics.html'">
             <div class="banner-content">
-                <div class="banner-tag">前沿</div>
-                <div class="banner-title">特斯拉Optimus机器人2027年面向公众销售</div>
-                <div class="banner-desc">FSD即将登陆欧洲，Cybercab 4月规模化量产</div>
+                <div class="banner-tag">机器人</div>
+                <div class="banner-title">美的'美拉'人形机器人全球首秀</div>
+                <div class="banner-desc">正式进军家庭场景，2026年将加速场景落地</div>
             </div>
         </div>
         
@@ -173,30 +173,30 @@
         let currentNewsIndex = 0;
         const newsPerPage = 10;
         let allNews = [
-            {"id": 1, "title": "OpenAI 发布 GPT-4.5 研究预览版，迄今最大聊天模型", "category": "人工智能", "tag": "重磅", "time": "2小时前", "views": "45万", "stocks": ["OPENAI"]},
-            {"id": 2, "title": "英伟达Q4营收393亿美元同比增78%，净利润大增80%", "category": "人工智能", "tag": "财报", "time": "4小时前", "views": "52万", "stocks": ["NVDA"]},
-            {"id": 3, "title": "比特币价格跌破85000美元，24小时跌幅超5%", "category": "数字货币", "tag": "重磅", "time": "1小时前", "views": "55万", "stocks": ["BTC"]},
-            {"id": 4, "title": "特斯拉FSD正式入华，2月25日开始推送", "category": "新能源", "tag": "重磅", "time": "2小时前", "views": "58万", "stocks": ["TSLA"]},
-            {"id": 5, "title": "《黑神话：悟空》销量突破2800万份，收入超90亿", "category": "游戏", "tag": "重磅", "time": "1小时前", "views": "62万", "stocks": ["游戏科学"]},
-            {"id": 6, "title": "礼来替尔泊肽减重版国内获批上市", "category": "生物医药", "tag": "重磅", "time": "3小时前", "views": "42万", "stocks": ["LLY"]},
-            {"id": 7, "title": "SpaceX星舰第八次试飞成功，助推器回收", "category": "商业航天", "tag": "重磅", "time": "2小时前", "views": "55万", "stocks": ["SPACE"]},
-            {"id": 8, "title": "谷歌Willow量子芯片实现纠错突破", "category": "量子计算", "tag": "重磅", "time": "2小时前", "views": "35万", "stocks": ["GOOGL"]},
-            {"id": 9, "title": "台积电2nm工艺2025年量产，苹果A19首发", "category": "半导体", "tag": "重磅", "time": "1小时前", "views": "38万", "stocks": ["TSM", "AAPL"]},
-            {"id": 10, "title": "Meta与AMD达成多年合作，采购60-100亿美元AI芯片", "category": "人工智能", "tag": "", "time": "6小时前", "views": "28万", "stocks": ["META", "AMD"]},
-            {"id": 11, "title": "比亚迪2月销量突破32万辆，同比增长164%", "category": "新能源", "tag": "", "time": "4小时前", "views": "35万", "stocks": ["BYD"]},
-            {"id": 12, "title": "微软Copilot用户突破1.5亿，年度AI收入达180亿美元", "category": "人工智能", "tag": "", "time": "8小时前", "views": "19万", "stocks": ["MSFT"]},
-            {"id": 13, "title": "以太坊ETF资金持续流出，质押量突破3000万枚", "category": "数字货币", "tag": "", "time": "3小时前", "views": "28万", "stocks": ["ETH"]},
-            {"id": 14, "title": "特斯拉Optimus二代进厂测试，可搬运电池", "category": "机器人", "tag": "重磅", "time": "2小时前", "views": "42万", "stocks": ["TSLA"]},
-            {"id": 15, "title": "宁德时代发布神行超充电池，10分钟充电400公里", "category": "新能源", "tag": "", "time": "6小时前", "views": "28万", "stocks": ["CATL"]},
-            {"id": 16, "title": "英特尔18A工艺良率突破，重返先进制程竞争", "category": "半导体", "tag": "", "time": "3小时前", "views": "22万", "stocks": ["INTC"]},
-            {"id": 17, "title": "谷歌Gemini 2.0 Pro上线，代码能力大幅提升", "category": "人工智能", "tag": "", "time": "10小时前", "views": "22万", "stocks": ["GOOGL"]},
-            {"id": 18, "title": "《GTA 6》延期至2026年5月发售", "category": "游戏", "tag": "", "time": "7小时前", "views": "48万", "stocks": ["T2"]},
-            {"id": 19, "title": "诺和诺德司美格鲁肽中国专利即将到期", "category": "生物医药", "tag": "", "time": "5小时前", "views": "25万", "stocks": ["NVO"]},
-            {"id": 20, "title": "中国EAST实现1000秒长脉冲高参数运行", "category": "核聚变", "tag": "", "time": "4小时前", "views": "18万", "stocks": ["EAST"]},
+            {"id": "w1", "title": "【突发】美以联合打击伊朗进入第三天，哈梅内伊遇害", "category": "国际局势", "tag": "战争", "time": "3月3日", "views": "128万"},
+            {"id": "w2", "title": "伊朗禁航霍尔木兹海峡，大量油轮滞留波斯湾扰动油市", "category": "国际局势", "tag": "能源", "time": "3月1日", "views": "95万"},
+            {"id": "a1", "title": "2026人工智能发展趋势：全球市场规模将突破9000亿美元", "category": "人工智能", "tag": "重磅", "time": "2月27日", "views": "85万"},
+            {"id": "a2", "title": "2026年中国AI发展趋势前瞻：从'聊天'走向'做事'", "category": "人工智能", "tag": "趋势", "time": "1月28日", "views": "72万"},
+            {"id": "s1", "title": "2026年半导体行业展望：增长但极不均匀，AI驱动与内存短缺并存", "category": "半导体", "tag": "重磅", "time": "3月3日", "views": "78万"},
+            {"id": "s2", "title": "超150家半导体公司业绩揭晓，涨价潮为2026再添变量", "category": "半导体", "tag": "财报", "time": "3月1日", "views": "65万"},
+            {"id": "e1", "title": "我国建成全球最大的可再生能源体系，每用10度电就有近4度是绿电", "category": "新能源", "tag": "重磅", "time": "3月2日", "views": "92万"},
+            {"id": "e2", "title": "2026年新能源发电展望：光伏、风电现状及趋势", "category": "新能源", "tag": "趋势", "time": "2025年8月", "views": "68万"},
+            {"id": "a3", "title": "展望全球人工智能2026年演进新局：智能体日益普及", "category": "人工智能", "tag": "预测", "time": "1月20日", "views": "58万"},
+            {"id": "w3", "title": "美伊70余载恩怨博弈：从1953年政变到2026年战争", "category": "国际局势", "tag": "历史", "time": "3月2日", "views": "67万"},
+            {"id": "s3", "title": "全球半导体最新展望：2026年销售额将达9750亿美元", "category": "半导体", "tag": "预测", "time": "2月18日", "views": "52万"},
+            {"id": "e3", "title": "新型储能装机历史性突破1亿千瓦大关，占全球比重超40%", "category": "新能源", "tag": "储能", "time": "3月1日", "views": "54万"},
+            {"id": "a4", "title": "港府拨款5000万推出全民AI培训，提升就业竞争力", "category": "人工智能", "tag": "政策", "time": "2月25日", "views": "43万"},
+            {"id": "w4", "title": "战火升级！本轮美伊冲突五大疑问待解", "category": "国际局势", "tag": "分析", "time": "3月1日", "views": "82万"},
+            {"id": "s4", "title": "Omdia：2026年全球半导体营收将突破1万亿美元大关", "category": "半导体", "tag": "里程碑", "time": "1月", "views": "48万"},
+            {"id": "e4", "title": "光伏反内卷成效几何？终端为何涨价难？", "category": "新能源", "tag": "分析", "time": "2月21日", "views": "47万"},
+            {"id": "a5", "title": "小鹏汽车：完全自动驾驶有望在三年内实现", "category": "人工智能", "tag": "自动驾驶", "time": "3月3日", "views": "62万"},
+            {"id": "w5", "title": "中东战火冲击中国汽车出海，影响波及欧洲市场", "category": "国际局势", "tag": "贸易", "time": "3月3日", "views": "45万"},
+            {"id": "s5", "title": "美光18亿美元收购力积电铜锣晶圆厂", "category": "半导体", "tag": "并购", "time": "1月17日", "views": "41万"},
+            {"id": "e5", "title": "匈牙利计划建设499MW风电项目，2030年投入运营", "category": "新能源", "tag": "海外", "time": "3月1日", "views": "31万"},
         ];
         
         // Banner 中的资讯ID（不在列表中显示）
-        const bannerNewsIds = [1, 2, 3, 4, 5];
+        const bannerNewsIds = ["w1", "a1", "s1", "e1"];
         
         function renderNews() {
             const newsList = document.getElementById('news-list');
